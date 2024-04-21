@@ -18,6 +18,7 @@
     <!-- CSS Stylesheet -->
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="shortcut icon" href="imgs/favicon.ico">
+
     <title>Register - Bleed To Save</title>
 
     <!-- added this for the info box -->
@@ -30,7 +31,6 @@
             z-index: 9999;
         }
     </style>
-    <script type="module" src="js/firebaseInit.js"></script>
 </head>
 
 <body>
@@ -70,220 +70,213 @@
     <section id="login-form" class="container">
         <div class="col-lg-5 col-md-7 mb-5 login-form card">
             <div class="card-body my-4">
-                <div class="container">
-                    <form onsubmit="return validatePassword()" action="login.html">
+                <form onsubmit="event.preventDefault(); validatePassword(event);" action="login.html">
+                    <div class="form-group">
+                        <label for="first-name">First Name</label>
+                        <input type="text" class="form-control" id="first-name" placeholder="First Name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="last-name">Last Name</label>
+                        <input type="text" class="form-control" id="last-name" placeholder="Last Name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="id-number">ID Number</label>
+                        <input type="tel" class="form-control" id="id-number" pattern="[0-9]{5}-[0-9]{5}-[0-9]{5}"
+                            aria-describedby="cnicHelp" placeholder="ID Number" required>
+                        <small id="cnicHelp" class="mt-2 form-text text-muted">Format: XXXXX-XXXXX-XXXXX</small>
+                    </div>
+                    <!-- <div class="form-group">
+                        <label for="dob">Date of Birth</label>
+                        <input type="date" class="form-control" id="dob" required>
+                    </div>
+                    <div class="form-group">
                         <div class="form-group">
-                            <label for="first-name">First Name</label>
-                            <input type="text" class="form-control" id="first-name" placeholder="First Name" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="first-name">Last Name</label>
-                            <input type="text" class="form-control" id="last-name" placeholder="Last Name" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="cnic">CNIC Number</label>
-                            <input type="tel" class="form-control" id="cnic" pattern="[0-9]{5}-[0-9]{5}-[0-9]{5}"
-                                aria-describedby="cnicHelp" placeholder="CNIC Number" required>
-                            <small id="cnicHelp" class="mt-2 form-text text-muted">Format: XXXXX-XXXXX-XXXXX</small>
-                        </div>
-                        <div class="form-group">
-                            <label for="dob">Date of Birth</label>
-                            <input type="date" class="form-control" id="dob" required>
-                        </div>
-                        <div class="form-group">
-                            <div class="form-group">
-                                <label for="gender">Gender</label>
-                                <select class="form-control" id="gender" required>
-                                    <option value="" disabled selected>Select Gender</option>
-                                    <option value="Male">Male</option>
-                                    <option value="Female">Female</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="form-group">
-                                <label for="country">Country</label>
-                                <select class="form-control" id="country" required>
-                                    <option value="" disabled selected>Select Country</option>
-                                    <option value="USA">USA</option>
-                                    <option value="Canada">Canada</option>
-                                    <option value="UK">UK</option>
-                                    <!-- Add more country options here -->
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="province">Province</label>
-                                <select class="form-control" id="province" required>
-                                    <option value="" disabled selected>Select Province</option>
-                                    <option value="Ontario">Ontario</option>
-                                    <option value="Quebec">Quebec</option>
-                                    <option value="British Columbia">British Columbia</option>
-                                    <!-- Add more province options here -->
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="city">City</label>
-                                <select class="form-control" id="city" required>
-                                    <option value="" disabled selected>Select City</option>
-                                    <option value="Toronto">Toronto</option>
-                                    <option value="Vancouver">Vancouver</option>
-                                    <option value="Montreal">Montreal</option>
-                                    <!-- Add more city options here -->
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="address">Address</label>
-                            <input type="text" class="form-control" id="address" placeholder="Address" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Phone Number</label>
-                            <input type="tel" class="form-control" id="phone_number" placeholder="Phone Number"
-                                required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" class="form-control" id="email" placeholder="Email" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="password">Password</label>
-                            <input type="password" class="form-control" id="password" placeholder="Password"
-                                minlength="8" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="confirm-password">Confirm Password</label>
-                            <input type="password" class="form-control" id="confirm-password"
-                                placeholder="Confirm Password" minlength="8" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="blood-group">Blood Group</label>
-                            <select class="form-control" id="blood-group" required>
-                                <option value="" disabled selected>Select Blood Group</option>
-                                <option value="A+">A+</option>
-                                <option value="A-">A-</option>
-                                <option value="B+">B+</option>
-                                <option value="B-">B-</option>
-                                <option value="AB+">AB+</option>
-                                <option value="AB-">AB-</option>
-                                <option value="O+">O+</option>
-                                <option value="O-">O-</option>
+                            <label for="gender">Gender</label>
+                            <select class="form-control" id="gender" required>
+                                <option value="" disabled selected>Select Gender</option>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
                             </select>
                         </div>
+                    </div>
 
+                    <div class="form-group">
                         <div class="form-group">
-                            <label for="height">Height</label>
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <select class="form-control" id="height-unit">
-                                        <option value="cm">cm</option>
-                                        <option value="feet">feet</option>
-                                    </select>
-                                </div>
-                                <input type="number" class="form-control" id="height" placeholder="Height" min="0"
-                                    step="0.1" required>
-                            </div>
+                            <label for="country">Country</label>
+                            <select class="form-control" id="country" required>
+                                <option value="" disabled selected>Select Country</option>
+                                <option value="USA">USA</option>
+                                <option value="Canada">Canada</option>
+                                <option value="UK">UK</option>
+                            </select>
                         </div>
                         <div class="form-group">
-                            <label for="weight">Weight</label>
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <select class="form-control" id="weight-unit">
-                                        <option value="kg">kg</option>
-                                        <option value="lb">lb</option>
-                                    </select>
-                                </div>
-                                <input type="number" class="form-control" id="weight" placeholder="Weight" min="0"
-                                    step="0.1" required>
-                            </div>
+                            <label for="province">Province</label>
+                            <select class="form-control" id="province" required>
+                                <option value="" disabled selected>Select Province</option>
+                                <option value="Ontario">Ontario</option>
+                                <option value="Quebec">Quebec</option>
+                                <option value="British Columbia">British Columbia</option>
+                            </select>
                         </div>
-
                         <div class="form-group">
-                            <label for="tattoo">Did you have a tattoo in the last 6 months?</label>
-                            <div class="form-row">
-                                <div class="col">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="tattoo" id="tattoo-yes"
-                                            value="yes" required>
-                                        <label class="form-check-label" for="tattoo-yes">
-                                            Yes
-                                        </label>
-                                    </div>
+                            <label for="city">City</label>
+                            <select class="form-control" id="city" required>
+                                <option value="" disabled selected>Select City</option>
+                                <option value="Toronto">Toronto</option>
+                                <option value="Vancouver">Vancouver</option>
+                                <option value="Montreal">Montreal</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="address">Address</label>
+                        <input type="text" class="form-control" id="address" placeholder="Address" required>
+                    </div> -->
+                    <div class="form-group">
+                        <label for="phone-number">Phone Number</label>
+                        <input type="tel" class="form-control" id="phone-number" placeholder="Phone Number" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" class="form-control" id="email" placeholder="Email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" class="form-control" id="password" placeholder="Password" minlength="8"
+                            required>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirm-password">Confirm Password</label>
+                        <input type="password" class="form-control" id="confirm-password" placeholder="Confirm Password"
+                            minlength="8" required>
+                    </div>
+                    <!-- <div class="form-group">
+                        <label for="blood-group">Blood Group</label>
+                        <select class="form-control" id="blood-group" required>
+                            <option value="" disabled selected>Select Blood Group</option>
+                            <option value="A+">A+</option>
+                            <option value="A-">A-</option>
+                            <option value="B+">B+</option>
+                            <option value="B-">B-</option>
+                            <option value="AB+">AB+</option>
+                            <option value="AB-">AB-</option>
+                            <option value="O+">O+</option>
+                            <option value="O-">O-</option>
+                        </select>
+                    </div> -->
+                    <!-- 
+                    <div class="form-group">
+                        <label for="height">Height</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <select class="form-control" id="height-unit">
+                                    <option value="cm">cm</option>
+                                    <option value="feet">feet</option>
+                                </select>
+                            </div>
+                            <input type="number" class="form-control" id="height" placeholder="Height" min="0"
+                                step="0.1" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="weight">Weight</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <select class="form-control" id="weight-unit">
+                                    <option value="kg">kg</option>
+                                    <option value="lb">lb</option>
+                                </select>
+                            </div>
+                            <input type="number" class="form-control" id="weight" placeholder="Weight" min="0"
+                                step="0.1" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="tattoo">Did you have a tattoo in the last 6 months?</label>
+                        <div class="form-row">
+                            <div class="col">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="tattoo" id="tattoo-yes"
+                                        value="yes" required>
+                                    <label class="form-check-label" for="tattoo-yes">
+                                        Yes
+                                    </label>
                                 </div>
-                                <div class="col">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="tattoo" id="tattoo-no"
-                                            value="no" required>
-                                        <label class="form-check-label" for="tattoo-no">
-                                            No
-                                        </label>
-                                    </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="tattoo" id="tattoo-no" value="no"
+                                        required>
+                                    <label class="form-check-label" for="tattoo-no">
+                                        No
+                                    </label>
                                 </div>
                             </div>
                         </div>
+                    </div>
 
-                        <div class="form-group">
-                            <label for="tattoo">Do you have any <u class="info-link" onmouseover="showInfoBox()"
-                                    onmouseout="hideInfoBox()">diseases or medical conditions</u> that may prevent you
-                                from
-                                donating blood?</label>
+                    <div class="form-group">
+                        <label for="tattoo">Do you have any <u class="info-link" onmouseover="showInfoBox()"
+                                onmouseout="hideInfoBox()">diseases or medical conditions</u> that may prevent you
+                            from
+                            donating blood?</label>
 
-                            <div id="info-box" class="info-box" style="display: none;">
-                                <ul>
-                                    <li>Do you have HIV?</li>
-                                    <li>Do you have a blood-related disease?</li>
-                                    <li>Do you have an infectious disease</li>
-                                </ul>
-                            </div>
-
-                            <div class="form-row">
-                                <div class="col">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="medical_condition"
-                                            id="medical_condition-yes" value="yes" required>
-                                        <label class="form-check-label" for="medical_condition-yes">
-                                            Yes
-                                        </label>
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="medical_condition"
-                                            id="medical_condition-no" value="no" required>
-                                        <label class="form-check-label" for="medical_condition-no">
-                                            No
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
+                        <div id="info-box" class="info-box" style="display: none;">
+                            <ul>
+                                <li>Do you have HIV?</li>
+                                <li>Do you have a blood-related disease?</li>
+                                <li>Do you have an infectious disease</li>
+                            </ul>
                         </div>
 
-
-                        <script>
-                            function showInfoBox() {
-                                var infoBox = document.getElementById("info-box");
-                                infoBox.style.display = "block";
-                            }
-
-                            function hideInfoBox() {
-                                var infoBox = document.getElementById("info-box");
-                                infoBox.style.display = "none";
-                            }
-                        </script>
-
-
-                        <div class="form-group">
-                            <label for="medical-condition">Any notes worth mentioning regarding your medical
-                                record?</label>
-                            <textarea class="form-control" id="medical-condition" rows="3"
-                                placeholder="Write your notes"></textarea>
-                        </div>
-
-                        <button type="submit" class="mt-3 btn btn-lg btn-primary slide-btn">Register</button>
-                    </form>
-                </div>
+                        <div class="form-row">
+                            <div class="col">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="medical_condition"
+                                        id="medical_condition-yes" value="yes" required>
+                                    <label class="form-check-label" for="medical_condition-yes">
+                                        Yes
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="medical_condition"
+                                        id="medical_condition-no" value="no" required>
+                                    <label class="form-check-label" for="medical_condition-no">
+                                        No
+                                    </label>
+                                </div>
+                            </div>
+                        </div> -->
             </div>
+
+
+            <script>
+                function showInfoBox() {
+                    var infoBox = document.getElementById("info-box");
+                    infoBox.style.display = "block";
+                }
+
+                function hideInfoBox() {
+                    var infoBox = document.getElementById("info-box");
+                    infoBox.style.display = "none";
+                }
+            </script>
+
+            <!-- <div class="form-group">
+                        <label for="medical-condition">Any notes worth mentioning regarding your medical
+                            record?</label>
+                        <textarea class="form-control" id="medical-condition" rows="3"
+                            placeholder="Write your notes"></textarea>
+                    </div> -->
+
+            <button type="submit" class="mt-3 btn btn-lg btn-primary slide-btn">Register</button>
+            </form>
+        </div>
         </div>
 
     </section>
@@ -299,6 +292,32 @@
         integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
         crossorigin="anonymous"></script>
     <script type="text/javascript" src="js/main.js"></script>
+
+
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-analytics.js";
+        import { getAuth } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-auth.js";
+        import { getFirestore } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore.js";
+
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyA8nOIlWxr5sazq5PS9Ryax3xcB8vfVSjQ",
+            authDomain: "blood-donation-system-0.firebaseapp.com",
+            projectId: "blood-donation-system-0",
+            storageBucket: "blood-donation-system-0.appspot.com",
+            messagingSenderId: "218504344556",
+            appId: "1:218504344556:web:7d1e15ef0e0ed89bea46c9",
+            measurementId: "G-YP5BN4CEN5"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+    </script>
 
     <!-- for password confirmation -->
     <script>
@@ -319,12 +338,79 @@
         password.onchange = outlinePassword;
         confirmPassword.onkeyup = outlinePassword;
 
-        function validatePassword() {
-            if (password.value != confirmPassword.value) {
+        // function validatePassword() {
+        //     if (password.value != confirmPassword.value) {
+        //         alert("Passwords do not match.");
+        //         return false;
+        //     } else {
+
+        //         return true;
+        //     }
+        // }
+
+        // const idNumber = document.getElementById('id-number').value;
+        // const firstName = document.getElementById('first-name').value;
+        // const lastName = document.getElementById('last-name').value;
+        // const phoneNumber = document.getElementById('phone-number').value;
+        // const email = document.getElementById('email').value;
+        // const password = document.getElementById('password').value;
+
+        // firebase.auth().createUserWithEmailAndPassword(email, password).then((result) => {
+        //     // Get the user's ID token.
+        //     const idToken = result.user.getIdToken();
+
+        //     // Create a new document in the Firestore database.
+        //     const userRef = firebase.firestore().collection('donor-info').doc(idNumber);
+        //     userRef.set({
+        //         idNumber: idNumber,
+        //         firstName: firstName,
+        //         lastName: lastName,
+        //         password: password,
+        //         phoneNumber: phoneNumber,
+        //         email: email,
+        //     }).then(() => {
+        //         // Registration successful.
+        //     }).catch((error) => {
+        //         // Handle Errors here.
+        //     });
+        // }).catch((error) => {
+        //     // Handle Errors here.
+        // });
+
+        async function validatePassword(event) {
+            const passwordElement = document.getElementById('password');
+            const confirmPasswordElement = document.getElementById('confirm-password');
+
+            if (passwordElement.value != confirmPasswordElement.value) {
                 alert("Passwords do not match.");
-                return false;
             } else {
-                return true;
+                const idNumber = document.getElementById('id-number').value;
+                const firstName = document.getElementById('first-name').value;
+                const lastName = document.getElementById('last-name').value;
+                const phoneNumber = document.getElementById('phone-number').value;
+                const email = document.getElementById('email').value;
+                const password = document.getElementById('password').value;
+
+                try {
+                    console.log('Creating user...');
+                    const result = await firebase.auth().createUserWithEmailAndPassword(email, password);
+                    console.log('User created, getting ID token...');
+                    const idToken = await result.user.getIdToken();
+                    console.log('Got ID token, setting Firestore document...');
+                    const userRef = firebase.firestore().collection('donor-info').doc(idNumber);
+                    await userRef.set({
+                        idNumber: idNumber,
+                        firstName: firstName,
+                        lastName: lastName,
+                        password: password,
+                        phoneNumber: phoneNumber,
+                        email: email,
+                    });
+                    console.log('Firestore document set, submitting form...');
+                    event.target.submit();
+                } catch (error) {
+                    console.error('Error:', error);
+                }
             }
         }
     </script>
