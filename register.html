@@ -280,7 +280,8 @@
                                 placeholder="Write your notes"></textarea>
                         </div>
 
-                        <button id="register-btn" type="submit" class="mt-3 btn btn-lg btn-primary slide-btn">Register</button>
+                        <button id="register-btn" type="submit"
+                            class="mt-3 btn btn-lg btn-primary slide-btn">Register</button>
                     </form>
                 </div>
             </div>
@@ -319,6 +320,45 @@
         window.analytics = analytics;
         window.auth = auth;
         window.db = db;
+
+        // create a function which uses google firebase authentication and takes email and password as parameters to create a new user
+        async function createUserWithEmailAndPassword(email, password) {
+            try {
+                const userCredential = await auth.createUserWithEmailAndPassword(email, password);
+                const user = userCredential.user;
+                console.log("User created successfully: ", user);
+                return user;
+            } catch (error) {
+                console.error("Error creating user: ", error);
+                return null;
+            }
+        }
+
+        // Get a reference to the Firebase auth service
+        auth = firebase.auth();
+
+        // Get a reference to the button
+        var registerBtn = document.getElementById('register-btn');
+
+        registerBtn.addEventListener('click', function (e) {
+            e.preventDefault();
+
+            // Get the email and password entered by the user
+            var email = document.getElementById('email').value;
+            var password = document.getElementById('password').value;
+
+            // Register the new user
+            auth.createUserWithEmailAndPassword(email, password)
+                .then((userCredential) => {
+                    // The user has been registered successfully
+                    var user = userCredential.user;
+                    console.log('User registered successfully:', user);
+                })
+                .catch((error) => {
+                    // There was an error registering the user
+                    console.error('Error registering user:', error);
+                });
+        });
     </script>
 
     <!-- Optional JavaScript -->
