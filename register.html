@@ -70,7 +70,7 @@
         <div class="col-lg-5 col-md-7 mb-5 login-form card">
             <div class="card-body my-4">
                 <div class="container">
-                    <form action="login.html">
+                    <form onsubmit="return validatePassword()" action="login.html">
                         <div class="form-group">
                             <label for="first-name">First Name</label>
                             <input type="text" class="form-control" id="first-name" placeholder="First Name" required>
@@ -150,6 +150,11 @@
                             <label for="password">Password</label>
                             <input type="password" class="form-control" id="password" placeholder="Password"
                                 minlength="8" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="confirm-password">Confirm Password</label>
+                            <input type="password" class="form-control" id="confirm-password"
+                                placeholder="Confirm Password" minlength="8" required>
                         </div>
                         <div class="form-group">
                             <label for="blood-group">Blood Group</label>
@@ -293,6 +298,35 @@
         integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
         crossorigin="anonymous"></script>
     <script type="text/javascript" src="js/main.js"></script>
+
+    <!-- for password confirmation -->
+    <script>
+        var password = document.getElementById("password");
+        var confirmPassword = document.getElementById("confirm-password");
+
+        function outlinePassword() {
+            if (password.value != confirmPassword.value) {
+                password.style.borderColor = "red";
+                confirmPassword.style.borderColor = "red";
+                return false;
+            } else {
+                password.style.borderColor = "green";
+                confirmPassword.style.borderColor = "green";
+                return true;
+            }
+        }
+        password.onchange = outlinePassword;
+        confirmPassword.onkeyup = outlinePassword;
+
+        function validatePassword() {
+            if (password.value != confirmPassword.value) {
+                alert("Passwords do not match.");
+                return false;
+            } else {
+                return true;
+            }
+        }
+    </script>
 </body>
 
 </html>
