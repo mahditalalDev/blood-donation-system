@@ -4,22 +4,51 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+      crossorigin="anonymous"
+    />
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.11.2/css/all.css"
+    />
     <!-- Font Nunito -->
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
     <!-- Animate CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
     <!-- CSS Stylesheet -->
-    <link rel="stylesheet" type="text/css" href="css/style.css">
-    <link rel="stylesheet" type="text/css" href="css/fonts.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <link rel="stylesheet" type="text/css" href="css/fonts.css" />
+    <style>
+      #herosSection {
+        margin-top: 220px;
+      }
+      .background-grey {
+        background-color: rgba(212, 219, 224, 0.795);
+      }
+      body {
+        background-image: linear-gradient(#fceeef, #ca9093, white);
+      }
+      .backgrpund-round {
+        border-radius: 50px;
+        margin-top: 20px;
+      }
+    </style>
   </head>
   <body>
     <nav
       id="mainNavbar"
-      style="background-color: #fceeef;margin-bottom: 10px;"
+      style="background-color: #fceeef; margin-bottom: 10px"
       class="navbar navbar-expand-lg navbar-light fixed-top py-0"
     >
       <div class="container">
@@ -61,307 +90,183 @@
                 aria-haspopup="true"
                 aria-expanded="false"
               >
-                Login
+                Register
               </a>
               <div
                 class="dropdown-menu"
                 aria-labelledby="navbarDropdownMenuLink"
               >
-                <a class="dropdown-item" href="donorLogin.html">As a Donor</a>
-                <a class="dropdown-item" href="recipientLogin.html"
-                  >As a Recipiet</a
+                <a class="dropdown-item" href="donorInfoForm.html"
+                  >As a Donor</a
+                >
+                <a class="dropdown-item" href="register.html"
+                  >As a Medical center</a
                 >
               </div>
             </li>
             <li class="nav-item pr-2">
-              <a href="register.html" class="nav-link">Register</a>
+              <a href="login.html" class="nav-link">Login</a>
             </li>
           </ul>
         </div>
       </div>
     </nav>
-
-    <!-- heros -->
-    <div
-    class="container my-5 mb-5 mt-5"
-   style="background-image: linear-gradient(#fceeef,white);"
-  >
-    <div
-      class="row p-4 pb-2 my-5 px-3 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg"
-    >
-      <div class="col-lg-7 p-3 p-lg-5 pt-lg-3">
-        <h1
-          style="font-size: 4rem"
-          class="display-4 fw-bold lh-1 text-danger"
-        >
-          Can you donate blood ?
-        </h1>
-        <p class="lead text-secondary">
-          Giving blood saves lives. The blood you give is a lifeline in an
-          emergency and for people who need longterm treatments. Donating
-          blood is a selfless act that can save lives and make a positive
-          impact on your community. However, not everyone is eligible to
-          donate blood. To ensure the safety of both donors and recipients,
-          specific eligibility criteria must be met. Remember, even if you
-          cannot donate blood, there are other ways you can support blood
-          donation efforts, such as encouraging eligible friends and family
-          members to donate or volunteering at blood drives and donation
-          centers.
-        </p>
+    <div style="margin-top: 100px;" class="container">
+      <!-- HERO FIRST -->
+      <div class="row background-round background-grey d-flex justify-content-between  my-5 align-items-center rounded-3 border shadow-lg">
+        <div class="col-lg-5">
+          <h1 style="font-size: 4rem;font-weight: 900;" class="display-4 fw-bold lh-1 text-danger">
+            Can you donate blood ?
+          </h1>
+          <p class="lead text-secondary">
+            Giving blood saves lives. The blood you give is a lifeline in an emergency and for people who need long-term treatments. Donating blood is a selfless act that can save lives and make a positive impact on your community. However, not everyone is eligible to donate blood. To ensure the safety of both donors and recipients, specific eligibility criteria must be met. Remember, even if you cannot donate blood, there are other ways you can support blood donation efforts, such as encouraging eligible friends and family members to donate or volunteering at blood drives and donation centers.
+          </p>
+        </div>
+        <div class="col-lg-6  p-0 overflow-hidden shadow-lg">
+          <img class="rounded-lg-3" src="https://wh1t3-e4gl3.github.io/project-red-stream/assets/images/about.png" alt="" width="780" style="position: relative; right: 100px" />
+        </div>
       </div>
-      <div class="col-lg-4 offset-lg-1 p-0 overflow-hidden shadow-lg">
-        <img
-          class="rounded-lg-3"
-          src="https://wh1t3-e4gl3.github.io/project-red-stream/assets/images/about.png"
-          alt=""
-          width="780"
-          style="position: relative; right: 100px"
-        />
-      </div>
-    </div>
-  </div>
-   <!--HERO SECOND-->
-   <div
-   style="
-     background-image: url('https://wh1t3-e4gl3.github.io/project-red-stream/assets/images/hero-bg.png');
-   "
-   class="container mt-5"
- >
-   <div
-     class="row pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg d-flex justify-content-between"
-   >
-     <div class="col-lg-5 offset-lg-1 p-0 overflow-hidden shadow-lg">
-       <img
-         class="rounded-lg-3"
-         src="https://wh1t3-e4gl3.github.io/project-red-stream/assets/images/canyou.png"
-         alt=""
-         width="780"
-       />
-     </div>
-     <div class="col-lg-6 p-3 p-lg-5 pt-lg-3">
-       <h1
-         style="font-size: 4rem"
-         class="display-4 fw-bold lh-1 text-danger"
-       >
-         Who can give blood?
-       </h1>
-       <h3 class="text-primary">
-         FIND OUT IF YOU ARE ABLE GIVE BLOOD FOR THE FIRST TIME.
-       </h3>
-       <h2>To donate blood you will need to :.</h2>
-       <pre class="text-secondary">
- • Be generally fit and well
- • Be aged between 17 and 65
- • Weigh between 7 stone 12 lbs (50kg) and 25 stone (158kg)
- • Have suitable veins (we will check these before you donate)
- • Meet all donor eligibility criteria (we will check this before you donate)</pre
-       >
-     </div>
-   </div>
- </div>
- <!--Hero THIRD-->
- <div
- class="container mt-5"
- style="
-   background-image: url('https://wh1t3-e4gl3.github.io/project-red-stream/assets/images/hero-bg.png');
- "
->
- <div
-   class="row p-4 pb-2 px-3 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg"
- >
-   <div class="col-lg-7 p-3 p-lg-5 pt-lg-3">
-     <h1
-       style="font-size: 4rem"
-       class="display-4 fw-bold lh-1 text-danger"
-     >
-     Who can't donate blood ?
-     </h1>
-     <p class="lead text-secondary">
-       <h3 class="text-primary">You can't donate blood if you:</h3>
- 
-         <pre class="text-secondary">
- • Are a hepatitis B carrier
-
- • Are a hepatitis C carrier
-             
- • Have some heart conditions
-             
- • Have tested positive for HIV
-             
- • Have had an organ transplant
-             
- • Have had most types of cancer
-             
- • Have received blood, platelets, plasma or any other blood products after 1 January 1980
-             
- • Have injected non-prescribed drugs including body-building and injectable tanning   agents. You may be able to give if a doctor prescribed the drugs
-             
- • There are other medical conditions that may mean you can't donate...
-         </pre>
-     </p>
-   </div>
-   <div class="col-lg-4 offset-lg-1 p-0 overflow-hidden shadow-lg">
-     <img
-       class="rounded-lg-3"
-       src="https://wh1t3-e4gl3.github.io/project-red-stream/assets/images/about.png"
-       alt=""
-       width="780"
-       style="position: relative; right: 100px"
-     />
-   </div>
- </div>
-</div>
- <!--Hero fourth-->
- <div
-   style="
-     background-image: url('https://wh1t3-e4gl3.github.io/project-red-stream/assets/images/hero-bg.png');
-   "
-   class="container mt-5"
- >
-   <div
-     class="row pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg d-flex justify-content-between"
-   >
-     <div class="col-lg-5 offset-lg-1 p-0 overflow-hidden shadow-lg">
-       <img
-         class="rounded-lg-3"
-         src="https://wh1t3-e4gl3.github.io/project-red-stream/assets/images/canyou.png"
-         alt=""
-         width="780"
-       />
-     </div>
-     <div class="col-lg-6 p-3 p-lg-5 pt-lg-3">
-       <h1
-         style="font-size: 4rem"
-         class="display-4 fw-bold lh-1 text-danger"
-       >
-       Who might have to wait to donate blood ?
-       </h1>
-       <h3 class="text-primary">
-         FIND OUT IF YOU ARE ABLE GIVE BLOOD FOR THE FIRST TIME.
-       </h3>
-       <h2>To donate blood you will need to :.</h2>
-       <p class="text-secondary">
-         There are some health, travel and lifestyle reasons that may stop you from being able to donate blood on a temporary basis.
-If you are not sure you can donate, please contact us to discuss your situation.
-
-Sexual activity that means you may have to wait
-You may have to wait up to three months before you can donate if:
-• You have had anal sex with a new partner in the last three months
-• You finished taking Pre-Exposure Prophylaxis (PrEP) or Post-Exposure    Prophylaxis (PEP) in the last threemonths
-In the last three months you have had sexual contact with a partner who is:
-• HIV positive
-• HTLV positive
-• A hepatitis B carrier
-• A hepatitis C carrier
-• Syphilis positive
-• Has received money or drugs for sex
-• Has injected non-prescribed drugs including body-building and injectable   tanning agents
-Other reasons why you might need to wait
-You will need to wait before you can donate if you:
-• Feel ill
-• Are pregnant or had a baby in the last 6 months
-• Have recently got a tattoo or piercing
-• Are undergoing assessment or investigations for a medical condition. For   example, heart condition
-       </p>
-     </div>
-   </div>
-  </div>
-
- <!--Hero FOURTH-->
- <div
- class="container mt-5"
- style="
-   background-image: url('https://wh1t3-e4gl3.github.io/project-red-stream/assets/images/hero-bg.png');
- "
->
- <div
-   class="row p-4 pb-2 px-3 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg"
- >
-   <div class="col-lg-7 p-3 p-lg-5 pt-lg-3">
-     <h1
-       style="font-size: 4rem"
-       class="display-4 fw-bold lh-1 text-danger"
-     >
-     Female donors under 20 years ?
-     </h1>
-     
-       <h3 class="text-primary">CHECK HOW MUCH BLOOD YOU HAVE</h3>
- 
-         <p class="text-secondary">
-             If you are a woman under 20 and you weigh under 10st 3lb (65kg) or are under 5' 6" (168cm) tall you will need to check you have enough blood to donate safely.
-         </p>
     
-   </div>
-   <div class="col-lg-4 offset-lg-1 p-0 overflow-hidden shadow-lg">
-     <img
-       class="rounded-lg-3"
-       src="https://wh1t3-e4gl3.github.io/project-red-stream/assets/images/about.png"
-       alt=""
-       width="780"
-       style="position: relative; right: 100px"
-     />
-   </div>
- </div>
-   </div>
- <!--HERO FIFTH-->
- <div
-   style="
-     background-image: url('https://wh1t3-e4gl3.github.io/project-red-stream/assets/images/hero-bg.png');
-   "
-   class="container mt-5"
- >
-   <div
-     class="row pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg d-flex justify-content-between"
-   >
-     <div class="col-lg-5 offset-lg-1 p-0 overflow-hidden shadow-lg">
-       <img
-         class="rounded-lg-3"
-         src="https://wh1t3-e4gl3.github.io/project-red-stream/assets/images/canyou.png"
-         alt=""
-         width="780"
-       />
-     </div>
-     <div class="col-lg-6 p-3 p-lg-5 pt-lg-3">
-       <h1
-         style="font-size: 4rem"
-         class="display-4 fw-bold lh-1 text-danger"
-       >
-       How often can I give blood?
-       </h1>
-       <h3 class="text-primary">
-         THERE IS DIFFERENCE !
-       </h3>
-       <h2>To donate blood you will need to :.</h2>
-      <p class="text-secondary">Men can give blood every 12 weeks and women can give blood every 16 weeks. This is because men generally have higher iron levels than women.</p>
-       
-     </div>
-   </div>
- </div>
-
-
+      <!-- HERO SECOND -->
+      <div class="row background-round background-grey d-flex justify-content-between  my-5 align-items-center rounded-3 border shadow-lg">
+        <div class="col-lg-6  p-0 overflow-hidden shadow-lg">
+          <img class="rounded-lg-3" src="https://wh1t3-e4gl3.github.io/project-red-stream/assets/images/about.png" alt="" width="780" style="position: relative; right: 100px" />
+        </div>
+        <div class="col-lg-5 p-3 p-lg-5 pt-lg-3">
+          <h1 style="font-size: 4rem;font-weight: 900;" class="display-4 fw-bold lh-1 text-danger">
+            Who can give blood?
+          </h1>
+          <h3 class="text-primary">
+            FIND OUT IF YOU ARE ABLE GIVE BLOOD FOR THE FIRST TIME.
+          </h3>
+          <h2>To donate blood you will need to :</h2>
+          <ul style="list-style: circle;" class="text-secondary">
+            <li>Be generally fit and well</li>
+            <li>Be aged between 17 and 65</li>
+            <li>Weigh between 7 stone 12 lbs (50kg) and 25 stone (158kg)</li>
+            <li>Have suitable veins (we will check these before you donate)</li>
+            <li>Meet all donor eligibility criteria (we will check this before you donate)</li>
+          </ul>
+        </div>
+      </div>
+    
+      <!-- HERO THIRD -->
+      <div class="row background-round background-grey d-flex justify-content-between  my-5 align-items-center rounded-3 border shadow-lg">
+        <div class="col-lg-5">
+          <h1 style="font-size: 4rem;font-weight: 900; " class="display-4 fw-bold lh-1 text-danger">
+            Who can't donate blood ?
+          </h1>
+          <p class="lead text-secondary">
+            <h3 class="text-primary">You can't donate blood if you:</h3>
+            <ol class="text-secondary">
+              <li>Are a hepatitis B carrier</li>
+              <li>Are a hepatitis C carrier</li>
+              <li>Have some heart conditions</li>
+              <li>Have tested positive for HIV</li>
+              <li>Have had an organ transplant</li>
+              <li>Have had most types of cancer</li>
+              <li>Have received blood, platelets, plasma or any other blood products after 1 January 1980</li>
+              <li>Have injected non-prescribed drugs including body-building and injectable tanning agents. You may be able to give if a doctor prescribed the drugs</li>
+              <li>There are other medical conditions that may mean you can't donate...</li>
+            </ol>
+          </p>
+        </div>
+        <div class="col-lg-6 offset-lg-1 p-0 overflow-hidden shadow-lg">
+          <img class="rounded-lg-3 w-100"  src="https://www.visitcompletecare.com/wp-content/uploads/2021/01/shutterstock_601267019.jpg" alt="" width="587" height="839" />
+        </div>
+      </div>
+    
+      <!-- HERO FOURTH -->
+      <div class="row background-round background-grey d-flex   my-5 align-items-center rounded-3 border shadow-lg">
+        <div class="col-lg-6 h-100 p-0 overflow-hidden shadow-lg">
+          <img class="rounded-lg-3 h-100" src="https://wh1t3-e4gl3.github.io/project-red-stream/assets/images/about.png" alt="" width="780" style="position: relative; right: 100px" />
+        </div>
+        <div class="col-lg-5 p-3 p-lg-5 pt-lg-3">
+          <h1 style="font-size: 3rem ;font-weight: 900;" class="display-4 fw-bold lh-1 text-danger">
+            Who might have to wait to donate blood ?
+          </h1>
+          
+          <ol class="text-secondary" style="list-style: circle;" >
+            <li>First-Time Donors: Check eligibility.</li>
+            <li>Health, Travel, and Lifestyle Factors: Certain reasons may temporarily prevent donation.</li>
+            <li>
+              Sexual Activity: Wait up to three months if:
+              <ul style="list-style: circle;">
+                <li>Had anal sex with a new partner.</li>
+                <li>Recently finished PrEP or PEP.</li>
+                <li>Had sexual contact with individuals who are HIV, HTLV, hepatitis B or C positive, syphilis positive, or involved in transactional sex or drug use.</li>
+              </ul>
+            </li>
+            <li>
+              Other Reasons for Waiting: Wait if you:
+              <ul style="list-style: circle;">
+                <li>Feel ill.</li>
+                <li>Are pregnant or gave birth in the last 6 months.</li>
+                <li>Recently got a tattoo or piercing.</li>
+                <li>Undergoing assessment or investigations for a medical condition like a heart condition.</li>
+              </ul>
+            </li>
+          </ol>
+         
+        </div>
+      </div>
+      <!-- hero fifth -->
+      <div class="row background-round background-grey d-flex justify-content-between  my-5 align-items-center rounded-3 border shadow-lg">
+        <div class="col-lg-5">
+          <h1 style="font-size: 4rem;font-weight: 900; " class="display-4 fw-bold lh-1 text-danger">
+            How often can I give blood? ?
+          </h1>
+  
+          <h3 class="text-primary">
+            THERE IS DIFFERENCE !
+          </h3>    
+          <h2>To donate blood you will need to :</h2>
+          <p class="text-secondary">Men can give blood every 12 weeks and women can give blood every 16 weeks. This is because men generally have higher iron levels than women.</p>
+          
+        </div>
+        <div class="col-lg-6 offset-lg-1 p-0 overflow-hidden shadow-lg">
+          <img class="rounded-lg-3 w-100"  src="https://www.visitcompletecare.com/wp-content/uploads/2021/01/shutterstock_601267019.jpg" alt="" width="587" height="839" />
+        </div>
+      </div>
+ 
+    </div>
+    <!--  -->
     <!-- -------------------------------------------------------------- -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js " integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj " crossorigin="anonymous "></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js " integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN " crossorigin="anonymous "></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js " integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV " crossorigin="anonymous "></script>
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js "
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj "
+      crossorigin="anonymous "
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js "
+      integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN "
+      crossorigin="anonymous "
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js "
+      integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV "
+      crossorigin="anonymous "
+    ></script>
     <script src="js/jquery.counterup.min.js" type="text/javascript"></script>
     <script src="js/jquery.waypoints.min.js" type="text/javascript"></script>
     <script>
-        $(function() {
-            $(document).scroll(function() {
-                var $nav = $("#mainNavbar ");
-                $nav.toggleClass("scrolled ", $(this).scrollTop() > $nav.height());
-            });
+      $(function () {
+        $(document).scroll(function () {
+          var $nav = $("#mainNavbar ");
+          $nav.toggleClass("scrolled ", $(this).scrollTop() > $nav.height());
         });
+      });
     </script>
     <script>
-        $('.counter').counterUp({
-            delay: 10,
-            time: 1000,
-        });
+      $(".counter").counterUp({
+        delay: 10,
+        time: 1000,
+      });
     </script>
     <script src="js/wow.min.js " type="text/javascript "></script>
     <script>
-        new WOW().init();
+      new WOW().init();
     </script>
+    <script></script>
   </body>
 </html>
