@@ -280,7 +280,7 @@
                                 placeholder="Write your notes"></textarea>
                         </div>
 
-                        <button type="submit" class="mt-3 btn btn-lg btn-primary slide-btn">Register</button>
+                        <button id="register-btn" type="submit" class="mt-3 btn btn-lg btn-primary slide-btn">Register</button>
                     </form>
                 </div>
             </div>
@@ -340,27 +340,22 @@
         var confirmPassword = document.getElementById("confirm-password");
 
         function outlinePassword() {
+            var registerBtn = document.getElementById('register-btn');
             if (password.value != confirmPassword.value) {
                 password.style.borderColor = "red";
                 confirmPassword.style.borderColor = "red";
+                registerBtn.disabled = true;
                 return false;
             } else {
                 password.style.borderColor = "green";
                 confirmPassword.style.borderColor = "green";
+                registerBtn.disabled = false;
                 return true;
             }
         }
         password.onchange = outlinePassword;
         confirmPassword.onkeyup = outlinePassword;
 
-        function validatePassword() {
-            if (password.value != confirmPassword.value) {
-                alert("Passwords do not match.");
-                return false;
-            } else {
-                return true;
-            }
-        }
     </script>
 </body>
 
