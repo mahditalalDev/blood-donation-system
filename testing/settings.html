@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    <title>Responsive Dashborad</title>
+  </head>
+  <body>
+    <div class="container">
+      <!-- left side and navigation start here -->
+      <div class="navigation">
+        <ul>
+          <!-- brand section start-->
+          <li>
+            <a href="#">
+              <!-- <span class="icon"><ion-icon name="logo-apple"></ion-icon></span> -->
+              <span class="title">Blood bank</span>
+            </a>
+          </li>
+          <!-- brand section end  -->
+          <li class="">
+            <a href="index.html">
+              <span class="icon"><ion-icon name="home"></ion-icon></span>
+              <span class="title">Dashboard</span>
+            </a>
+          </li>
+          <li id="reguest-page" class="hovered">
+            <a href="requests.html">
+              <span class="icon"><ion-icon name="people"></ion-icon></span>
+              <span class="title">Reguests and history</span>
+            </a>
+          </li>
+          <li>
+            <a href="bloodbankmangmement.html">
+              <span class="icon"><ion-icon name="chatboxes"></ion-icon></span>
+              <span class="title">bloodbankmangmement</span>
+            </a>
+          </li>
+          <li>
+            <a href="bloodsearch.html">
+              <span class="icon"
+                ><ion-icon name="help-circle-outline"></ion-icon
+              ></span>
+              <span class="title">search for Blood </span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <span class="icon"><ion-icon name="settings"></ion-icon></span>
+              <span class="title">Settings</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <span class="icon"><ion-icon name="lock"></ion-icon></span>
+              <span class="title">Password</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <span class="icon"><ion-icon name="log-out"></ion-icon></span>
+              <span class="title">Sign Out</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <!-- left side and navigation end here -->
+
+      <!-- main section start here -->
+      <div id="main-content">
+        <div id="main" class="main">
+          <!-- topbar start -->
+          <div class="topbar">
+            <!-- menu -->
+            <div class="toggle">
+              <ion-icon name="menu"></ion-icon>
+            </div>
+
+            <div class="user">
+              <img src="./img/img5.jpg" alt="user-img" />
+            </div>
+          </div>
+          <!-- topbar end  -->
+
+          <!--overview card section start -->
+          <!-- 
+
+
+           -->
+          
+          <div class="" style="padding: 30px; display: flex; flex-direction: column;">
+            <form id="medical_registration_form"style="display: flex;flex-direction: column;gap: 20px;">
+                <div class="" style="display: flex;gap: 20px;"    >
+                    <label for="name_medical_center"
+                    style="display: flex; justify-content: center;width: 100px;">
+                    Center Name:</label>
+                  <input type="text" class="form-control" id="name_medical_center" placeholder="Medical Center Name"
+                    required />
+                </div>
+                    
+                  <div class="" style="display: flex;gap: 20px;align-items: center;">
+                    <label for="phone_number" style="width: 100px;" >Phone Number</label>
+                    <input type="tel" class="form-control" id="phone_number" pattern="^[0-9]{3}-[0-9]{8}$"
+                      aria-describedby="phoneHelp" placeholder="Phone Number" required />
+                    <small id="phoneHelp" class="mt-2 form-text text-muted">Format: 123-12345678</small>
+                  </div>
+                  <div class="" style="display: flex;gap: 30px;">
+                    <div class="" style="display: flex;gap: 20px;" >
+                      <label for="country" style="width: 100px;">Country:</label>
+                      <select class="form-control" id="country">
+                        <option value="" selected disabled>Select Country</option>
+                        <option value="LB">Lebanon</option>
+                
+                      </select>
+                    </div>
+                    <div class="form-group col-5" id="province-group">
+                        <label for="province">Province</label>
+                        <select class="form-control" id="province" disabled>
+                          <option value="" selected disabled>Select Province</option>
+                          <option value="province1">Province 1</option>
+                          <option value="province2">Province 2</option>
+                          <option value="province3">Province 3</option>
+                          <option value="province4">Province 4</option>
+                        </select>
+                      </div>
+                </div>
+                
+                   
+                  <hr>
+                  <div class="form-group">
+                    <table class="text-center mx-auto">
+                        <tr>
+                            <th style="width: 20%;">Day</th>
+                            <th style="width: 10%;"></th>
+                            <th style="width: 70%; text-align: center;">Opening Hours</th>
+                        </tr>
+                      
+                        <tr style="border-bottom: 1px solid black;width: 20%;">
+                        
+                        
+                        <td>
+                            <label for="monday">Monday</label>
+                        </td>
+                        <td style="text-align: center;">
+                            <input type="checkbox" id="monday-switch" checked>
+                        </td>
+                        <td style="text-align: center ;">
+                            <input type="time" id="monday-open" required style="width: 40%;" > &nbsp;&nbsp;to&nbsp;&nbsp; <input type="time"
+                                id="monday-close" required>
+                        </td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid black;width: 20%;">
+                        
+                        
+                        <td>
+                            <label for="tuesday">Tuesday</label>
+                        </td>
+                        <td style="text-align: center;">
+                            <input type="checkbox" id="tuesday-switch" checked>
+                        </td>
+                        <td style="text-align: center ;">
+                            <input type="time" id="tuesday-open" required style="width: 40%;" > &nbsp;&nbsp;to&nbsp;&nbsp; <input type="time"
+                                id="tuesday-close" required>
+                        </td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid black;width: 20%;">
+                        
+                        
+                        <td>
+                            <label for="wednesday">Wednesday</label>
+                        </td>
+                        <td style="text-align: center;">
+                            <input type="checkbox" id="wednesday-switch" checked>
+                        </td>
+                        <td style="text-align: center ;">
+                            <input type="time" id="wednesday-open" required style="width: 40%;" > &nbsp;&nbsp;to&nbsp;&nbsp; <input type="time"
+                                id="wednesday-close" required>
+                        </td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid black;width: 20%;">
+                        
+                        
+                        <td>
+                            <label for="thursday">Thursday</label>
+                        </td>
+                        <td style="text-align: center;">
+                            <input type="checkbox" id="thursday-switch" checked>
+                        </td>
+                        <td style="text-align: center ;">
+                            <input type="time" id="thursday-open" required style="width: 40%;" > &nbsp;&nbsp;to&nbsp;&nbsp; <input type="time"
+                                id="thursday-close" required>
+                        </td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid black;width: 20%;">
+                        
+                        
+                        <td>
+                            <label for="friday">Friday</label>
+                        </td>
+                        <td style="text-align: center;">
+                            <input type="checkbox" id="friday-switch" checked>
+                        </td>
+                        <td style="text-align: center ;">
+                            <input type="time" id="friday-open" required style="width: 40%;" > &nbsp;&nbsp;to&nbsp;&nbsp; <input type="time"
+                                id="friday-close" required>
+                        </td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid black;width: 20%;">
+                        
+                        
+                        <td>
+                            <label for="saturday">Saturday</label>
+                        </td>
+                        <td style="text-align: center;">
+                            <input type="checkbox" id="saturday-switch" checked>
+                        </td>
+                        <td style="text-align: center ;">
+                            <input type="time" id="saturday-open" required style="width: 40%;" > &nbsp;&nbsp;to&nbsp;&nbsp; <input type="time"
+                                id="saturday-close" required>
+                        </td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid black;width: 20%;">
+                        <td>
+                            <label for="sunday">Sunday</label>
+                        </td>
+                        <td style="text-align: center;">
+                            <input type="checkbox" id="sunday-switch" checked>
+                        </td>
+                        <td style="text-align: center ;">
+                            <input type="time" id="sunday-open" required style="width: 40%;" > &nbsp;&nbsp;to&nbsp;&nbsp; <input type="time"
+                                id="sunday-close" required>
+                        </td>
+                        </tr>
+                        <!-- Add more rows for other days -->
+                    </table>
+                </div>
+            
+                </div>
+                  <hr>
+                  <!-- <div class="form-group" style="display: flex;" >
+                    <label for="email" style="width: 100px;">Email</label>
+                    <input type="email" class="form-control" id="email" placeholder="Email" required />
+                  </div>
+                  <div class="form-group" style="display: flex;">
+                    <label for="password" style="width: 100px;" >Password</label>
+                    <input type="password" class="form-control" id="password" placeholder="Password" minlength="8"
+                      required />
+                  </div> -->
+                  <div style="display: flex;justify-content: center;">
+                    <button class="btn  shadow-lg " id="medical_register_btn"
+                    style=" padding: 12px 18px; border-radius: 12px;background-color: #df5f65;color: white;font-size: 1.7rem;font-weight: 800;letter-spacing: 1px; ">
+                    update
+                    </button>
+                </div>
+                </div>
+              
+        
+          </div>
+        
+      </div>
+    </div>
+<script type="module" src="./js/settings.js"></script>
+    <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.8.0/chart.min.js"></script>
+    <script>
+      let navigation = document.querySelector(".navigation"),
+        toggle = document.querySelector(".toggle"),
+        main = document.querySelector(".main");
+
+      toggle.onclick = function () {
+        navigation.classList.toggle("active");
+        main.classList.toggle("active");
+      };
+    </script>
+    <!-- <script type="module" src="./js/request.js"></script> -->
+  </body>
+</html>

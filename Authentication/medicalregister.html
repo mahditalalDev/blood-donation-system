@@ -112,36 +112,43 @@
                     <label for="country">Country</label>
                     <select class="form-control" id="country">
                       <option value="" selected disabled>Select Country</option>
-                      <option value="country1">Country 1</option>
-                      <option value="country2">Country 2</option>
-                      <option value="country3">Country 3</option>
-                      <option value="country4">Country 4</option>
+                      <option value="LB">Lebanon</option>
+                      
                     </select>
+                    <!-- 
+                       "Beirut",
+        "Mount Lebanon",
+        "North Governorate",
+        "South Governorate",
+        "Beqaa Governorate",
+        "Baalbek-Hermel Governorate",
+                     -->
                   </div>
                   <div class="form-group col-5" id="province-group">
                     <label for="province">Province</label>
                     <select class="form-control" id="province" disabled>
                       <option value="" selected disabled>Select Province</option>
-                      <option value="province1">Province 1</option>
-                      <option value="province2">Province 2</option>
-                      <option value="province3">Province 3</option>
-                      <option value="province4">Province 4</option>
+                      <option value="Beirut">Beirut</option>
+                      <option value="North Governorate">North Governorate</option>
+                      <option value="South Governorate">South Governorate</option>
+                      <option value="Beqaa Governorate">Beqaa Governorate</option>
+                      <option value="Baalbek-Hermel Governorate">Baalbek-Hermel Governorate</option>
+                    </select>
+                  </div>
+                  <div class="form-group col-5" id="city-group">
+                    <label for="city">city</label>
+                    <select class="form-control" id="cities">
+                      <option value="" selected disabled>Select city</option>
+                      <option value="Beirut">Beirut</option>
+                      <option value="tyre">tyre</option>
+                      <option value="saida">saida</option>
+                      <option value="Beqaa">Beqaa</option>
+                      <option value="Baalbek-Hermel">Baalbek-Hermel</option>
                     </select>
                   </div>
                 </div>
                 
-               <div class="row justify-content-center">
-                <div class="form-group col-5">
-                  <label for="location-type">Location Type</label>
-                  <select class="form-control" id="location-type">
-                    <option value="address">Address</option>
-                    <option value="coordinates">Coordinates</option>
-                  </select>
-                </div>
-                <div class="form-group col-5 " id="address-group">
-                  <label for="address">Address</label>
-                  <input type="text" class="form-control" id="address" placeholder="Address">
-                </div>
+              
 
                </div>
 
@@ -267,13 +274,15 @@
                   <input type="password" class="form-control" id="password" placeholder="Password" minlength="8"
                     required />
                 </div>
+                <div style="display: flex; justify-content: center;">
+                 
               </form>
-              <div style="display: flex; justify-content: center;">
-                <button class="btn  shadow-lg " id="medical_register_btn"
-                  style=" padding: 12px 18px; border-radius: 12px;background-color: #df5f65;color: white;font-size: 1.7rem;font-weight: 800;letter-spacing: 1px; ">
-                  Register Now
-                </button>
+             
               </div>
+              <button class="btn  shadow-lg " id="medical-reg-btn"
+              style=" padding: 12px 18px; border-radius: 12px;background-color: #df5f65;color: white;font-size: 1.7rem;font-weight: 800;letter-spacing: 1px; ">
+              Register Now
+            </button>
             </div>
           </div>
       </section>
@@ -367,7 +376,8 @@
   </script> -->
 
   <!-- <script type="module" src="./js/auth.js"></script> -->
-  <script type="module" src="./js/saad-auth.js"></script>
+  <script type="module" src="./js/medicalRegister.js"></script>
+  <!-- <script type="module" src="./js/saad-auth.js"></script> -->
 </body>
 
 </html>

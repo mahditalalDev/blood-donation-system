@@ -16,7 +16,7 @@
           <!-- brand section start-->
           <li>
             <a href="#">
-              <span class="icon"><ion-icon name=""></ion-icon></span>
+              <!-- <span class="icon"><ion-icon name="logo-apple"></ion-icon></span> -->
               <span class="title">Blood bank</span>
             </a>
           </li>
@@ -28,23 +28,23 @@
             </a>
           </li>
           <li id="reguest-page" class="hovered" >
-            <a href="dashboardfragment.html">
+            <a href="requests.html">
               <span class="icon"><ion-icon name="people"></ion-icon></span>
-              <span class="title"  >Reguests</span>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <span class="icon"><ion-icon name="chatboxes"></ion-icon></span>
-              <span class="title"> search for a blood </span>
+              <span class="title"  >Reguests and history</span>
             </a>
           </li>
           <li>
             <a href="bloodbankmangmement.html">
+              <span class="icon"><ion-icon name="chatboxes"></ion-icon></span>
+              <span class="title">bloodbankmangmement</span>
+            </a>
+          </li>
+          <li>
+            <a href="bloodsearch.html">
               <span class="icon"
                 ><ion-icon name="help-circle-outline"></ion-icon
               ></span>
-              <span class="title">BloodBank Mangment</span>
+              <span class="title">search for Blood </span>
             </a>
           </li>
           <li>
@@ -70,7 +70,7 @@
       <!-- left side and navigation end here -->
 
       <!-- main section start here -->
-      <div id="main-content" >
+      <div id="main-content">
         <div id="main" class="main">
           <!-- topbar start -->
           <div class="topbar">
@@ -78,71 +78,21 @@
             <div class="toggle">
               <ion-icon name="menu"></ion-icon>
             </div>
-            <!-- search -->
-            <!-- <div class="search">
-              <label>
-                <input type="text" placeholder="Search..." />
-                <ion-icon name="search"></ion-icon>
-              </label>
-            </div> -->
-            <!-- user -->
+
             <div class="user">
               <img src="./img/img5.jpg" alt="user-img" />
             </div>
           </div>
           <!-- topbar end  -->
-  
+
           <!--overview card section start -->
-          <div class="cardbox">
-            <!-- single card -->
-            <div class="card">
-              <div>
-                <div class="numbers"><span class="counter" id="users-counter">1 </span></div>
-                <div class="cardname">Reguests</div>
-              </div>
-              <div class="iconbox">
-                <ion-icon name="eye"></ion-icon>
-              </div>
-            </div>
-            <!-- single card -->
-            <div class="card">
-              <div>
-                <div class="numbers"> <span id="donation-counter" >dash</span></div>
-                <div class="cardname">Donation reguest</div>
-              </div>
-              <div class="iconbox">
-                <ion-icon name="cart"></ion-icon>
-              </div>
-            </div>
-            <!-- single card -->
-            <div class="card">
-              <div>
-                <div class="numbers"><span id="accepted-donation">0</span></div>
-                <div class="cardname">donation</div>
-              </div>
-              <div class="iconbox">
-                <ion-icon name="quote"></ion-icon>
-              </div>
-            </div>
-            <!-- single card -->
-           
-          </div>
-          <!--overview card section end -->
-  
-          <!-- chart area start here  -->
-          <!-- <div class="graphbox" >
-            <div class="box">
-              <canvas id="myChart"></canvas>
-            </div>
-            <div class="box">
-              <canvas id="myChart2"></canvas>
-            </div>
-          </div> -->
-          <!-- chat area ends here -->
-  
-          <!-- order details list start  -->
-          <div class="details">
-            <div class="recentorders">
+          <!-- 
+
+
+           -->
+        
+          <div class="details" style="width: 100%;display: flex;justify-content: center;">
+            <div class="recentorders" style="width: 100%;">
               <div class="cardheader">
                 <h2>Recent Requests</h2>
                 <!-- <a href="#" class="btn">filter</a> -->
@@ -166,239 +116,294 @@
                     <td>action</td>
                   </tr>
                 </thead>
-                <tbody id="tablebody">
-                  <tr>
-                    <td>Television</td>
-                    <td>$1200</td>
-                    <td>Paid</td>
-                    <td><span class="status delivered">Deliverd</span></td>
-                  </tr>
-                  <tr>
-                    <td>Air Conditioner</td>
-                    <td>$1200</td>
-                    <td>Due</td>
-                    <td><span class="status inprogress">In Progress</span></td>
-                  </tr>
-                  <tr>
-                    <td>Air Conditioner</td>
-                    <td>$1200</td>
-                    <td>Due</td>
-                    <td><span class="status pending">Pending</span></td>
-                  </tr>
-                  <tr>
-                    <td>Air Conditioner</td>
-                    <td>$1200</td>
-                    <td>Due</td>
-                    <td><span class="status return">Return</span></td>
-                  </tr>
-                  <tr>
-                    <td>Television</td>
-                    <td>$1200</td>
-                    <td>Paid</td>
-                    <td><span class="status delivered">Deliverd</span></td>
-                  </tr>
-                  <tr>
-                    <td>Air Conditioner</td>
-                    <td>$1200</td>
-                    <td>Due</td>
-                    <td><span class="status inprogress">In Progress</span></td>
-                  </tr>
-                  <tr>
-                    <td>Air Conditioner</td>
-                    <td>$1200</td>
-                    <td>Due</td>
-                    <td><span class="status pending">Pending</span></td>
-                  </tr>
-                  <tr>
-                    <td>Air Conditioner</td>
-                    <td>$1200</td>
-                    <td>Due</td>
-                    <td><span class="status return">Return</span></td>
-                  </tr>
-                  <tr>
-                    <td>Television</td>
-                    <td>$1200</td>
-                    <td>Paid</td>
-                    <td><span class="status delivered">Deliverd</span></td>
-                  </tr>
-                  <tr>
-                    <td>Air Conditioner</td>
-                    <td>$1200</td>
-                    <td>Due</td>
-                    <td><span class="status inprogress">In Progress</span></td>
-                  </tr>
-                  <tr>
-                    <td>Air Conditioner</td>
-                    <td>$1200</td>
-                    <td>Due</td>
-                    <td><span class="status pending">Pending</span></td>
-                  </tr>
-                  <tr>
-                    <td>Air Conditioner</td>
-                    <td>$1200</td>
-                    <td>Due</td>
-                    <td><span class="status return">Return</span></td>
-                  </tr>
-                </tbody>
+                <tbody id="tablebody"></tbody>
               </table>
             </div>
-  
-            <!-- new customers start -->
-            <!-- <div class="recentcustomers">
-              <div class="cardheader">
-                <h2>Recent Customers</h2>
-              </div>
-              <table>
-                <tr>
-                  <td>
-                    <div class="imgbox">
-                      <img src="./img/img1.jpg" alt="img" />
-                    </div>
-                  </td>
-                  <td>
-                    <h4>
-                      Jishan <br />
-                      <span>Bangladesh</span>
-                    </h4>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <div class="imgbox">
-                      <img src="./img/img2.jpg" alt="img" />
-                    </div>
-                  </td>
-                  <td>
-                    <h4>
-                      Saad <br />
-                      <span>India</span>
-                    </h4>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <div class="imgbox">
-                      <img src="./img/img3.jpg" alt="img" />
-                    </div>
-                  </td>
-                  <td>
-                    <h4>
-                      Fahad <br />
-                      <span>Nepal</span>
-                    </h4>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <div class="imgbox">
-                      <img src="./img/img4.jpg" alt="img" />
-                    </div>
-                  </td>
-                  <td>
-                    <h4>
-                      Rafi <br />
-                      <span>Sri Lanka</span>
-                    </h4>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <div class="imgbox">
-                      <img src="./img/img5.jpg" alt="img" />
-                    </div>
-                  </td>
-                  <td>
-                    <h4>
-                      Tonmoy <br />
-                      <span>Bangladesh</span>
-                    </h4>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <div class="imgbox">
-                      <img src="./img/img1.jpg" alt="img" />
-                    </div>
-                  </td>
-                  <td>
-                    <h4>
-                      Jishan <br />
-                      <span>Bangladesh</span>
-                    </h4>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <div class="imgbox">
-                      <img src="./img/img2.jpg" alt="img" />
-                    </div>
-                  </td>
-                  <td>
-                    <h4>
-                      Saad <br />
-                      <span>India</span>
-                    </h4>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <div class="imgbox">
-                      <img src="./img/img3.jpg" alt="img" />
-                    </div>
-                  </td>
-                  <td>
-                    <h4>
-                      Fahad <br />
-                      <span>Nepal</span>
-                    </h4>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <div class="imgbox">
-                      <img src="./img/img4.jpg" alt="img" />
-                    </div>
-                  </td>
-                  <td>
-                    <h4>
-                      Rafi <br />
-                      <span>Sri Lanka</span>
-                    </h4>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <div class="imgbox">
-                      <img src="./img/img5.jpg" alt="img" />
-                    </div>
-                  </td>
-                  <td>
-                    <h4>
-                      <span class="counter">1,234,567.00</span>
-                      Tonmoy <br />
-                      <span>Bangladesh</span>
-                    </h4>
-                  </td>
-                </tr>
-              </table>
-            </div> -->
-            <!-- new customers end  -->
           </div>
           <!-- order details list end  -->
-        </div>     
+        </div>
       </div>
-      
-    
+
       <!-- main section end here -->
     </div>
+    <!-- <script type="module">
+      let info = [];
 
-   
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js";
+      import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-analytics.js";
+      import {
+        getAuth,
+        GoogleAuthProvider,
+        signInWithPopup,
+        createUserWithEmailAndPassword,
+      } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-auth.js";
+      const firebaseConfig = {
+        apiKey: "AIzaSyB5piM8HyYATgWqMPi2U6bwAVz94Q189Bs",
+        authDomain: "fir-basics-569a0.firebaseapp.com",
+        projectId: "fir-basics-569a0",
+        storageBucket: "fir-basics-569a0.appspot.com",
+        messagingSenderId: "971203436246",
+        appId: "1:971203436246:web:11d5aa9c6a02ee8dc6f377",
+        measurementId: "G-LGY93EHL4E",
+      };
+
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      const googleProvider = new GoogleAuthProvider();
+      import {
+        getFirestore,
+        doc,
+        getDoc,
+        getDocs, //get all documents inside one collection
+        setDoc,
+        collection,
+        addDoc,
+        updateDoc,
+        deleteDoc,
+        deleteField,
+        query,
+        where,
+        orderBy,
+      } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore.js";
+      const db = getFirestore();
+      const auth = getAuth();
+      const donationRequestCollectionRef = collection(db, "DonationRequests");
+      let datareguest = [];
+      let buttonIds = [];
+      document.getElementById("tablebody").innerHTML = "";
+
+      getReguests();
+
+      async function getReguests() {
+        datareguest = [];
+        try {
+          const q = query(
+            donationRequestCollectionRef,
+            //   where("status", "==", "pendding"),
+            where("centerName", "==", "AUB")
+          );
+          console.log(q);
+
+          const querySnapshot = await getDocs(q);
+          const counter = querySnapshot.size;
+          document.getElementById("users-counter").innerHTML = counter;
+
+          querySnapshot.forEach((doc) => {
+            datareguest.push(doc.data());
+            datareguest.email = doc.data().email;
+          });
+          // console.log(datareguest);
+
+          let donationCount = querySnapshot.size;
+          // document.getElementById("donation-counter").innerHTML = donationCount;
+
+          // Log or use the 'data' array as needed
+        } catch (error) {
+          console.error("Error getting documents: ", error);
+        }
+        filltable();
+        //   filltable(datareguest);
+      }
+      document.getElementById("spinner").addEventListener("change", () => {
+        const spinner = document.getElementById("spinner");
+
+        // Get the selected option
+        const selectedOption = spinner.options[spinner.selectedIndex];
+
+        // Get the value and text of the selected option
+        const selectedValue = selectedOption.value;
+        switch (selectedValue) {
+          case "pinding":
+            getPindingdata();
+            break;
+          case "accepted":
+            getAcceptedData();
+            break;
+          case "rejected":
+            getRejectedData();
+            break;
+          case "all":
+            getReguests();
+            break;
+          // Add more cases as needed
+          default:
+          // Code to execute if expression doesn't match any case
+        }
+
+        // Log the selected value
+      });
+      // Get the select element
+      async function filltable() {
+        console.log(datareguest);
+        document.getElementById("tablebody").innerHTML = "";
+
+        for (let i = 0; i < datareguest.length; i++) {
+          console.log(datareguest[i].email);
+          let ref = doc(db, "MedicalInfo", datareguest[i].email);
+          const docSnap = await getDoc(ref);
+          if (docSnap.exists()) {
+            info.push(docSnap.data());
+            let statusStyle = datareguest[i].status;
+            switch (statusStyle) {
+              case "pendding":
+                statusStyle = "status pending";
+                break;
+              case "rejected":
+                statusStyle = "status return";
+                break;
+              case "accepted":
+                statusStyle = "status delivered";
+                break;
+              // Add more cases as needed
+              default:
+              // Code to execute if expression doesn't match any case
+            }
+            
+            buttonIds.push(datareguest[i].email);
+
+            let content = `
+      <tr>
+      <td >${info[i].firstName + info[i].lastName}</td>
+      <td>${datareguest[i].bloodQuantity}</td>
+      <td>${info[i].bloodType}</td>
+      <td>${datareguest[i].city}</td>
+      <td><span class="${statusStyle}">${datareguest[i].status}</span></td>
+     <td>${info[i].phoneNumber}</td>
+     <td>
+     <button id="${
+       datareguest[i].email
+     }" style="background-color:blue ;padding:10px;border-radius:5px">more</button>
+     </td>
+     <td> 
+     <div id="done-btn" style="display:flex;justify-content:center ;gap:5px" >
+     <button style="background-color:green ;padding:10px;border-radius:5px">     
+     accepet
+     </button>
+     <button style="background-color:red ;padding:10px;border-radius:5px">     
+     reject
+     </button>
+     </div>
+     <div id="return-btn"></div>
+     </td>
+     </tr>`;
+
+            document.getElementById("tablebody").innerHTML += content;
+          } else {
+            console.log("no data");
+          }
+          // console.log(info);
+        }
+      }
+      async function getPindingdata() {
+        datareguest = [];
+        try {
+          const q = query(
+            donationRequestCollectionRef,
+            where("status", "==", "pendding"),
+            where("centerName", "==", "AUB")
+          );
+          console.log(q);
+
+          const querySnapshot = await getDocs(q);
+          const counter = querySnapshot.size;
+          document.getElementById("users-counter").innerHTML = counter;
+
+          querySnapshot.forEach((doc) => {
+            datareguest.push(doc.data());
+            datareguest.email = doc.data().email;
+          });
+          // console.log(datareguest);
+
+          let donationCount = querySnapshot.size;
+          // document.getElementById("donation-counter").innerHTML = donationCount;
+
+          // Log or use the 'data' array as needed
+        } catch (error) {
+          console.error("Error getting documents: ", error);
+        }
+        filltable();
+      }
+      async function getAcceptedData() {
+        datareguest = [];
+        try {
+          const q = query(
+            donationRequestCollectionRef,
+            where("status", "==", "accepted"),
+            where("centerName", "==", "AUB")
+          );
+          console.log(q);
+
+          const querySnapshot = await getDocs(q);
+          const counter = querySnapshot.size;
+          document.getElementById("users-counter").innerHTML = counter;
+
+          querySnapshot.forEach((doc) => {
+            datareguest.push(doc.data());
+            datareguest.email = doc.data().email;
+          });
+          // console.log(datareguest);
+
+          let donationCount = querySnapshot.size;
+          // document.getElementById("donation-counter").innerHTML = donationCount;
+
+          // Log or use the 'data' array as needed
+        } catch (error) {
+          console.error("Error getting documents: ", error);
+        }
+        filltable();
+      }
+      async function getRejectedData() {
+        datareguest = [];
+        try {
+          const q = query(
+            donationRequestCollectionRef,
+            where("status", "==", "rejected"),
+            where("centerName", "==", "AUB")
+          );
+          console.log(q);
+
+          const querySnapshot = await getDocs(q);
+          const counter = querySnapshot.size;
+          document.getElementById("users-counter").innerHTML = counter;
+
+          querySnapshot.forEach((doc) => {
+            datareguest.push(doc.data());
+            datareguest.email = doc.data().email;
+          });
+          // console.log(datareguest);
+
+          let donationCount = querySnapshot.size;
+          // document.getElementById("donation-counter").innerHTML = donationCount;
+
+          // Log or use the 'data' array as needed
+        } catch (error) {
+          console.error("Error getting documents: ", error);
+        }
+        filltable();
+        
+      }
+      function helloworld(nameee) {
+        alert(nameee);
+      }
+     
+     
+      setTimeout(()=>{
+         buttonIds.forEach((id) => {
+        const button = document.getElementById(id);
+        button.onclick = function () {
+          // Do something when the button is clicked
+          console.log(`Button ${id} was clicked!`);
+        };
+      });
+      },5000)
+     
+    </script> -->
+
     <!-- custom script  -->
     <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
     <!-- chart js cdn -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.8.0/chart.min.js"></script>
-  
-   
+
     <!-- <script>
       // Function to load content into main content area
       function loadContent(page) {
@@ -425,15 +430,16 @@
       };
     </script> -->
     <!-- <script type="module" src="./js/main.js"></script> -->
-    <script >let navigation = document.querySelector('.navigation'),
-      toggle = document.querySelector(".toggle"),
-      main = document.querySelector(".main")
-  
-  toggle.onclick = function () {
-      navigation.classList.toggle("active")
-      main.classList.toggle('active')
-  }</script>
+    <script>
+      let navigation = document.querySelector(".navigation"),
+        toggle = document.querySelector(".toggle"),
+        main = document.querySelector(".main");
+
+      toggle.onclick = function () {
+        navigation.classList.toggle("active");
+        main.classList.toggle("active");
+      };
+    </script>
     <script type="module" src="./js/request.js"></script>
-    
   </body>
 </html>

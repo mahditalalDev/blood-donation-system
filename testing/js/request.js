@@ -1,3 +1,4 @@
+
 let info = [];
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js";
@@ -50,13 +51,12 @@ async function getReguests() {
     const q = query(
       donationRequestCollectionRef,
       //   where("status", "==", "pendding"),
-      where("centerName", "==", "AUB")
+      where("centerName", "==", localStorage.getItem("centerName"))
     );
     console.log(q)
 
     const querySnapshot = await getDocs(q);
     const counter = querySnapshot.size;
-    document.getElementById("users-counter").innerHTML = counter;
 
     querySnapshot.forEach((doc) => {
       datareguest.push(doc.data());
@@ -142,13 +142,30 @@ async function filltable() {
       <td>${datareguest[i].city}</td>
       <td><span class="${statusStyle}">${datareguest[i].status}</span></td>
      <td>${info[i].phoneNumber}</td>
-     <td>action</td>
+     <td>
+     <button onclick="testing('${info[i].firstName}')" style="background-color:blue ;padding:10px;border-radius:5px">more</button>
+     </td>
+     <td> 
+     <div id="done-btn" style="display:flex;justify-content:center ;gap:5px" >
+     <button style="background-color:green ;padding:10px;border-radius:5px">     
+     accepet
+     </button>
+     <button style="background-color:red ;padding:10px;border-radius:5px">     
+     reject
+     </button>
+
+     </div>
+    
+
+     <div id="return-btn"></div>
+     </td>
      </tr>`;
       document.getElementById("tablebody").innerHTML += content;
     } else {
       console.log("no data");
     }
     // console.log(info);
+    
   }
 }
 async function getPindingdata(){
@@ -157,13 +174,13 @@ async function getPindingdata(){
     const q = query(
       donationRequestCollectionRef,
          where("status", "==", "pendding"),
-      where("centerName", "==", "AUB")
+      where("centerName", "==", localStorage.getItem("centerName"))
     );
     console.log(q)
 
     const querySnapshot = await getDocs(q);
     const counter = querySnapshot.size;
-    document.getElementById("users-counter").innerHTML = counter;
+    // document.getElementById("users-counter").innerHTML = counter;
 
     querySnapshot.forEach((doc) => {
       datareguest.push(doc.data());
@@ -187,13 +204,13 @@ async function getAcceptedData(){
     const q = query(
       donationRequestCollectionRef,
          where("status", "==", "accepted"),
-      where("centerName", "==", "AUB")
+      where("centerName", "==", localStorage.getItem("centerName"))
     );
     console.log(q)
 
     const querySnapshot = await getDocs(q);
     const counter = querySnapshot.size;
-    document.getElementById("users-counter").innerHTML = counter;
+    // document.getElementById("users-counter").innerHTML = counter;
 
     querySnapshot.forEach((doc) => {
       datareguest.push(doc.data());
@@ -217,13 +234,13 @@ async function getRejectedData(){
     const q = query(
       donationRequestCollectionRef,
          where("status", "==", "rejected"),
-      where("centerName", "==", "AUB")
+      where("centerName", "==", localStorage.getItem("centerName"))
     );
     console.log(q)
 
     const querySnapshot = await getDocs(q);
     const counter = querySnapshot.size;
-    document.getElementById("users-counter").innerHTML = counter;
+    // document.getElementById("users-counter").innerHTML = counter;
 
     querySnapshot.forEach((doc) => {
       datareguest.push(doc.data());

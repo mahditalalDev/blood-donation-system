@@ -64,7 +64,7 @@ async function updateValue(bloodType,button) {
     const incrementBy = parseInt(inputField.value) || 0; // Get the value from the input field
 
     // Get a reference to the document
-    const docRef = doc(db, "BloodBanks", "medicalemail@gmail.com");
+    const docRef = doc(db, "BloodBanks", localStorage.getItem("email"));
 
     // Update the blood type field by the specified amount
     await updateDoc(docRef, { [bloodType]: increment(incrementBy) });
@@ -77,7 +77,7 @@ async function getBloodValues() {
     try {
         test=[]
         // Reference to the document containing blood values
-        const docRef = doc(db, "BloodBanks", "medicalemail@gmail.com");
+        const docRef = doc(db, "BloodBanks", localStorage.getItem("email"));
 
         // Get the document snapshot
         const docSnap = await getDoc(docRef);
@@ -117,7 +117,7 @@ const ctx2 = document.getElementById("myChart2").getContext("2d");
             datasets: [
               {
                 label: "Bloods Bank",
-                data: [10, 20, 10, 20, 25, 0, 30, 9],
+                data: [0, 0, 0, 0, 0, 0, 0, 0],
                 backgroundColor: [
                   "rgba(255, 99, 132, 1)",
                   "rgba(54, 162, 235, 1)",

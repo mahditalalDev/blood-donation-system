@@ -2,7 +2,7 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.0/fireba
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-analytics.js";
 import {
   getAuth,
-  createUserWithEmailAndPassword,
+  
   signInWithEmailAndPassword,
   signInWithPopup,
   GoogleAuthProvider,
@@ -35,7 +35,7 @@ import {
   where,
   orderBy,
 } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore.js";
-import { resolve } from "path";
+
 const db = getFirestore();
 const auth = getAuth();
 // ---------------------------------------------------------------------------------------
@@ -67,6 +67,7 @@ function loginUser(email, password) {
       console.error("Login failed:", error);
     });
 }
+
 async function loginWindow(email) {
   let ref = doc(db, "users", email);
   const docSnap = await getDoc(ref);
@@ -74,11 +75,13 @@ async function loginWindow(email) {
     const userType = docSnap.data().userType;
     const centerName = docSnap.data().centerName;
     if (userType == "medical") {
+        localStorage.clear()
       localStorage.setItem("email", email);
       localStorage.setItem("centerName", centerName);
       localStorage.setItem("userType", "medical");
-      window.location.href = "../Medical/medicalhomepage.html";
+      window.location.href = "../testing/index.html";
     } else if (userType == "donor") {
+        localStorage.clear()
       localStorage.setItem("email", email);
       localStorage.setItem("userType", "donor");
       window.location.href = "../Donor/donorhomepage.html";
