@@ -64,7 +64,7 @@ async function countDonationDocuments() {
     const q = query(
       donationRequestCollectionRef,
       where("status", "==", "accepted"),
-      where("centerName", "==", localStorage.getItem("centerName"))
+      where("centerEmail", "==", localStorage.getItem("email"))
     );
     const querySnapshot = await getDocs(q);
     const counter = querySnapshot.size;
@@ -78,8 +78,8 @@ async function countDonationRequestDocuments() {
   try {
     const q = query(
       donationRequestCollectionRef,
-      where("status", "==", "pendding"),
-      where("centerName", "==", localStorage.getItem("centerName"))
+      // where("status", "==", "pendding"),
+      where("centerEmail", "==", localStorage.getItem("email"))
     );
     const querySnapshot = await getDocs(q);
     donationCount = querySnapshot.size;

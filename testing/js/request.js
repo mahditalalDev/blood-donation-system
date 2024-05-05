@@ -1,5 +1,6 @@
-
 let info = [];
+let index = 0;
+let buttons = [];
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-analytics.js";
@@ -29,6 +30,7 @@ import {
   getDocs, //get all documents inside one collection
   setDoc,
   collection,
+  increment,
   addDoc,
   updateDoc,
   deleteDoc,
@@ -39,222 +41,228 @@ import {
 } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore.js";
 const db = getFirestore();
 const auth = getAuth();
+
 const donationRequestCollectionRef = collection(db, "DonationRequests");
 let datareguest = [];
 document.getElementById("tablebody").innerHTML = "";
 
-getReguests();
+getRequests(); // Call getRequests function to populate the table initially
 
-async function getReguests() {
-  datareguest=[];
+async function getRequests() {
+  let test = [];
+  let center=localStorage.getItem("centerName")
+  const q = query(
+    donationRequestCollectionRef,
+    where("centerEmail", "==", localStorage.getItem("email"))
+  );
+
   try {
-    const q = query(
-      donationRequestCollectionRef,
-      //   where("status", "==", "pendding"),
-      where("centerName", "==", localStorage.getItem("centerName"))
-    );
-    console.log(q)
-
     const querySnapshot = await getDocs(q);
-    const counter = querySnapshot.size;
-
     querySnapshot.forEach((doc) => {
-      datareguest.push(doc.data());
-      datareguest.email = doc.data().email;
+      test.push({ donorEmail: doc.id, data: doc.data() });
     });
-    // console.log(datareguest);
-
-    let donationCount = querySnapshot.size;
-    // document.getElementById("donation-counter").innerHTML = donationCount;
-
-    // Log or use the 'data' array as needed
+    console.log("the test is", test);
+    await getDonorInfo(test);
   } catch (error) {
     console.error("Error getting documents: ", error);
   }
-  filltable();
-  //   filltable(datareguest);
 }
-document.getElementById("spinner").addEventListener("change",()=>{
-  const spinner = document.getElementById("spinner");
-  
-  // Get the selected option
-  const selectedOption = spinner.options[spinner.selectedIndex];
-  
-  // Get the value and text of the selected option
-  const selectedValue = selectedOption.value;
-  switch (selectedValue) {
-    case "pinding":
-      getPindingdata();
-      break;
-    case "accepted":
-      getAcceptedData();
-      break;
-    case "rejected":
-      getRejectedData();
-      break;
-    case "all":
-      getReguests();
-      break;
-    // Add more cases as needed
-    default:
-    // Code to execute if expression doesn't match any case
+
+async function getDonorInfo(test) {
+  let help = [];
+  for (let info of test) {
+    await getSpecificDocument(info);
   }
-  
-  // Log the selected value
+  filltable(help);
 
-}) 
-  // Get the select element
- 
-
-async function filltable() {
-  console.log(datareguest);
-  document.getElementById("tablebody").innerHTML = '';
-
-
-  for (let i = 0; i < datareguest.length; i++) {
-    console.log(datareguest[i].email);
-    let ref = doc(db, "MedicalInfo", datareguest[i].email);
+  async function getSpecificDocument(info) {
+    let ref = doc(db, "MedicalInfo", info.donorEmail);
     const docSnap = await getDoc(ref);
     if (docSnap.exists()) {
-      info.push(docSnap.data());
-      let statusStyle = datareguest[i].status;
-      switch (statusStyle) {
-        case "pendding":
-          statusStyle = "status pending";
-          break;
-        case "rejected":
-          statusStyle = "status return";
-          break;
-        case "accepted":
-          statusStyle = "status delivered";
-          break;
-        // Add more cases as needed
-        default:
-        // Code to execute if expression doesn't match any case
-      }
-      console.log(statusStyle)
-
-      let content = `
-      <tr>
-      <td >${info[i].firstName + info[0].lastName}</td>
-      <td>${datareguest[i].bloodQuantity}</td>
-      <td>${info[i].bloodType}</td>
-      <td>${datareguest[i].city}</td>
-      <td><span class="${statusStyle}">${datareguest[i].status}</span></td>
-     <td>${info[i].phoneNumber}</td>
-     <td>
-     <button onclick="testing('${info[i].firstName}')" style="background-color:blue ;padding:10px;border-radius:5px">more</button>
-     </td>
-     <td> 
-     <div id="done-btn" style="display:flex;justify-content:center ;gap:5px" >
-     <button style="background-color:green ;padding:10px;border-radius:5px">     
-     accepet
-     </button>
-     <button style="background-color:red ;padding:10px;border-radius:5px">     
-     reject
-     </button>
-
-     </div>
-    
-
-     <div id="return-btn"></div>
-     </td>
-     </tr>`;
-      document.getElementById("tablebody").innerHTML += content;
+      help.push({ donorInfo: docSnap.data(), reguestInfo: info });
     } else {
       console.log("no data");
     }
-    // console.log(info);
-    
   }
 }
-async function getPindingdata(){
-  datareguest=[]
-  try {
-    const q = query(
-      donationRequestCollectionRef,
-         where("status", "==", "pendding"),
-      where("centerName", "==", localStorage.getItem("centerName"))
-    );
-    console.log(q)
 
-    const querySnapshot = await getDocs(q);
-    const counter = querySnapshot.size;
-    // document.getElementById("users-counter").innerHTML = counter;
+function filltable(array) {
+  let content = "";
+  array.forEach((item) => {
+    const { donorInfo, reguestInfo } = item;
+    const status = reguestInfo.data.status;
+    let statusBackground = "";
 
-    querySnapshot.forEach((doc) => {
-      datareguest.push(doc.data());
-      datareguest.email = doc.data().email;
+    // Set background color based on status
+    switch (status) {
+      case "pending":
+        statusBackground = "background-color: blue;";
+        break;
+      case "rejected":
+        statusBackground = "background-color: red;";
+        break;
+      case "accepted":
+        statusBackground = "background-color: green;";
+        break;
+      default:
+        statusBackground = ""; // Default background color
+        break;
+    }
+
+    content += `
+      <tr>
+        <td>${donorInfo.firstName} ${donorInfo.lastName}</td>
+        <td>${reguestInfo.data.bloodQuantity}</td>
+        <td>${donorInfo.bloodType}</td>
+        <td>${reguestInfo.data.city}</td>
+        <td><span style="${statusBackground}">${status}</span></td>
+        <td>${donorInfo.phoneNumber}</td>
+        <td>
+          <button class="more-btn" data-donor-email="${
+            reguestInfo.donorEmail
+          }" data-medical-email="${
+      donorInfo.email
+    }" style="background-color:blue;padding:10px;border-radius:5px">more</button>
+        </td>
+        <td>
+          <div id="done-btn" style="display:flex;justify-content:center;gap:5px">
+            ${
+              status === "pending"
+                ? `
+              <button class="accept-btn" data-donor-bloodType="${donorInfo.bloodType}" data-donor-bloodQuantity="${reguestInfo.data.bloodQuantity}" data-donor-email="${reguestInfo.donorEmail}" data-medical-email="${donorInfo.email}" style="background-color:green;padding:10px;border-radius:5px">accept</button>
+              <button class="reject-btn" data-donor-email="${reguestInfo.donorEmail}" data-medical-email="${donorInfo.email}" style="background-color:red;padding:10px;border-radius:5px">reject</button>
+            `
+                : ""
+            }
+            ${
+              status === "accepted"
+                ? `
+              <span style="background-color: green; padding: 5px; border-radius: 5px;">Accepted</span>
+            `
+                : ""
+            }
+          </div>
+          <div id="return-btn"></div>
+        </td>
+      </tr>`;
+  });
+
+  document.getElementById("tablebody").innerHTML = content;
+
+  // Add click event listeners to buttons
+  document.querySelectorAll(".more-btn").forEach((button) => {
+    button.addEventListener("click", function () {
+      const donorEmail = this.getAttribute("data-donor-email");
+      const medicalEmail = this.getAttribute("data-medical-email");
+      console.log("Donor Email:", donorEmail);
+      console.log("Medical Email:", medicalEmail);
     });
-    // console.log(datareguest);
+  });
 
-    let donationCount = querySnapshot.size;
-    // document.getElementById("donation-counter").innerHTML = donationCount;
+  document.querySelectorAll(".accept-btn").forEach((button) => {
+    button.addEventListener("click", function () {
+      const donorEmail = this.getAttribute("data-donor-email");
+      const donorbloodType = this.getAttribute("data-donor-bloodType");
+      const donorbloodQuantity = this.getAttribute("data-donor-bloodQuantity");
+      console.log(donorbloodType, donorbloodQuantity);
+      updateSpecificDocument(donorEmail, "accepted");
+      updateBloodBank("email", donorbloodType, donorbloodQuantity);
+    });
+  });
 
-    // Log or use the 'data' array as needed
+  document.querySelectorAll(".reject-btn").forEach((button) => {
+    button.addEventListener("click", function () {
+      const donorEmail = this.getAttribute("data-donor-email");
+      const medicalEmail = this.getAttribute("data-medical-email");
+      updateSpecificDocument(donorEmail, "rejected");
+    });
+  });
+}
+
+async function updateBloodBank(email, bloodType, bloodQuantity) {
+  const docRef = doc(db, "BloodBanks", localStorage.getItem("email"));
+
+  // Update the blood type field by the specified amount
+  await updateDoc(docRef, { [bloodType]: increment(bloodQuantity) });
+
+  // Log a message to indicate that the update was successful
+  console.log(`Updated ${bloodType} by ${bloodQuantity}`);
+}
+
+async function updateSpecificDocument(donorEmail, action) {
+  let ref = doc(db, "DonationRequests", donorEmail);
+  await updateDoc(ref, {
+    status: action,
+  })
+    .then(() => {
+      console.log(`${action} request`);
+      const spinner = document.getElementById("spinner");
+      const selectedOption = spinner.options[spinner.selectedIndex].value;
+
+      // Only refresh the table if the selected option is "pending"
+      if (selectedOption === "pending") {
+        getRequestsByStatus("pending");
+      }
+      if (selectedOption === "all") {
+        getRequestsByStatus("all");
+      }
+      if (selectedOption === "accepted") {
+        getRequestsByStatus("accepted");
+      }
+      if (selectedOption === "rejected") {
+        getRequestsByStatus("rejected");
+      }
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}
+
+let navigation = document.querySelector(".navigation"),
+  toggle = document.querySelector(".toggle"),
+  main = document.querySelector(".main");
+
+toggle.onclick = function () {
+  navigation.classList.toggle("active");
+  main.classList.toggle("active");
+};
+document.getElementById("spinner").addEventListener("change", () => {
+  const spinner = document.getElementById("spinner");
+  const selectedOption = spinner.options[spinner.selectedIndex].value;
+
+  switch (selectedOption) {
+    case "pending":
+      getRequestsByStatus("pending");
+      break;
+    case "accepted":
+      getRequestsByStatus("accepted");
+      break;
+    case "rejected":
+      getRequestsByStatus("rejected");
+      break;
+    case "all":
+      getRequests();
+      break;
+    default:
+      break;
+  }
+});
+async function getRequestsByStatus(status) {
+  let test = [];
+  const q = query(
+    donationRequestCollectionRef,
+    where("centerEmail", "==", localStorage.getItem("email")),
+    where("status", "==", status)
+  );
+
+  try {
+    const querySnapshot = await getDocs(q);
+    querySnapshot.forEach((doc) => {
+      test.push({ donorEmail: doc.id, data: doc.data() });
+    });
+    console.log("the test is", test);
+    await getDonorInfo(test);
   } catch (error) {
     console.error("Error getting documents: ", error);
   }
-  filltable();
-
-}
-async function getAcceptedData(){
-  datareguest=[]
-  try {
-    const q = query(
-      donationRequestCollectionRef,
-         where("status", "==", "accepted"),
-      where("centerName", "==", localStorage.getItem("centerName"))
-    );
-    console.log(q)
-
-    const querySnapshot = await getDocs(q);
-    const counter = querySnapshot.size;
-    // document.getElementById("users-counter").innerHTML = counter;
-
-    querySnapshot.forEach((doc) => {
-      datareguest.push(doc.data());
-      datareguest.email = doc.data().email;
-    });
-    // console.log(datareguest);
-
-    let donationCount = querySnapshot.size;
-    // document.getElementById("donation-counter").innerHTML = donationCount;
-
-    // Log or use the 'data' array as needed
-  } catch (error) {
-    console.error("Error getting documents: ", error);
-  }
-  filltable();
-
-}
-async function getRejectedData(){
-  datareguest=[]
-  try {
-    const q = query(
-      donationRequestCollectionRef,
-         where("status", "==", "rejected"),
-      where("centerName", "==", localStorage.getItem("centerName"))
-    );
-    console.log(q)
-
-    const querySnapshot = await getDocs(q);
-    const counter = querySnapshot.size;
-    // document.getElementById("users-counter").innerHTML = counter;
-
-    querySnapshot.forEach((doc) => {
-      datareguest.push(doc.data());
-      datareguest.email = doc.data().email;
-    });
-    // console.log(datareguest);
-
-    let donationCount = querySnapshot.size;
-    // document.getElementById("donation-counter").innerHTML = donationCount;
-
-    // Log or use the 'data' array as needed
-  } catch (error) {
-    console.error("Error getting documents: ", error);
-  }
-  filltable();
-
 }

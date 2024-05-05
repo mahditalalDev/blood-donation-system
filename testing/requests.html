@@ -21,16 +21,16 @@
             </a>
           </li>
           <!-- brand section end  -->
-          <li class="" >
+          <li class="">
             <a href="index.html">
               <span class="icon"><ion-icon name="home"></ion-icon></span>
               <span class="title">Dashboard</span>
             </a>
           </li>
-          <li id="reguest-page" class="hovered" >
+          <li id="reguest-page" class="hovered">
             <a href="requests.html">
               <span class="icon"><ion-icon name="people"></ion-icon></span>
-              <span class="title"  >Reguests and history</span>
+              <span class="title">Reguests and history</span>
             </a>
           </li>
           <li>
@@ -80,7 +80,7 @@
             </div>
 
             <div class="user">
-              <img src="./img/img5.jpg" alt="user-img" />
+              <!-- <img src="./img/img5.jpg" alt="user-img" /> -->
             </div>
           </div>
           <!-- topbar end  -->
@@ -90,15 +90,18 @@
 
 
            -->
-        
-          <div class="details" style="width: 100%;display: flex;justify-content: center;">
-            <div class="recentorders" style="width: 100%;">
+
+          <div
+            class="details"
+            style="width: 100%; display: flex; justify-content: center"
+          >
+            <div class="recentorders" style="width: 100%">
               <div class="cardheader">
                 <h2>Recent Requests</h2>
                 <!-- <a href="#" class="btn">filter</a> -->
                 <select class="btn" id="spinner">
                   <option value="all">All</option>
-                  <option value="pinding">pinding</option>
+                  <option value="pending">pending</option>
                   <option value="accepted">accepted</option>
                   <option value="rejected">rejected</option>
                 </select>
@@ -126,6 +129,39 @@
 
       <!-- main section end here -->
     </div>
+
+   
+   
+    <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.8.0/chart.min.js"></script>
+    <!-- <script>
+      // Function to load content into main content area
+      function loadContent(page) {
+        // Remove 'active' class from all buttons
+        // const buttons = document.querySelectorAll('.sidenav button');
+        // buttons.forEach(btn => btn.classList.remove('active'));
+        
+        // // Add 'active' class to the clicked button
+        // button.classList.add('active');
+        
+        // Fetch the content of the selected page
+        fetch(page)
+          .then(response => response.text())
+          .then(data => {
+            // Insert the content into the main content area
+            document.getElementById('main-content').innerHTML = data;
+          })
+          .catch(error => console.error('Error loading content:', error));
+      }
+      
+      // Load 'home.html' by default when the dashboard page loads
+      window.onload = function() {
+        loadContent('dashboardfragment.html');
+      };
+    </script> -->
+    <!-- <script type="module" src="./js/main.js"></script> -->
+ 
+    <script type="module" src="./js/request.js"></script>
     <!-- <script type="module">
       let info = [];
 
@@ -167,279 +203,302 @@
       } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore.js";
       const db = getFirestore();
       const auth = getAuth();
+      function testing(test) {
+        console.log("test", test);
+      }
       const donationRequestCollectionRef = collection(db, "DonationRequests");
       let datareguest = [];
-      let buttonIds = [];
       document.getElementById("tablebody").innerHTML = "";
 
       getReguests();
-
       async function getReguests() {
-        datareguest = [];
+        let test = [];
+        const q = query(
+          donationRequestCollectionRef,
+          where("centerName", "==", "testingMahdi")
+        );
+
         try {
-          const q = query(
-            donationRequestCollectionRef,
-            //   where("status", "==", "pendding"),
-            where("centerName", "==", "AUB")
-          );
-          console.log(q);
-
           const querySnapshot = await getDocs(q);
-          const counter = querySnapshot.size;
-          document.getElementById("users-counter").innerHTML = counter;
-
           querySnapshot.forEach((doc) => {
-            datareguest.push(doc.data());
-            datareguest.email = doc.data().email;
+            test.push({ donorEmail: doc.id, data: doc.data() });
           });
-          // console.log(datareguest);
-
-          let donationCount = querySnapshot.size;
-          // document.getElementById("donation-counter").innerHTML = donationCount;
-
-          // Log or use the 'data' array as needed
+          console.log("the test is", test);
+          await getdonorInfo(test);
         } catch (error) {
           console.error("Error getting documents: ", error);
         }
-        filltable();
-        //   filltable(datareguest);
       }
-      document.getElementById("spinner").addEventListener("change", () => {
-        const spinner = document.getElementById("spinner");
 
-        // Get the selected option
-        const selectedOption = spinner.options[spinner.selectedIndex];
-
-        // Get the value and text of the selected option
-        const selectedValue = selectedOption.value;
-        switch (selectedValue) {
-          case "pinding":
-            getPindingdata();
-            break;
-          case "accepted":
-            getAcceptedData();
-            break;
-          case "rejected":
-            getRejectedData();
-            break;
-          case "all":
-            getReguests();
-            break;
-          // Add more cases as needed
-          default:
-          // Code to execute if expression doesn't match any case
+      async function getdonorInfo(test) {
+        let help = [];
+        for (let info of test) {
+          await getSpecificDocument(info);
         }
+        filltable(help);
 
-        // Log the selected value
-      });
-      // Get the select element
-      async function filltable() {
-        console.log(datareguest);
-        document.getElementById("tablebody").innerHTML = "";
-
-        for (let i = 0; i < datareguest.length; i++) {
-          console.log(datareguest[i].email);
-          let ref = doc(db, "MedicalInfo", datareguest[i].email);
+        async function getSpecificDocument(info) {
+          let ref = doc(db, "MedicalInfo", info.donorEmail);
           const docSnap = await getDoc(ref);
           if (docSnap.exists()) {
-            info.push(docSnap.data());
-            let statusStyle = datareguest[i].status;
-            switch (statusStyle) {
-              case "pendding":
-                statusStyle = "status pending";
-                break;
-              case "rejected":
-                statusStyle = "status return";
-                break;
-              case "accepted":
-                statusStyle = "status delivered";
-                break;
-              // Add more cases as needed
-              default:
-              // Code to execute if expression doesn't match any case
-            }
-            
-            buttonIds.push(datareguest[i].email);
-
-            let content = `
-      <tr>
-      <td >${info[i].firstName + info[i].lastName}</td>
-      <td>${datareguest[i].bloodQuantity}</td>
-      <td>${info[i].bloodType}</td>
-      <td>${datareguest[i].city}</td>
-      <td><span class="${statusStyle}">${datareguest[i].status}</span></td>
-     <td>${info[i].phoneNumber}</td>
-     <td>
-     <button id="${
-       datareguest[i].email
-     }" style="background-color:blue ;padding:10px;border-radius:5px">more</button>
-     </td>
-     <td> 
-     <div id="done-btn" style="display:flex;justify-content:center ;gap:5px" >
-     <button style="background-color:green ;padding:10px;border-radius:5px">     
-     accepet
-     </button>
-     <button style="background-color:red ;padding:10px;border-radius:5px">     
-     reject
-     </button>
-     </div>
-     <div id="return-btn"></div>
-     </td>
-     </tr>`;
-
-            document.getElementById("tablebody").innerHTML += content;
+            help.push({ donorInfo: docSnap.data(), reguestInfo: info });
           } else {
             console.log("no data");
           }
-          // console.log(info);
         }
       }
-      async function getPindingdata() {
-        datareguest = [];
-        try {
-          const q = query(
-            donationRequestCollectionRef,
-            where("status", "==", "pendding"),
-            where("centerName", "==", "AUB")
-          );
-          console.log(q);
 
-          const querySnapshot = await getDocs(q);
-          const counter = querySnapshot.size;
-          document.getElementById("users-counter").innerHTML = counter;
+      function filltable(array) {
+        let content = "";
+        array.forEach((item) => {
+          console.log("the item is", item);
+          content += `
+      <tr>
+        <td>${item.donorInfo.firstName} ${item.donorInfo.lastName}</td>
+        <td>${item.reguestInfo.data.bloodQuantity}</td>
+        <td>${item.donorInfo.bloodType}</td>
+        <td>${item.reguestInfo.data.city}</td>
+        <td><span class="${item.reguestInfo.data.status}">${item.reguestInfo.data.status}</span></td>
+        <td>${item.donorInfo.phoneNumber}</td>
+        <td>
+          <button onclick="testing('${item.donorInfo.firstName}')" style="background-color:blue;padding:10px;border-radius:5px">more</button>
+        </td>
+        <td>
+          <div id="done-btn" style="display:flex;justify-content:center;gap:5px">
+            <button onclick="testing()" style="background-color:green;padding:10px;border-radius:5px">accept</button>
+            <button style="background-color:red;padding:10px;border-radius:5px">reject</button>
+          </div>
+          <div id="return-btn"></div>
+        </td>
+      </tr>`;
+        });
 
-          querySnapshot.forEach((doc) => {
-            datareguest.push(doc.data());
-            datareguest.email = doc.data().email;
-          });
-          // console.log(datareguest);
+        document.getElementById("tablebody").innerHTML = content;
 
-          let donationCount = querySnapshot.size;
-          // document.getElementById("donation-counter").innerHTML = donationCount;
-
-          // Log or use the 'data' array as needed
-        } catch (error) {
-          console.error("Error getting documents: ", error);
-        }
-        filltable();
+        console.log("Array", array);
       }
-      async function getAcceptedData() {
-        datareguest = [];
-        try {
-          const q = query(
-            donationRequestCollectionRef,
-            where("status", "==", "accepted"),
-            where("centerName", "==", "AUB")
-          );
-          console.log(q);
 
-          const querySnapshot = await getDocs(q);
-          const counter = querySnapshot.size;
-          document.getElementById("users-counter").innerHTML = counter;
+      // const donorInfo = array.map((item) => item.donorInfo);
+      // const reguestInfoData = array.map((item) => item.reguestInfo.data);
+      // const donorEmails = array.map((item) => item.reguestInfo.donorEmail);
+      // let content = `
+      //       <tr>
+      //       <td >${info[i].firstName + info[0].lastName}</td>
+      //       <td>${datareguest[i].bloodQuantity}</td>
+      //       <td>${info[i].bloodType}</td>
+      //       <td>${datareguest[i].city}</td>
+      //       <td><span class="${statusStyle}">${datareguest[i].status}</span></td>
+      //      <td>${info[i].phoneNumber}</td>
+      //      <td>
+      //      <button onclick="testing('${info[i].firstName}')" style="background-color:blue ;padding:10px;border-radius:5px">more</button>
+      //      </td>
+      //      <td>
+      //      <div id="done-btn" style="display:flex;justify-content:center ;gap:5px" >
+      //      <button onclick="testing()" style="background-color:green ;padding:10px;border-radius:5px">
+      //      accepet
+      //      </button>
+      //      <button style="background-color:red ;padding:10px;border-radius:5px">
+      //      reject
+      //      </button>
 
-          querySnapshot.forEach((doc) => {
-            datareguest.push(doc.data());
-            datareguest.email = doc.data().email;
-          });
-          // console.log(datareguest);
+      //      </div>
 
-          let donationCount = querySnapshot.size;
-          // document.getElementById("donation-counter").innerHTML = donationCount;
+      //      <div id="return-btn"></div>
+      //      </td>
+      //      </tr>`;
+      //       document.getElementById("tbody").innerHTML=+content
 
-          // Log or use the 'data' array as needed
-        } catch (error) {
-          console.error("Error getting documents: ", error);
-        }
-        filltable();
-      }
-      async function getRejectedData() {
-        datareguest = [];
-        try {
-          const q = query(
-            donationRequestCollectionRef,
-            where("status", "==", "rejected"),
-            where("centerName", "==", "AUB")
-          );
-          console.log(q);
+      // console.log("Donor Info:", donorInfo);
+      // console.log("Request Info Data:", reguestInfoData);
+      // console.log("Donor Emails:", donorEmails);
 
-          const querySnapshot = await getDocs(q);
-          const counter = querySnapshot.size;
-          document.getElementById("users-counter").innerHTML = counter;
+      // document.getElementById("spinner").addEventListener("change",()=>{
+      //   const spinner = document.getElementById("spinner");
 
-          querySnapshot.forEach((doc) => {
-            datareguest.push(doc.data());
-            datareguest.email = doc.data().email;
-          });
-          // console.log(datareguest);
+      //   // Get the selected option
+      //   const selectedOption = spinner.options[spinner.selectedIndex];
 
-          let donationCount = querySnapshot.size;
-          // document.getElementById("donation-counter").innerHTML = donationCount;
+      //   // Get the value and text of the selected option
+      //   const selectedValue = selectedOption.value;
+      //   switch (selectedValue) {
+      //     case "pinding":
+      //       getPindingdata();
+      //       break;
+      //     case "accepted":
+      //       getAcceptedData();
+      //       break;
+      //     case "rejected":
+      //       getRejectedData();
+      //       break;
+      //     case "all":
+      //       getReguests();
+      //       break;
+      //     // Add more cases as needed
+      //     default:
+      //     // Code to execute if expression doesn't match any case
+      //   }
 
-          // Log or use the 'data' array as needed
-        } catch (error) {
-          console.error("Error getting documents: ", error);
-        }
-        filltable();
-        
-      }
-      function helloworld(nameee) {
-        alert(nameee);
-      }
-     
-     
-      setTimeout(()=>{
-         buttonIds.forEach((id) => {
-        const button = document.getElementById(id);
-        button.onclick = function () {
-          // Do something when the button is clicked
-          console.log(`Button ${id} was clicked!`);
-        };
-      });
-      },5000)
-     
+      //   // Log the selected value
+
+      // })
+      // Get the select element
+
+      // async function filltable(test) {
+      //   console.log(test)
+      //   document.getElementById("tablebody").innerHTML = '';
+
+      // for(let reguest of test){
+
+      // }
+
+      //   for (let i = 0; i < datareguest.length; i++) {
+      //     let ref = doc(db, "MedicalInfo", datareguest[i].email);
+      //     const docSnap = await getDoc(ref);
+      //     if (docSnap.exists()) {
+      //       info.push(docSnap.data());
+      //       let statusStyle = datareguest[i].status;
+      //       switch (statusStyle) {
+      //         case "pendding":
+      //           statusStyle = "status pending";
+      //           break;
+      //         case "rejected":
+      //           statusStyle = "status return";
+      //           break;
+      //         case "accepted":
+      //           statusStyle = "status delivered";
+      //           break;
+      //         // Add more cases as needed
+      //         default:
+      //         // Code to execute if expression doesn't match any case
+      //       }
+      //       console.log(statusStyle)
+
+      //       let content = `
+      //       <tr>
+      //       <td >${info[i].firstName + info[0].lastName}</td>
+      //       <td>${datareguest[i].bloodQuantity}</td>
+      //       <td>${info[i].bloodType}</td>
+      //       <td>${datareguest[i].city}</td>
+      //       <td><span class="${statusStyle}">${datareguest[i].status}</span></td>
+      //      <td>${info[i].phoneNumber}</td>
+      //      <td>
+      //      <button onclick="testing('${info[i].firstName}')" style="background-color:blue ;padding:10px;border-radius:5px">more</button>
+      //      </td>
+      //      <td>
+      //      <div id="done-btn" style="display:flex;justify-content:center ;gap:5px" >
+      //      <button onclick="testing()" style="background-color:green ;padding:10px;border-radius:5px">
+      //      accepet
+      //      </button>
+      //      <button style="background-color:red ;padding:10px;border-radius:5px">
+      //      reject
+      //      </button>
+
+      //      </div>
+
+      //      <div id="return-btn"></div>
+      //      </td>
+      //      </tr>`;
+      //       document.getElementById("tablebody").innerHTML += content;
+      //     } else {
+      //       console.log("no data");
+      //     }
+      //     // console.log(info);
+
+      //   }
+      // }
+      // function testing(){
+      //   alert("hi")
+      // }
+      // async function getPindingdata(){
+      //   datareguest=[]
+      //   try {
+      //     const q = query(
+      //       donationRequestCollectionRef,
+      //          where("status", "==", "pendding"),
+      //       where("centerEmail", "==", localStorage.getItem("centerEmail"))
+      //     );
+      //     console.log(q)
+
+      //     const querySnapshot = await getDocs(q);
+      //     const counter = querySnapshot.size;
+      //     // document.getElementById("users-counter").innerHTML = counter;
+
+      //     querySnapshot.forEach((doc) => {
+      //       datareguest.push(doc.data());
+      //       datareguest.email = doc.data().email;
+      //     });
+      //     // console.log(datareguest);
+
+      //     let donationCount = querySnapshot.size;
+      //     // document.getElementById("donation-counter").innerHTML = donationCount;
+
+      //     // Log or use the 'data' array as needed
+      //   } catch (error) {
+      //     console.error("Error getting documents: ", error);
+      //   }
+      //   filltable();
+
+      // }
+      // async function getAcceptedData(){
+      //   datareguest=[]
+      //   try {
+      //     const q = query(
+      //       donationRequestCollectionRef,
+      //          where("status", "==", "accepted"),
+      //       where("centerEmail", "==", localStorage.getItem("email"))
+      //     );
+      //     console.log(q)
+
+      //     const querySnapshot = await getDocs(q);
+      //     const counter = querySnapshot.size;
+      //     // document.getElementById("users-counter").innerHTML = counter;
+
+      //     querySnapshot.forEach((doc) => {
+      //       datareguest.push(doc.data());
+      //       datareguest.email = doc.data().email;
+      //     });
+      //     // console.log(datareguest);
+
+      //     let donationCount = querySnapshot.size;
+      //     // document.getElementById("donation-counter").innerHTML = donationCount;
+
+      //     // Log or use the 'data' array as needed
+      //   } catch (error) {
+      //     console.error("Error getting documents: ", error);
+      //   }
+      //   filltable();
+
+      // }
+      // async function getRejectedData(){
+      //   datareguest=[]
+      //   try {
+      //     const q = query(
+      //       donationRequestCollectionRef,
+      //          where("status", "==", "rejected"),
+      //       where("centerEmail", "==", localStorage.getItem("email"))
+      //     );
+      //     console.log(q)
+
+      //     const querySnapshot = await getDocs(q);
+      //     const counter = querySnapshot.size;
+      //     // document.getElementById("users-counter").innerHTML = counter;
+
+      //     querySnapshot.forEach((doc) => {
+      //       datareguest.push(doc.data());
+      //       datareguest.email = doc.data().email;
+      //     });
+      //     // console.log(datareguest);
+
+      //     let donationCount = querySnapshot.size;
+      //     // document.getElementById("donation-counter").innerHTML = donationCount;
+
+      //     // Log or use the 'data' array as needed
+      //   } catch (error) {
+      //     console.error("Error getting documents: ", error);
+      //   }
+      //   filltable();
+
+      // }
     </script> -->
-
-    <!-- custom script  -->
-    <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
-    <!-- chart js cdn -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.8.0/chart.min.js"></script>
-
-    <!-- <script>
-      // Function to load content into main content area
-      function loadContent(page) {
-        // Remove 'active' class from all buttons
-        // const buttons = document.querySelectorAll('.sidenav button');
-        // buttons.forEach(btn => btn.classList.remove('active'));
-        
-        // // Add 'active' class to the clicked button
-        // button.classList.add('active');
-        
-        // Fetch the content of the selected page
-        fetch(page)
-          .then(response => response.text())
-          .then(data => {
-            // Insert the content into the main content area
-            document.getElementById('main-content').innerHTML = data;
-          })
-          .catch(error => console.error('Error loading content:', error));
-      }
-      
-      // Load 'home.html' by default when the dashboard page loads
-      window.onload = function() {
-        loadContent('dashboardfragment.html');
-      };
-    </script> -->
-    <!-- <script type="module" src="./js/main.js"></script> -->
-    <script>
-      let navigation = document.querySelector(".navigation"),
-        toggle = document.querySelector(".toggle"),
-        main = document.querySelector(".main");
-
-      toggle.onclick = function () {
-        navigation.classList.toggle("active");
-        main.classList.toggle("active");
-      };
-    </script>
-    <script type="module" src="./js/request.js"></script>
   </body>
 </html>

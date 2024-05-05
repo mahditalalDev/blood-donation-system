@@ -38,60 +38,107 @@ const db = getFirestore();
 const auth = getAuth();
 // ------------------------------------------------------------------------
 
-    const countryInput = document.getElementById("country");
-    const provinceInput = document.getElementById("province");
-    const cityInput = document.getElementById("city");
-    const registerButton = document.getElementById("registerBtn");
+const countryInput = document.getElementById("country");
+const provinceInput = document.getElementById("province");
+const cityInput = document.getElementById("city");
+const registerButton = document.getElementById("registerBtn");
+const medicalCenterData = [];
+getMedicalCentersName();
+async function getMedicalCentersName() {
+  const q = query(
+    collection(db, "users"),
+    where("userType", "==", "medical",)
+    // where("bloodType", "==", `O+`)
+  );
 
-    // Add event listener to the submit button
-    registerButton.addEventListener("click", function(event) {
-        // Prevent the default form submission behavior
-        event.preventDefault();
+  getDocs(q)
+    .then((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+        const data = doc.data();
+        medicalCenterData.push({email:doc.id,centerName:doc.data().centerName})
+        // const bloodValue = doc.data()[bloodType];
+        // fillTable(doc.id, bloodValue, bloodType);
 
-        // Retrieve the values from the input fields
-        const country = countryInput.value;
-        const province = provinceInput.value;
-        const city = cityInput.value;
-
-        // Get the value of the checked radio button
-        let bloodQuantity;
-        const radioButtons = document.querySelectorAll('input[name="bloodQuantity"]');
-        radioButtons.forEach(radioButton => {
-            if (radioButton.checked) {
-                bloodQuantity = radioButton.value;
-            }
-        });
-
-        // Log the values to the console
-        console.log("Country:", country);
-        console.log("Province:", province);
-        console.log("City:", city);
-        console.log("Blood Quantity:", bloodQuantity);
-        addDocWithSpecificId(localStorage.getItem("email"),country,province,city,bloodQuantity)
-    });
-
-
-
-
-
-async function addDocWithSpecificId(email,country,province,city,bloodQuantity){
-    let ref=doc(db,"DonationRequests",email)
-
-    const docref = await setDoc(ref, {
-        email:email,
-        country:country,
-        province:province,
-        city:city,
-        bloodQuantity:bloodQuantity,
-        status:"pendding",
-        deleted:"false"
-    }).then(()=>{
-        console.log("added done")
-    }).catch((err)=>{
-        console.log(err)
+        // Use the data as needed
+      });
+     fillSpinnerCentersName(medicalCenterData) 
     })
+    .catch((error) => {
+      console.error("Error getting documents:", error);
+    });
+}
+
+ function fillSpinnerCentersName(data){
+    let centerName= document.getElementById("medical-centers")
+    for(let center of data){
+        // console.log(center.email)
+        let content=`<option value="${center.email}">${center.centerName}</option>
+        `
+        centerName.innerHTML+=content
+    }
+    } 
+// Add event listener to the submit button
+registerButton.addEventListener("click", function (event) {
+  // Prevent the default form submission behavior
+  event.preventDefault();
+  let centerName= document.getElementById("medical-centers")
+let centerEmail=centerName.value;
+// console.log(center)
+
+  // Retrieve the values from the input fields
+  const country = countryInput.value;
+  const province = provinceInput.value;
+  const city = cityInput.value;
+
+  // Get the value of the checked radio button
+  let bloodQuantity;
+  const radioButtons = document.querySelectorAll('input[name="bloodQuantity"]');
+  radioButtons.forEach((radioButton) => {
+    if (radioButton.checked) {
+      bloodQuantity = radioButton.value;
+    }
+  });
+
+  // Log the values to the console
+  console.log("Country:", country);
+  console.log("Province:", province);
+  console.log("City:", city);
+  console.log("Blood Quantity:", bloodQuantity);
+  addDocWithSpecificId(
+    localStorage.getItem("email"),
+    country,
+    province,
+    city,
+    bloodQuantity,
+    centerEmail
+  );
+});
+
+async function addDocWithSpecificId(
+  email,
+  country,
+  province,
+  city,
+  bloodQuantity,
+  centerEmaill
+) {
+  let ref = doc(db, "DonationRequests", email);
+
+  const docref = await setDoc(ref, {
+    email: email,
+    country: country,
+    province: province,
+    city: city,
+    bloodQuantity: bloodQuantity,
+    status: "pending",
+    deleted: "false",
+    centerEmail:centerEmaill
+  })
+    .then(() => {
+      console.log("added done");
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 }
 //-------------
-
-
-
