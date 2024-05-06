@@ -40,6 +40,9 @@
                     <li class="nav-item pr-2">
                         <a href="#intro-slide" class="nav-link">Home</a>
                     </li>
+                    <li class="nav-item pr-2">
+                        <a href="#list" class="nav-link">Our Heros</a>
+                    </li>
                    
                     <li class="nav-item pr-2">
                         <a href="#counter" class="nav-link">About us</a>
@@ -71,9 +74,10 @@
         <div class="container mt-2">
             <h1 class="display-4 section-heading slide-heading mb-2 text-center">BLEED TO SAVE</h1>
             <p class="slide-description text-center">Bleed To Save is intended to help people in the need of blood, find the required blood by connecting with donors online.</p>
-            <div class="d-flex justify-content-center">
-                <a href="medicalRegister.html" class="mr-1 btn btn-lg btn-primary slide-btn">Register</a>
-                <a href="login.html" class="ml-1 btn btn-lg btn-primary slide-btn">Login</a>
+            <div style="display: flex; justify-content: center; gap: 10px; align-items: center;">
+                <a href="./Authentication/medicalregister.html" class="mr-1 btn btn-lg btn-primary slide-btn">Medical Register</a>
+                <a href="./Authentication/login.html" class="mr-1 btn btn-lg btn-primary slide-btn">Login</a>
+                <a href="./Authentication/donorregister.html" class="ml-1 btn btn-lg btn-primary slide-btn">Donor Register</a>
             </div>
         </div>
     </section>
@@ -127,6 +131,25 @@
         <!-- Pending Requests -->
         <section id="list" class="index-requests pb-5">
             <br class="d-md-none">
+            <h2 class="display-4 section-heading text-center mb-4 pt-5 pt-md-0">Our Heros</h2>
+
+           <div class="container p-5 d-flex justify-content-center">
+
+            <table class="table" style="width: 60%; background-color: blanchedalmond;">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">FullName</th>
+                    <th scope="col">BloodType</th>
+                    <th scope="col">BloodQouantity</th>
+                  </tr>
+                </thead>
+                <tbody id="table-body-heros">
+                 
+                </tbody>
+              </table>
+           </div> 
+            <!-- <br class="d-md-none">
             <h2 class="display-4 section-heading text-center mb-4 pt-5 pt-md-0">Blood Requests</h2>
             <div class="container ">
                 <h5 class="content text-center slide-description mb-5 content">You can help the people in search of a donor by accepting their request. Register now to help save precious lives.</h5>
@@ -198,7 +221,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </section>
     </section>
 
@@ -297,6 +320,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js " integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV " crossorigin="anonymous "></script>
     <script src="js/jquery.counterup.min.js" type="text/javascript"></script>
     <script src="js/jquery.waypoints.min.js" type="text/javascript"></script>
+    <script type="module" src="./index.js"></script>
     <script>
         $(function() {
             $(document).scroll(function() {
@@ -311,10 +335,10 @@
             time: 1000,
         });
     </script>
-    <script src="js/wow.min.js " type="text/javascript "></script>
+    <!-- <script src="js/wow.min.js " type="text/javascript "></script>
     <script>
         new WOW().init();
-    </script>
+    </script> -->
 </body>
 
 </html>

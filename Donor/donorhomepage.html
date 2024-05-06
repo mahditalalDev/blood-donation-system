@@ -3,7 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>HomePage</title>
+    <link rel="shortcut icon" href="../imgs/logo.png" />
+
     <link rel="stylesheet" href="../css/donorhomepage.css" />
     <style>
       body {
@@ -24,7 +26,7 @@
       class="navbar mb-5 navbar-expand-lg navbar-light fixed-top py-0"
     >
       <div class="container">
-        <a href="index.html" class="img-fluid navbar-brand"
+        <a href="./donorhomepage.html" class="img-fluid navbar-brand"
           ><img src="../imgs/nav-logo.png" class="img-hover"
         /></a>
         <button
@@ -44,11 +46,11 @@
         >
           <ul class="navbar-nav">
             <li class="nav-item pr-2">
-              <a href="../index.html" class="nav-link text-danger">Home</a>
+              <a href="./donorhomepage.html" class="nav-link text-danger">Home</a>
             </li>
 
             <li class="nav-item pr-2">
-              <a href="../canyoudonate.html" class="nav-link text-danger"
+              <a href="../canyoudonate.html" target="_blank" class="nav-link text-danger"
                 >can you donate?</a
               >
             </li>
@@ -226,6 +228,7 @@
 
         // If user clicks "OK", redirect to index.html
         if (confirmation) {
+          localStorage.clear()
           window.location.href = "../index.html";
         }
       });
