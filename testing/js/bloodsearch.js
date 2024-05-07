@@ -80,7 +80,7 @@ function getDocuments(city,bloodType) {
             });
         })
         .catch((error) => {
-            console.error("Error getting documents:", error);
+          alert("error getting documents")
         });
 }
 function fillTable(email,bloodValue,bloodType){

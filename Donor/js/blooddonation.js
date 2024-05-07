@@ -136,9 +136,11 @@ async function addDocWithSpecificId(
   })
     .then(() => {
       console.log("added done");
+      alert("thanks for donation")
+      window.location="./donorhomepage.html"
     })
     .catch((err) => {
-      console.log(err);
+      alert(err)
     });
 }
 //-------------

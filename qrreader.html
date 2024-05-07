@@ -43,6 +43,47 @@
 
   <body>
     <!-- Navbar -->
+    <nav
+      id="mainNavbar"
+      style="z-index: 12; background-color: #f1e3e4"
+      class="navbar mb-5 navbar-expand-lg navbar-light fixed-top py-0"
+    >
+      <div class="container">
+        <a href="./index.html" class="img-fluid navbar-brand"
+          ><img src="./imgs/nav-logo.png" class="img-hover"
+        /></a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNavDropdown"
+          aria-controls="navbarNavDropdown"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div
+          class="justify-content-end collapse align-items-center navbar-collapse"
+          id="navbarNavDropdown"
+        >
+          <ul class="navbar-nav">
+            <li class="nav-item pr-2">
+              <a href="./index.html" class="nav-link text-danger">Home</a>
+            </li>
+
+            <li class="nav-item pr-2">
+              <a
+                href="./canyoudonate.html"
+                target="_blank"
+                class="nav-link text-danger"
+                >can you donate?</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
 
     <!-- Donor Info -->
     <h1 class="display-4 section-heading form-gap mb-5 text-center">
@@ -341,15 +382,14 @@
                   >Any notes worth mentioning regarding your medical
                   record?</label
                 >
-                <textarea
-                  class="form-control"
-                  id="medical-condition"
-                  rows="3"
-                  style="overflow-y: scroll"
-                  style="width: 100%; height: 100px"
-                  placeholder="Write your notes"
-                ></textarea>
               </div>
+              <textarea
+                class="form-control"
+                id="medical-condition"
+                rows=""
+                style="resize: none"
+                placeholder="Write your notes"
+              ></textarea>
             </form>
           </div>
         </div>

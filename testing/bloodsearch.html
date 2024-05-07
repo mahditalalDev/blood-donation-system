@@ -10,6 +10,11 @@
     type="module"
     src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
   ></script>
+  <style>
+    #searchButton:hover{
+      opacity: 0.9;
+    }
+  </style>
   <script
     nomodule
     src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
@@ -153,11 +158,19 @@
             "
           >
           <div style="color: brown; font-weight: 900; font-size: 20px">
-            <label for="city">Choose City</label>
+            <label for="city">Province</label>
             <select name="city" id="city" class="form-control mb-3" style="width: 80px; border-radius: 5px; border-color: brown; font-weight: 600;">
-                <option value="" selected disabled>City</option>
-                <option value="tyre" style="color: black; font-size: px; font-weight: bold; background-color: aliceblue;">tyre</option>
-            </select>
+              <option value="" disabled selected>province</option>
+              <option value="Beirut">Beirut</option>
+              <option value="South Lebanon">South Lebanon</option>
+              <option value="North Lebanon">North Lebanon</option>
+              <option value="Mount Lebanon">Mount Lebanon</option>
+              <option value="Bekaa">Bekaa</option>
+              <option value="Nabatieh">Nabatieh</option>
+              <option value="Akkar">Akkar</option>
+              <option value="Baabda">Baabda</option>
+              <option value="Baalbek-Hermel">Baalbek-Hermel</option>
+              </select>
         </div>
 
             <div>
