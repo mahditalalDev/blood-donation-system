@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="css/style.css" />
     <!-- <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" /> -->
     <link rel="shortcut icon" href="../imgs/logo.png" />
+    
 
     <title>Blood Mangment</title>
     <style>
@@ -24,6 +25,14 @@
         }
 
     </style>
+       <script
+       type="module"
+       src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+     ></script>
+     <script
+       nomodule
+       src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+     ></script>
   </head>
   <body>
     <div class="container">
@@ -33,46 +42,54 @@
           <!-- brand section start-->
           <li>
             <a href="#">
-              <!-- <span class="icon"><ion-icon name="logo-apple"></ion-icon></span> -->
-              <span class="title">bleedtosave</span>
+              <span class="icon"
+                ><img src="../imgs/nav-logo.png" width="60px" alt=""
+              /></span>
+              <span class="title">Bleed-to save</span>
             </a>
           </li>
           <!-- brand section end  -->
-          <li class="" >
+          <li class="">
             <a href="index.html">
-              <span class="icon"><ion-icon name="home"></ion-icon></span>
+              <span class="icon">
+                <ion-icon name="home"></ion-icon>
+              </span>
               <span class="title">Dashboard</span>
             </a>
           </li>
-          <li id="reguest-page" >
-            <a href="requests.html">
-              <span class="icon"><ion-icon name="people"></ion-icon></span>
-              <span class="title"  >Reguests and history</span>
+          <li >
+            <a href="requests.html" style="display: flex; align-items: center">
+              <span class="icon">
+                <ion-icon name="bag-add"></ion-icon>
+              </span>
+              <span class="title">Reguests and history</span>
             </a>
           </li>
           <li class="hovered">
             <a href="bloodbankmangmement.html">
-              <span class="icon"><ion-icon name="chatboxes"></ion-icon></span>
+              <span class="icon">
+                <ion-icon name="desktop"></ion-icon>
+              </span>
               <span class="title">bloodbankmangmement</span>
             </a>
           </li>
           <li>
             <a href="bloodsearch.html">
-              <span class="icon"
-                ><ion-icon name="help-circle-outline"></ion-icon
-              ></span>
+              <span class="icon">
+                <ion-icon name="search-circle"></ion-icon>
+              </span>
               <span class="title">search for Blood </span>
             </a>
           </li>
           <li>
             <a href="settings.html">
-              <span class="icon"><ion-icon name="settings"></ion-icon></span>
+              <span class="icon"> <ion-icon name="settings"></ion-icon></span>
               <span class="title">Settings</span>
             </a>
           </li>
-         
-          <li>
-            <a href="#">
+
+          <li id="sign-out-btn">
+            <a>
               <span class="icon"><ion-icon name="log-out"></ion-icon></span>
               <span class="title">Sign Out</span>
             </a>
@@ -98,8 +115,9 @@
               </label>
             </div> -->
             <!-- user -->
-            <div class="user">
-              <!-- <img src="./img/img5.jpg" alt="user-img" /> -->
+            <div class="">
+              <img src="../imgs/logo.png" style="width: 60px; height: 40px;position: relative;right: 40px;" alt="user-img" />
+
             </div>
           </div>
           <!-- topbar end  -->
@@ -212,189 +230,19 @@
               </table>
             </div>
 
-            <!-- new customers start -->
-         
-         
-            <!-- <div class="recentcustomers">
-              <div class="cardheader">
-                <h2>Recent Customers</h2>
-              </div>
-              <table>
-                <tr>
-                  <td>
-                    <div class="imgbox">
-                      <img src="./img/img1.jpg" alt="img" />
-                    </div>
-                  </td>
-                  <td>
-                    <h4>
-                      Jishan <br />
-                      <span>Bangladesh</span>
-                    </h4>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <div class="imgbox">
-                      <img src="./img/img2.jpg" alt="img" />
-                    </div>
-                  </td>
-                  <td>
-                    <h4>
-                      Saad <br />
-                      <span>India</span>
-                    </h4>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <div class="imgbox">
-                      <img src="./img/img3.jpg" alt="img" />
-                    </div>
-                  </td>
-                  <td>
-                    <h4>
-                      Fahad <br />
-                      <span>Nepal</span>
-                    </h4>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <div class="imgbox">
-                      <img src="./img/img4.jpg" alt="img" />
-                    </div>
-                  </td>
-                  <td>
-                    <h4>
-                      Rafi <br />
-                      <span>Sri Lanka</span>
-                    </h4>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <div class="imgbox">
-                      <img src="./img/img5.jpg" alt="img" />
-                    </div>
-                  </td>
-                  <td>
-                    <h4>
-                      Tonmoy <br />
-                      <span>Bangladesh</span>
-                    </h4>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <div class="imgbox">
-                      <img src="./img/img1.jpg" alt="img" />
-                    </div>
-                  </td>
-                  <td>
-                    <h4>
-                      Jishan <br />
-                      <span>Bangladesh</span>
-                    </h4>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <div class="imgbox">
-                      <img src="./img/img2.jpg" alt="img" />
-                    </div>
-                  </td>
-                  <td>
-                    <h4>
-                      Saad <br />
-                      <span>India</span>
-                    </h4>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <div class="imgbox">
-                      <img src="./img/img3.jpg" alt="img" />
-                    </div>
-                  </td>
-                  <td>
-                    <h4>
-                      Fahad <br />
-                      <span>Nepal</span>
-                    </h4>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <div class="imgbox">
-                      <img src="./img/img4.jpg" alt="img" />
-                    </div>
-                  </td>
-                  <td>
-                    <h4>
-                      Rafi <br />
-                      <span>Sri Lanka</span>
-                    </h4>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <div class="imgbox">
-                      <img src="./img/img5.jpg" alt="img" />
-                    </div>
-                  </td>
-                  <td>
-                    <h4>
-                      <span class="counter">1,234,567.00</span>
-                      Tonmoy <br />
-                      <span>Bangladesh</span>
-                    </h4>
-                  </td>
-                </tr>
-              </table>
-            </div> -->
-            <!-- new customers end 
-          </div> -->
-          <!-- order details list end  -->
+          
         </div>
       </div>
 
       <!-- main section end here -->
     </div>
    
-
+ 
     <!-- custom script  -->
     <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
     <!-- chart js cdn -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.8.0/chart.min.js"></script>
 
-    <!-- <script>
-      // Function to load content into main content area
-      function loadContent(page) {
-        // Remove 'active' class from all buttons
-        // const buttons = document.querySelectorAll('.sidenav button');
-        // buttons.forEach(btn => btn.classList.remove('active'));
-        
-        // // Add 'active' class to the clicked button
-        // button.classList.add('active');
-        
-        // Fetch the content of the selected page
-        fetch(page)
-          .then(response => response.text())
-          .then(data => {
-            // Insert the content into the main content area
-            document.getElementById('main-content').innerHTML = data;
-          })
-          .catch(error => console.error('Error loading content:', error));
-      }
-      
-      // Load 'home.html' by default when the dashboard page loads
-      window.onload = function() {
-        loadContent('dashboardfragment.html');
-      };
-    </script> -->
-    <!-- <script type="module" src="./js/main.js"></script> -->
-    <!-- <script type="module" src="testing.js"></script> -->
 <script>
 
 

@@ -32,30 +32,16 @@ import {
 const db = getFirestore(app);
 
 //   --------------------------------------------------------------------------------
-const firstNameInput = document.getElementById("first-name");
-const email = localStorage.getItem("email");
-const lastNameInput = document.getElementById("last-name");
-const phoneNumberInput = document.getElementById("phone-number");
-const dateOfBirthInput = document.getElementById("date-of-birth");
-const idNumberInput = document.getElementById("id-number");
-const genderInput = document.querySelector('input[name="gender"]:checked');
-const bloodTypeInput = document.getElementById("blood-type");
-const heightInput = document.getElementById("height");
-const heightUnitInput = document.getElementById("height-unit");
-const weightInput = document.getElementById("weight");
-const weightUnitInput = document.getElementById("weight-unit");
-const countryInput = document.getElementById("country");
-const provinceInput = document.getElementById("province");
+
 // Get the radio buttons
 const tattooYes = document.getElementById("tattoo-yes");
 const medicalYes = document.getElementById("medical_condition-yes");
 const medicalNo = document.getElementById("medical_condition-no");
 const tattooNo = document.getElementById("tattoo-no");
 
-
 // Function to handle radio button change
 function handleTattooChange() {
-let  tattooValue = tattooYes.checked ? "yes" : tattooNo.checked ? "no" : "";
+  let tattooValue = tattooYes.checked ? "yes" : tattooNo.checked ? "no" : "";
   return tattooValue;
 }
 
@@ -69,56 +55,17 @@ function handleMedicalChange() {
   let medicalValue = medicalYes.checked ? "yes" : medicalNo.checked ? "no" : "";
   return medicalValue;
 }
-
-const cityInput = document.getElementById("city");
-const medicalConditionInput = document.querySelector(
-  'input[name="medical_condition"]:checked'
-);
+function getQueryParam(name) {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(name);
+  }
 
 // const tattooInput = document.querySelector('input[name="tattoo"]:checked');
-const medicalConditionNotesInput = document.getElementById("medical-condition");
-document.getElementById("submit-btn").addEventListener("click", () => {
- 
 
-
-  updateSpecificDocument();
-});
-async function updateSpecificDocument() {
-  const email = localStorage.getItem("email");
-  console.log(email);
-  const db = getFirestore();
-  let ref = doc(db, "MedicalInfo", email);
-
-  await updateDoc(ref, {
-    firstName: firstNameInput.value,
-    lastName: lastNameInput.value,
-    phoneNumber: phoneNumberInput.value,
-    dateOfBirth: dateOfBirthInput.value,
-    idNumber: idNumberInput.value,
-    gender: genderInput ? genderInput.value : "",
-    bloodType: bloodTypeInput.value,
-    height: heightInput.value,
-    heightUnit: heightUnitInput.value,
-    weight: weightInput.value,
-    weightUnit: weightUnitInput.value,
-    country: countryInput.value,
-    province: provinceInput.value,
-    city: cityInput.value,
-    medicalCondition: handleMedicalChange(),
-    tattoo : handleTattooChange(),
-    medicalConditionNotes: medicalConditionNotesInput.value,
-  })
-    .then(() => {
-      console.log("added done");
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-}
-//data.firstName;
 getSpecificDocument();
 async function getSpecificDocument() {
-  let ref = doc(db, "MedicalInfo",localStorage.getItem("email"));
+    const email = getQueryParam('email');
+  let ref = doc(db, "MedicalInfo", email);
   const data = await getDoc(ref);
   if (data.exists()) {
     // Print the checked value or use it as needed
@@ -137,29 +84,28 @@ async function getSpecificDocument() {
     document.getElementById("country").value = data.data().country || "";
     document.getElementById("province").value = data.data().province || "";
     document.getElementById("city").value = data.data().city || "";
-    let gender=data.data().gender
-    if(gender=="male"){
-      document.getElementById("male").checked=true
+    let gender = data.data().gender;
+    if (gender == "male") {
+      document.getElementById("male").checked = true;
+    } else {
+      document.getElementById("female").checked = true;
     }
-    else{
-      document.getElementById("female").checked=true
-
+    let tattogetvalue = data.data().tattoo;
+    if (tattogetvalue == "yes") {
+      tattooYes.checked = true;
+    } else {
+      tattooNo.checked = true;
     }
-    let tattogetvalue=data.data().tattoo;
-    if (tattogetvalue=="yes"){
-      tattooYes.checked=true
-    }else{
-      tattooNo.checked=true
+    let medicalCond = data.data().medicalCondition;
+    if (medicalCond == "yes") {
+      medicalYes.checked = true;
+    } else {
+      medicalNo.checked = true;
     }
-    let medicalCond=data.data().medicalCondition;
-    if(medicalCond=="yes"){
-      medicalYes.checked=true
-    }else{
-      medicalNo.checked=true
-    }
-    
-  
-      
+    const inputs = document.querySelectorAll("input, select, textarea");
+    inputs.forEach((input) => {
+      input.disabled = true;
+    });
   } else {
     console.log("no data");
   }

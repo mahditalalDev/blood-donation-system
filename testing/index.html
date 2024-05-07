@@ -18,48 +18,56 @@
           <!-- brand section start-->
           <li>
             <a href="#">
-              <!-- <span class="icon"><ion-icon name="logo-apple"></ion-icon></span> -->
+              <span class="icon"
+                ><img src="../imgs/nav-logo.png" width="60px" alt=""
+              /></span>
               <span class="title">Bleed-to save</span>
             </a>
           </li>
           <!-- brand section end  -->
-          <li class="hovered" >
+          <li class="hovered">
             <a href="index.html">
-              <span class="icon"><ion-icon name="home"></ion-icon></span>
+              <span class="icon">
+                <ion-icon name="home"></ion-icon>
+              </span>
               <span class="title">Dashboard</span>
             </a>
           </li>
-          <li id="reguest-page" >
-            <a href="requests.html">
-              <span class="icon"><ion-icon name="people"></ion-icon></span>
-              <span class="title"  >Reguests and history</span>
+          <li id="reguest-page">
+            <a href="requests.html" style="display: flex; align-items: center">
+              <span class="icon">
+                <ion-icon name="bag-add"></ion-icon>
+              </span>
+              <span class="title">Reguests and history</span>
             </a>
           </li>
           <li>
             <a href="bloodbankmangmement.html">
-              <span class="icon"><ion-icon name="chatboxes"></ion-icon></span>
+              <span class="icon">
+                <ion-icon name="desktop"></ion-icon>
+              </span>
               <span class="title">bloodbankmangmement</span>
             </a>
           </li>
           <li>
             <a href="bloodsearch.html">
-              <span class="icon"
-                ><ion-icon name="help-circle-outline"></ion-icon
-              ></span>
+              <span class="icon">
+                <ion-icon name="search-circle"></ion-icon>
+              </span>
               <span class="title">search for Blood </span>
             </a>
           </li>
           <li>
             <a href="settings.html">
-              <span class="icon"><ion-icon name="settings"></ion-icon></span>
+              <span class="icon"> <ion-icon name="settings"></ion-icon></span>
               <span class="title">Settings</span>
             </a>
           </li>
-      
+
           <li id="sign-out-btn">
             <a>
               <span class="icon"><ion-icon name="log-out"></ion-icon></span>
-              <span class="title"  >Sign Out</span>
+              <span class="title">Sign Out</span>
             </a>
           </li>
         </ul>
@@ -67,7 +75,7 @@
       <!-- left side and navigation end here -->
 
       <!-- main section start here -->
-      <div id="main-content" >
+      <div id="main-content">
         <div id="main" class="main">
           <!-- topbar start -->
           <div class="topbar">
@@ -75,40 +83,38 @@
             <div class="toggle">
               <ion-icon name="menu"></ion-icon>
             </div>
-            <!-- search -->
-            <!-- <div class="search">
-              <label>
-                <input type="text" placeholder="Search..." />
-                <ion-icon name="search"></ion-icon>
-              </label>
-            </div> -->
-            <!-- user -->
-            <div class="user">
-              <!-- <img src="./img/img5.jpg" alt="user-img" /> -->
+            
+            <div class="">
+              <img src="../imgs/logo.png" style="width: 60px; height: 40px;position: relative;right: 40px;" alt="user-img" />
+
             </div>
           </div>
           <!-- topbar end  -->
-  
+
           <!--overview card section start -->
           <div class="cardbox">
             <!-- single card -->
             <div class="card">
               <div>
-                <div class="numbers"><span class="counter" id="users-counter">1 </span></div>
+                <div class="numbers">
+                  <span class="counter" id="users-counter">1 </span>
+                </div>
                 <div class="cardname">Users</div>
               </div>
               <div class="iconbox">
-                <ion-icon name="eye"></ion-icon>
+                <ion-icon name="people"></ion-icon>
               </div>
             </div>
             <!-- single card -->
             <div class="card">
               <div>
-                <div class="numbers"> <span id="donation-counter" >dash</span></div>
+                <div class="numbers">
+                  <span id="donation-counter">0</span>
+                </div>
                 <div class="cardname">Donation reguest</div>
               </div>
               <div class="iconbox">
-                <ion-icon name="cart"></ion-icon>
+                <ion-icon name="person-add"></ion-icon>
               </div>
             </div>
             <!-- single card -->
@@ -118,14 +124,13 @@
                 <div class="cardname">donation</div>
               </div>
               <div class="iconbox">
-                <ion-icon name="quote"></ion-icon>
+                <ion-icon name="checkmark-done"></ion-icon>
               </div>
             </div>
             <!-- single card -->
-           
           </div>
           <!--overview card section end -->
-  
+
           <!-- chart area start here  -->
           <div class="graphbox">
             <div class="box">
@@ -136,25 +141,28 @@
             </div>
           </div>
           <!-- chat area ends here -->
-  
+
           <!-- order details list start  -->
-        
+
           <!-- order details list end  -->
-        </div>     
+        </div>
       </div>
-      
-    
+
       <!-- main section end here -->
     </div>
-
-   
+    <script type="module" src="./js/main.js"></script>
+    <script type="module" src="testing.js"></script>
     <!-- custom script  -->
-    <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
-    <!-- chart js cdn -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.8.0/chart.min.js"></script>
-    
-  
-   
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+
     <!-- <script>
       // Function to load content into main content area
       function loadContent(page) {
@@ -180,17 +188,13 @@
         loadContent('dashboardfragment.html');
       };
     </script> -->
-<script>
-  document.getElementById("sign-out-btn").addEventListener("click",()=>{
-  localStorage.clear();
+    <script>
+      document.getElementById("sign-out-btn").addEventListener("click", () => {
+        localStorage.clear();
 
-  // Redirect the user to another page
-  window.location.href = "../index.html";
-
-})
-
-</script>
-    <script type="module" src="./js/main.js"></script>
-    <script type="module" src="testing.js"></script>
+        // Redirect the user to another page
+        window.location.href = "../index.html";
+      });
+    </script>
   </body>
 </html>
