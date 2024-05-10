@@ -13,7 +13,8 @@
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
     integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
-  <!-- Font Awesome -->
+ 
+    <!-- Font Awesome -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" />
   <!-- Font Nunito -->
   <link rel="preconnect" href="https://fonts.gstatic.com" />
@@ -57,7 +58,10 @@
             </li>
             
             <li class="nav-item pr-2">
-              <a href="../canyoudonate.html" target="_blank" class="nav-link">Can you donate?</a>
+              <a href="./donateblood.html" target="_blank" class="nav-link">donate</a>
+            </li>
+            <li class="nav-item pr-2">
+              <a href="./qrdonor.html" target="_blank" class="nav-link">QR code</a>
             </li>
             <li class="nav-item pr-2">
               <!-- <a href="../Authentication/login.html" class="nav-link">logout</a> -->
@@ -175,19 +179,32 @@
               </div>
               <div class="form-group col-lg-4 col-sm-6">
                 <label for="province">province</label>
-                <select name="provinace" id="province" class="form-control" required>
-                  <option value="" selected disabled>province</option>
-                  <option value="mount-lebanon">mount lebanon</option>
-                  <option value="beirut">beirut</option>
-
+                <select class="form-control" id="province" required>
+                  <option value="" disabled selected>Select Province</option>
+                  <option value="Beirut">Beirut</option>
+                  <option value="South Lebanon">South Lebanon</option>
+                  <option value="North Lebanon">North Lebanon</option>
+                  <option value="Mount Lebanon">Mount Lebanon</option>
+                  <option value="Bekaa">Bekaa</option>
+                  <option value="Nabatieh">Nabatieh</option>
+                  <option value="Akkar">Akkar</option>
+                  <option value="Baabda">Baabda</option>
+                  <option value="Baalbek-Hermel">Baalbek-Hermel</option>
                 </select>
               </div>
               <div class="form-group col-lg-4 col-sm-6">
                 <label for="city">city</label>
-                <select name="city" id="city" class="form-control" required>
-                  <option value="" selected disabled>city</option>
-                  <option value="tyre">tyre</option>
-
+                <select class="form-control" id="city" required>
+                  <option value="" disabled selected>Select City</option>
+                  <option value="Beirut">Beirut</option>
+                  <option value="South Lebanon">South Lebanon</option>
+                  <option value="North Lebanon">North Lebanon</option>
+                  <option value="Mount Lebanon">Mount Lebanon</option>
+                  <option value="Bekaa">Bekaa</option>
+                  <option value="Nabatieh">Nabatieh</option>
+                  <option value="Akkar">Akkar</option>
+                  <option value="Baabda">Baabda</option>
+                  <option value="Baalbek-Hermel">Baalbek-Hermel</option>
                 </select>
               </div>
 
@@ -251,7 +268,7 @@
               <label for="medical-condition">Any notes worth mentioning regarding your medical record?</label>
              
             </div>
-            <textarea class="form-control" id="medical-condition" rows="3" style="resize: none;"
+            <textarea class="form-control" id="medical-condition-notes" rows="3" style="resize: none;"
              placeholder="Write your notes"></textarea>
 
 
@@ -272,8 +289,8 @@
     crossorigin="anonymous"></script>
 
     <!-- firebase connections and sending data  -->
-    <script type="text/javascript" src="../javascript/medicalinfo.js"></script>
-    <script type="module" src="../javascript/test.js"></script>
+    <script type="module" src="./js/medicalInfo.js"></script>
+    <!-- <script type="module" src="./js/medicalInfo.js"></script> -->
     <script>
       document.getElementById("logout-btn").addEventListener("click", () => {
         const confirmation = confirm("Are you sure you want to logout?");
@@ -286,6 +303,5 @@
       });
     </script>
    
-    <!-- <script>console.log(name)</script> -->
   </body>
 </html>

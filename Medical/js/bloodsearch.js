@@ -58,6 +58,19 @@ document.getElementById("send-urgent").addEventListener("click", function () {
       alert("Error getting donor emails");
     });
 });
+document.getElementById("sign-out-btn").addEventListener("click", () => {
+ 
+  
+  const confirmation = confirm("Are you sure you want to logout?");
+
+  // If user clicks "OK", redirect to index.html
+  if (confirmation) {
+    localStorage.clear();
+    window.location.href = "../index.html";
+    
+  }
+
+});
 
 async function getAlldonorEmails() {
   let donorEmails = [];

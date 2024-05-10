@@ -83,7 +83,10 @@ async function getSpecificDocument() {
     document.getElementById("weight-unit").value = data.data().weightUnit || "";
     document.getElementById("country").value = data.data().country || "";
     document.getElementById("province").value = data.data().province || "";
+    console.log(data.data().province,data.data().city)
     document.getElementById("city").value = data.data().city || "";
+    document.getElementById("medical-condition-note").value = data.data().medicalConditionNotes
+    || "";
     let gender = data.data().gender;
     if (gender == "male") {
       document.getElementById("male").checked = true;

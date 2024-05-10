@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    <title>Reguests and history</title>
+    <link rel="shortcut icon" href="../imgs/logo.png" />
+
+    <script
+    type="module"
+    src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+  ></script>
+  <script
+    nomodule
+    src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+  ></script>
+  </head>
+  <body>
+    <div class="container">
+      <!-- left side and navigation start here -->
+      <div class="navigation">
+        <ul>
+          <!-- brand section start-->
+          <li>
+            <a href="#">
+              <span class="icon"
+                ><img src="../imgs/nav-logo.png" width="60px" alt=""
+              /></span>
+              <span class="title">Bleed-to save</span>
+            </a>
+          </li>
+          <!-- brand section end  -->
+          <li class="">
+            <a href="index.html">
+              <span class="icon">
+                <ion-icon name="home"></ion-icon>
+              </span>
+              <span class="title">Dashboard</span>
+            </a>
+          </li>
+          <li class="hovered">
+            <a href="requests.html" style="display: flex; align-items: center">
+              <span class="icon">
+                <ion-icon name="bag-add"></ion-icon>
+              </span>
+              <span class="title">Reguests and history</span>
+            </a>
+          </li>
+          <li>
+            <a href="bloodbankmangmement.html">
+              <span class="icon">
+                <ion-icon name="desktop"></ion-icon>
+              </span>
+              <span class="title">bloodbankmangmement</span>
+            </a>
+          </li>
+          <li>
+            <a href="bloodsearch.html">
+              <span class="icon">
+                <ion-icon name="search-circle"></ion-icon>
+              </span>
+              <span class="title">search for Blood </span>
+            </a>
+          </li>
+          <li>
+            <a href="settings.html">
+              <span class="icon"> <ion-icon name="settings"></ion-icon></span>
+              <span class="title">Settings</span>
+            </a>
+          </li>
+
+          <li id="sign-out-btn">
+            <a>
+              <span class="icon"><ion-icon name="log-out"></ion-icon></span>
+              <span class="title">Sign Out</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <!-- left side and navigation end here -->
+
+      <!-- main section start here -->
+      <div id="main-content">
+        <div id="main" class="main">
+          <!-- topbar start -->
+          <div class="topbar">
+            <!-- menu -->
+            <div class="toggle">
+              <ion-icon name="menu"></ion-icon>
+            </div>
+
+            <div class="">
+              <img src="../imgs/logo.png" style="width: 60px; height: 40px;position: relative;right: 40px;" alt="user-img" />
+
+            </div>
+          </div>
+          <!-- topbar end  -->
+
+          <!--overview card section start -->
+          <!-- 
+
+
+           -->
+
+          <div
+            class="details"
+            style="width: 100%; display: flex; justify-content: center"
+          >
+            <div class="recentorders" style="width: 100%">
+              <div class="cardheader">
+                <h2>Recent Requests</h2>
+                <!-- <a href="#" class="btn">filter</a> -->
+                <select class="btn" id="spinner">
+                  <option value="all">All</option>
+                  <option value="pending">pending</option>
+                  <option value="accepted">accepted</option>
+                  <option value="rejected">rejected</option>
+                </select>
+              </div>
+              <table>
+                <thead>
+                  <tr>
+                    <td>FullName</td>
+                    <td>pints</td>
+                    <td>bloodType</td>
+                    <td>City</td>
+                    <td>Status</td>
+                    <td>social</td>
+                    <td>More Info</td>
+                    <td>action</td>
+                  </tr>
+                </thead>
+                <tbody id="tablebody"></tbody>
+              </table>
+            </div>
+          </div>
+          <!-- order details list end  -->
+        </div>
+      </div>
+
+      <!-- main section end here -->
+    </div>
+    <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.8.0/chart.min.js"></script>
+    <script type="module" src="./js/request.js"></script>
+  
+  </body>
+</html>

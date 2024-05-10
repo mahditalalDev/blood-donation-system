@@ -112,13 +112,17 @@
                   </div>
                   <div class="form-group col-5" id="province-group">
                     <label for="province">Province</label>
-                    <select class="form-control" id="province" disabled>
-                      <option value="" selected disabled>Select Province</option>
-                      <option value="Beirut">Beirut</option>
-                      <option value="North Governorate">North Governorate</option>
-                      <option value="South Governorate">South Governorate</option>
-                      <option value="Beqaa Governorate">Beqaa Governorate</option>
-                      <option value="Baalbek-Hermel Governorate">Baalbek-Hermel Governorate</option>
+                    <select class="form-control" id="province">
+                      <option value="" disabled selected>Select Province</option>
+                  <option value="Beirut">Beirut</option>
+                  <option value="South Lebanon">South Lebanon</option>
+                  <option value="North Lebanon">North Lebanon</option>
+                  <option value="Mount Lebanon">Mount Lebanon</option>
+                  <option value="Bekaa">Bekaa</option>
+                  <option value="Nabatieh">Nabatieh</option>
+                  <option value="Akkar">Akkar</option>
+                  <option value="Baabda">Baabda</option>
+                  <option value="Baalbek-Hermel">Baalbek-Hermel</option>
                     </select>
                   </div>
                   <div class="form-group col-5" id="city-group">
@@ -275,91 +279,6 @@
     </div>
   </div>
 
-  <!-- <script type="module">
-
-    // Import the functions you need from the SDKs you need
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js";
-    import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-analytics.js";
-    import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-auth.js";
-    import {
-      getFirestore,
-      doc,
-      getDoc,
-      getDocs, //get all documents inside one collection
-      setDoc,
-      collection,
-      addDoc,
-      updateDoc,
-      deleteDoc,
-      deleteField,
-      query,
-      where,
-      orderBy,
-    } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore.js";
-    // TODO: Add SDKs for Firebase products that you want to use
-    // https://firebase.google.com/docs/web/setup#available-libraries
-
-    // Your web app's Firebase configuration
-    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-    const firebaseConfig = {
-      apiKey: "AIzaSyA8nOIlWxr5sazq5PS9Ryax3xcB8vfVSjQ",
-      authDomain: "blood-donation-system-0.firebaseapp.com",
-      projectId: "blood-donation-system-0",
-      storageBucket: "blood-donation-system-0.appspot.com",
-      messagingSenderId: "218504344556",
-      appId: "1:218504344556:web:7d1e15ef0e0ed89bea46c9",
-      measurementId: "G-YP5BN4CEN5"
-    };
-
-    // Initialize Firebase
-    const app = initializeApp(firebaseConfig);
-    const analytics = getAnalytics(app);
-    const auth = getAuth();
-    console.log(app);
-
-
-    document.getElementById("medical_registration_form").addEventListener("submit", function () {
-      event.preventDefault(); // prevent the form from submitting to the server
-      var email = document.getElementById("email").value;
-      var password = document.getElementById("password").value;
-      var name_medical_center = document.getElementById("name_medical_center").value;
-      var province = document.getElementById("province").value;
-      var country = document.getElementById("country").value;
-      var phone_number = document.getElementById("phone_number").value;
-      // var lastName = document.getElementById("last_name").value;
-
-      //For new registration
-      createUserWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
-          // Signed in 
-          const user = userCredential.user;
-          console.log(user);
-          alert("Registration successfully!!");
-
-          // Save additional user info in Firestore
-          const db = getFirestore();
-          setDoc(doc(db, "users", user.uid), {
-            name_medical_center: name_medical_center,
-            email: email,
-            phone_number: phone_number,
-            country: country,
-            province: province
-            
-          }).then(() => {
-            console.log("User information saved!");
-          }).catch((error) => {
-            console.error("Error writing user information: ", error);
-          });
-        })
-        .catch((error) => {
-          const errorCode = error.code;
-          const errorMessage = error.message;
-          // ..
-          console.log(errorMessage);
-          alert(error);
-        });
-    });
-  </script> -->
 
   <!-- <script type="module" src="./js/auth.js"></script> -->
   <script type="module" src="./js/medicalRegister.js"></script>

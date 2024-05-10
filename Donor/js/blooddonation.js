@@ -43,11 +43,13 @@ const provinceInput = document.getElementById("province");
 const cityInput = document.getElementById("city");
 const registerButton = document.getElementById("registerBtn");
 const medicalCenterData = [];
+const medicalCentersSpinner = document.getElementById("medical-centers");
+const infobutton = document.getElementById("info-button");
 getMedicalCentersName();
 async function getMedicalCentersName() {
   const q = query(
     collection(db, "users"),
-    where("userType", "==", "medical",)
+    where("userType", "==", "medical")
     // where("bloodType", "==", `O+`)
   );
 
@@ -55,35 +57,47 @@ async function getMedicalCentersName() {
     .then((querySnapshot) => {
       querySnapshot.forEach((doc) => {
         const data = doc.data();
-        medicalCenterData.push({email:doc.id,centerName:doc.data().centerName})
-        // const bloodValue = doc.data()[bloodType];
-        // fillTable(doc.id, bloodValue, bloodType);
-
-        // Use the data as needed
+        medicalCenterData.push({
+          email: doc.id,
+          centerName: doc.data().centerName,
+        });
       });
-     fillSpinnerCentersName(medicalCenterData) 
+      fillSpinnerCentersName(medicalCenterData);
     })
     .catch((error) => {
       console.error("Error getting documents:", error);
     });
 }
+medicalCentersSpinner.addEventListener("change", () => {
+  // console.log(document.getElementById("medical-centers").value)
 
- function fillSpinnerCentersName(data){
-    let centerName= document.getElementById("medical-centers")
-    for(let center of data){
-        // console.log(center.email)
-        let content=`<option value="${center.email}">${center.centerName}</option>
-        `
-        centerName.innerHTML+=content
-    }
-    } 
+  infobutton.disabled = false;
+});
+infobutton.addEventListener("click", () => {
+  let email = medicalCentersSpinner.value;
+  // Construct the URL with the email query parameter
+  let url = "medicaldata.html?email=" + encodeURIComponent(email);
+
+  // Open the new page in a new browser tab/window
+  window.open(url, "_blank");
+});
+
+function fillSpinnerCentersName(data) {
+  let centerName = document.getElementById("medical-centers");
+  for (let center of data) {
+    // console.log(center.email)
+    let content = `<option value="${center.email}">${center.centerName}</option>
+        `;
+    centerName.innerHTML += content;
+  }
+}
 // Add event listener to the submit button
 registerButton.addEventListener("click", function (event) {
   // Prevent the default form submission behavior
   event.preventDefault();
-  let centerName= document.getElementById("medical-centers")
-let centerEmail=centerName.value;
-// console.log(center)
+  let centerName = document.getElementById("medical-centers");
+  let centerEmail = centerName.value;
+  // console.log(center)
 
   // Retrieve the values from the input fields
   const country = countryInput.value;
@@ -101,9 +115,12 @@ let centerEmail=centerName.value;
 
   // Log the values to the console
   console.log("Country:", country);
+  // console.log("CenterName", centerName);
+  console.log("CenterEmail:", centerEmail);
   console.log("Province:", province);
   console.log("City:", city);
   console.log("Blood Quantity:", bloodQuantity);
+  
   addDocWithSpecificId(
     localStorage.getItem("email"),
     country,
@@ -122,6 +139,9 @@ async function addDocWithSpecificId(
   bloodQuantity,
   centerEmaill
 ) {
+  console.log(city,country,province)
+  
+
   let ref = doc(db, "DonationRequests", email);
 
   const docref = await setDoc(ref, {
@@ -132,15 +152,15 @@ async function addDocWithSpecificId(
     bloodQuantity: bloodQuantity,
     status: "pending",
     deleted: "false",
-    centerEmail:centerEmaill
+    centerEmail: centerEmaill,
   })
     .then(() => {
       console.log("added done");
-      alert("thanks for donation")
-      window.location="./donorhomepage.html"
+      alert("thanks for donation");
+      window.location = "./donorhomepage.html";
     })
     .catch((err) => {
-      alert(err)
+      alert(err);
     });
 }
 //-------------

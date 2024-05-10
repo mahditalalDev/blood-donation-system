@@ -49,9 +49,7 @@ if (medicalRegisterBtn) {
     const medicalCountry = document.getElementById("country").value;
     // const medicalProvince = document.getElementById("province").value;
     const city = document.getElementById("cities").value;
-    // const medicalAddress = document.getElementById("address").value;
-    // const medicalLongitude = document.getElementById("longitude").value;
-    // const medicalLatitude = document.getElementById("latitude").value;
+    const province=document.getElementById("province").value;
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
     const mondayOpen = document.getElementById("monday-open").value;
@@ -75,7 +73,6 @@ if (medicalRegisterBtn) {
       medicalNameMedicalCenter,
       medicalCountry,
       medicalPhoneNumber,
-
       mondayOpen,
       mondayClose,
       tuesdayOpen,
@@ -90,7 +87,8 @@ if (medicalRegisterBtn) {
       saturdayClose,
       sundayOpen,
       sundayClose,
-      city
+      city,
+      province
     );
   });
 }
@@ -100,7 +98,6 @@ function createNewUser(
   medicalNameMedicalCenter,
   medicalCountry,
   medicalPhoneNumber,
-
   mondayOpen,
   mondayClose,
   tuesdayOpen,
@@ -115,7 +112,8 @@ function createNewUser(
   saturdayClose,
   sundayOpen,
   sundayClose,
-  city
+  city,
+  province
 ) {
   createUserWithEmailAndPassword(auth, email, password).then((credenitails) => {
     console.log("user added Auth ");
@@ -124,8 +122,7 @@ function createNewUser(
       email,
       medicalNameMedicalCenter,
       medicalPhoneNumber,
-      medicalCountry,
-      
+      medicalCountry,      
       mondayOpen,
       mondayClose,
       tuesdayOpen,
@@ -140,7 +137,8 @@ function createNewUser(
       saturdayClose,
       sundayOpen,
       sundayClose,
-      city
+      city,
+      province
     ).catch((err) => {
       console.log(err);
     });
@@ -178,7 +176,8 @@ function createNewUser(
     saturdayClose,
     sundayOpen,
     sundayClose,
-    city
+    city,
+    province
   ) {
     let ref = doc(db, "MedicalCenters", email);
 
@@ -186,7 +185,6 @@ function createNewUser(
       medicalNameMedicalCenter: medicalNameMedicalCenter || "",
       medicalCountry: medicalCountry || "",
       medicalPhoneNumber: medicalPhoneNumber || "",
-    //   medicalProvince: medicalProvince || "",
       mondayOpen: mondayOpen || "",
       mondayClose: mondayClose || "",
       tuesdayOpen: tuesdayOpen || "",
@@ -202,15 +200,16 @@ function createNewUser(
       sundayOpen: sundayOpen || "",
       sundayClose: sundayClose || "",
       city: city || "",
+      province: province || "",
     })
       .then(() => {
-        bloodBankInit(email, city);
+        bloodBankInit(email, city,province);
       })
       .catch((err) => {
         console.log(err);
       });
   }
-  async function bloodBankInit(email, city) {
+  async function bloodBankInit(email, city,province) {
     let ref = doc(db, "BloodBanks", email);
 
     await setDoc(ref, {
@@ -223,10 +222,11 @@ function createNewUser(
       "O+": 0,
       "O-": 0,
       city: city,
+      province:province
     }).then(() => {
       localStorage.setItem("centerName", medicalNameMedicalCenter);
       localStorage.setItem("email", email);
-      window.location.href = "../testing/index.html";
+      window.location.href = "../Medical/index.html";
 
       console.log("blood bank init");
     });

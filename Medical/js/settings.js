@@ -55,8 +55,7 @@ async function getSpecificDocument() {
     centerNameInput.value = centerName;
     let phoneNumber = data.medicalPhoneNumber;
     phoneNumberInput.value = phoneNumber;
-    // let country=data.medicalCountry;
-    // let province=data.medicalProvince;
+    let province=data.province
     let mondayOpen = data.mondayOpen;
     let mondayClose = data.mondayClose;
     let tuesdayOpen = data.tuesdayOpen;
@@ -85,6 +84,9 @@ async function getSpecificDocument() {
     document.getElementById("saturday-close").value = saturdayClose;
     document.getElementById("sunday-open").value = sundayOpen;
     document.getElementById("sunday-close").value = sundayClose;
+    document.getElementById("selected-province").value=province;
+    document.getElementById("country").value="LB";
+    // document.getElementById("country").style.color="black";
     console.log(docSnap.data());
   } else {
     console.log("no data");
@@ -105,35 +107,21 @@ function toggleOpeningHours(day) {
   }
   return;
 }
+document.getElementById("sign-out-btn").addEventListener("click", () => {
+        
+        
+  const confirmation = confirm("Are you sure you want to logout?");
 
+  // If user clicks "OK", redirect to index.html
+  if (confirmation) {
+    localStorage.clear();
+    window.location.href = "../index.html";
+    
+  }
+
+});
 // Function to log the opening hours data
-function logOpeningHoursData() {
-  const days = [
-    "monday",
-    "tuesday",
-    "wednesday",
-    "thursday",
-    "friday",
-    "saturday",
-    "sunday",
-  ];
-  dataHours = {};
 
-  days.forEach((day) => {
-    const switchInput = document.getElementById(`${day}-switch`);
-    if (switchInput.checked) {
-      const openInput = document.getElementById(`${day}-open`);
-      const closeInput = document.getElementById(`${day}-close`);
-
-      data[day] = {
-        isOpen: true,
-        openingTime: openInput.value,
-        closingTime: closeInput.value,
-      };
-    }
-  });
-  //   updateValuesToFirebase(data)
-}
 async function updateValues() {
   let ref = doc(db, "MedicalCenters", localStorage.getItem("email"));
   await updateDoc(ref, {
@@ -151,6 +139,8 @@ async function updateValues() {
     saturdayClose: document.getElementById("saturday-close").value,
     sundayOpen: document.getElementById("sunday-open").value,
     sundayClose: document.getElementById("sunday-close").value,
+    province:document.getElementById("selected-province").value,
+    country:document.getElementById("country").value
   })
     .then(() => {
       console.log("added done");
@@ -179,7 +169,7 @@ days.forEach((day) => {
 });
 
 // Add event listener to the button to log opening hours data
-const submitButton = document.getElementById("medical_register_btn");
+const submitButton = document.getElementById("medical_update");
 submitButton.addEventListener("click", (event) => {
   event.preventDefault();
   updateValues()

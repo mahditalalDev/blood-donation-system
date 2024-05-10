@@ -56,6 +56,19 @@ async function countUserDocuments() {
     console.error("Error getting documents: ", error);
   }
 }
+document.getElementById("sign-out-btn").addEventListener("click", () => {
+ 
+  
+  const confirmation = confirm("Are you sure you want to logout?");
+
+  // If user clicks "OK", redirect to index.html
+  if (confirmation) {
+    localStorage.clear();
+    window.location.href = "../index.html";
+    
+  }
+
+});
 
 countDonationRequestDocuments();
 countDonationDocuments();
@@ -221,7 +234,7 @@ function updateChartTwo(bloodsValue) {
   const myChart2 = new Chart(ctx2, {
     type: "bar",
     data: {
-      labels: ["A+", "A-", "B+", "B-", "O+", "O-", "AB+", "AB-"],
+      labels: ["A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"],
       datasets: [
         {
           label: "Bloods Bank",

@@ -63,6 +63,7 @@ function loginUser(email, password) {
       // Redirect or perform further actions here
     })
     .catch((error) => {
+      alert(error)
       // Login failed, handle error
       console.error("Login failed:", error);
     });
@@ -79,7 +80,7 @@ async function loginWindow(email) {
       localStorage.setItem("email", email);
       localStorage.setItem("centerName", centerName);
       localStorage.setItem("userType", "medical");
-      window.location.href = "../testing/index.html";
+      window.location.href = "../Medical/index.html";
     } else if (userType == "donor") {
         localStorage.clear()
       localStorage.setItem("email", email);

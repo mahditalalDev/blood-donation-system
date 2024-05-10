@@ -47,7 +47,19 @@ let datareguest = [];
 document.getElementById("tablebody").innerHTML = "";
 
 getRequests(); // Call getRequests function to populate the table initially
+document.getElementById("sign-out-btn").addEventListener("click", () => {
+  
+  
+  const confirmation = confirm("Are you sure you want to logout?");
 
+  // If user clicks "OK", redirect to index.html
+  if (confirmation) {
+    localStorage.clear();
+    window.location.href = "../index.html";
+    
+  }
+
+});
 async function getRequests() {
   let test = [];
   let center=localStorage.getItem("centerName")
@@ -153,9 +165,10 @@ function filltable(array) {
   document.querySelectorAll(".more-btn").forEach((button) => {
     button.addEventListener("click", function () {
       const donorEmail = this.getAttribute("data-donor-email");
-      const medicalEmail = this.getAttribute("data-medical-email");
+      // const medicalEmail = this.getAttribute("data-medical-email");
       console.log("Donor Email:", donorEmail);
-      console.log("Medical Email:", medicalEmail);
+      // console.log("Medical Email:", medicalEmail);
+      window. open(`../qrreader.html?email=${donorEmail}`, '_blank');
     });
   });
 
@@ -173,7 +186,6 @@ function filltable(array) {
   document.querySelectorAll(".reject-btn").forEach((button) => {
     button.addEventListener("click", function () {
       const donorEmail = this.getAttribute("data-donor-email");
-      const medicalEmail = this.getAttribute("data-medical-email");
       updateSpecificDocument(donorEmail, "rejected");
     });
   });

@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+      crossorigin="anonymous"
+    />
+    <style>
+      body {
+        background-image: linear-gradient(#fceeef, #ca9093, white);
+      }
+      label {
+        font-size: 20px;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        font-weight: 500;
+      }
+      input{
+        background-color: white;
+        color: rgb(92, 88, 88);
+        font-size: 18px;
+      }
+    </style>
+  </head>
+  <body
+    style="
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    "
+  >
+    <h1 style="color: red">Medical Center Info</h1>
+    <hr />
+    <div
+      class="container p-2"
+      style="background-color: #f8f5f5; border-radius: 10px"
+    >
+      <div class="form-group" style="">
+        <label for="center-name">center Name :</label>
+        <input
+          id="center-name"
+          style="
+            border-radius: 5px;
+            background-color: #f8f4f5;
+            padding: 2px;
+            border: none;
+          "
+          type="text"
+          readonly
+        />
+        <label for="phone-number">Phone Number :</label>
+        <input
+          id="phone-number"
+          style="
+            border-radius: 5px;
+            background-color: #f8f4f5;
+            padding: 2px;
+            border: none;
+          "
+          type="text"
+          readonly
+        />
+      </div>
+      <div class="form-group" style="display: flex; gap: 10px">
+        <label for="country">country</label>
+        <input
+          id="country"
+          style="
+            border-radius: 5px;
+            background-color: #f8f4f5;
+            padding: 2px;
+            border: none;
+          "
+          type="text"
+          readonly
+        />
+
+        <label for="province">province</label>
+        <input
+          id="province"
+          style="
+            border-radius: 5px;
+            background-color: #f8f4f5;
+            padding: 2px;
+            border: none;
+          "
+          type="text"
+          readonly
+        />
+
+        <label for="city">city</label>
+        <input
+          id="city"
+          style="
+            border-radius: 5px;
+            background-color: #f8f4f5;
+            padding: 2px;
+            border: none;
+          "
+          type="text"
+          readonly
+        />
+      </div>
+      <hr />
+      <div class="form-group">
+        <table class="text-center mx-auto">
+            <tr>
+                <th style="width: 20%;">Day</th>
+                <th style="width: 10%;"></th>
+                <th style="width: 70%; text-align: center;">Opening Hours</th>
+            </tr>
+          
+            <tr style="border-bottom: 1px solid black;width: 20%;">
+            
+            
+            <td>
+                <label for="monday">Monday</label>
+            </td>
+            <td style="text-align: center;">
+                <input type="checkbox" id="monday-switch" checked>
+            </td>
+            <td style="text-align: center ;">
+                <input type="time" id="monday-open" required style="width: 40%;" > &nbsp;&nbsp;to&nbsp;&nbsp; <input type="time"
+                    id="monday-close" required>
+            </td>
+            </tr>
+            <tr style="border-bottom: 1px solid brown;width: 20%;">
+            
+            
+            <td>
+                <label for="tuesday">Tuesday</label>
+            </td>
+            <td style="text-align: center;">
+                <input type="checkbox" id="tuesday-switch" checked>
+            </td>
+            <td style="text-align: center ;">
+                <input type="time" id="tuesday-open" required style="width: 40%;" > &nbsp;&nbsp;to&nbsp;&nbsp; <input type="time"
+                    id="tuesday-close" required>
+            </td>
+            </tr>
+            <tr style="border-bottom: 1px solid black;width: 20%;">
+            
+            
+            <td>
+                <label for="wednesday">Wednesday</label>
+            </td>
+            <td style="text-align: center;">
+                <input type="checkbox" id="wednesday-switch" checked>
+            </td>
+            <td style="text-align: center ;">
+                <input type="time" id="wednesday-open" required style="width: 40%;" > &nbsp;&nbsp;to&nbsp;&nbsp; <input type="time"
+                    id="wednesday-close" required>
+            </td>
+            </tr>
+            <tr style="border-bottom: 1px solid black;width: 20%;">
+            
+            
+            <td>
+                <label for="thursday">Thursday</label>
+            </td>
+            <td style="text-align: center;">
+                <input type="checkbox" id="thursday-switch" checked>
+            </td>
+            <td style="text-align: center ;">
+                <input type="time" id="thursday-open" required style="width: 40%;" > &nbsp;&nbsp;to&nbsp;&nbsp; <input type="time"
+                    id="thursday-close" required>
+            </td>
+            </tr>
+            <tr style="border-bottom: 1px solid black;width: 20%;">
+            
+            
+            <td>
+                <label for="friday">Friday</label>
+            </td>
+            <td style="text-align: center;">
+                <input type="checkbox" id="friday-switch" checked>
+            </td>
+            <td style="text-align: center ;">
+                <input type="time" id="friday-open" required style="width: 40%;" > &nbsp;&nbsp;to&nbsp;&nbsp; <input type="time"
+                    id="friday-close" required>
+            </td>
+            </tr>
+            <tr style="border-bottom: 1px solid black;width: 20%;">
+            
+            
+            <td>
+                <label for="saturday">Saturday</label>
+            </td>
+            <td style="text-align: center;">
+                <input type="checkbox" id="saturday-switch" checked>
+            </td>
+            <td style="text-align: center ;">
+                <input type="time" id="saturday-open" required style="width: 40%;" > &nbsp;&nbsp;to&nbsp;&nbsp; <input type="time"
+                    id="saturday-close" required>
+            </td>
+            </tr>
+            <tr style="border-bottom: 1px solid black;width: 20%;">
+            <td>
+                <label for="sunday">Sunday</label>
+            </td>
+            <td style="text-align: center;">
+                <input type="checkbox" id="sunday-switch" checked>
+            </td>
+            <td style="text-align: center ;">
+                <input type="time" id="sunday-open" required style="width: 40%;" > &nbsp;&nbsp;to&nbsp;&nbsp; <input type="time"
+                    id="sunday-close" required>
+            </td>
+            </tr>
+            <!-- Add more rows for other days -->
+        </table>
+    </div>
+    </div>
+    <script type="module" src="./js/medicaldata.js"></script>
+  </body>
+</html>

@@ -58,6 +58,15 @@ function handleTattooChange() {
 let  tattooValue = tattooYes.checked ? "yes" : tattooNo.checked ? "no" : "";
   return tattooValue;
 }
+function showInfoBox() {
+  var infoBox = document.getElementById("info-box");
+  infoBox.style.display = "block";
+}
+
+function hideInfoBox() {
+  var infoBox = document.getElementById("info-box");
+  infoBox.style.display = "none";
+}
 
 // Attach event listeners to radio buttons
 tattooYes.addEventListener("change", handleTattooChange);
@@ -76,7 +85,7 @@ const medicalConditionInput = document.querySelector(
 );
 
 // const tattooInput = document.querySelector('input[name="tattoo"]:checked');
-const medicalConditionNotesInput = document.getElementById("medical-condition");
+const medicalConditionNotesInput = document.getElementById("medical-condition-notes");
 document.getElementById("submit-btn").addEventListener("click", () => {
  
 
@@ -109,10 +118,12 @@ async function updateSpecificDocument() {
     medicalConditionNotes: medicalConditionNotesInput.value,
   })
     .then(() => {
+      alert("your Medical Information is updated")
       console.log("added done");
     })
     .catch((err) => {
       console.log(err);
+      alert(err)
     });
 }
 //data.firstName;
@@ -137,6 +148,7 @@ async function getSpecificDocument() {
     document.getElementById("country").value = data.data().country || "";
     document.getElementById("province").value = data.data().province || "";
     document.getElementById("city").value = data.data().city || "";
+    document.getElementById("medical-condition-notes").value = data.data().medicalConditionNotes || "";
     let gender=data.data().gender
     if(gender=="male"){
       document.getElementById("male").checked=true

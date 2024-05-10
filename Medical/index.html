@@ -83,10 +83,18 @@
             <div class="toggle">
               <ion-icon name="menu"></ion-icon>
             </div>
-            
-            <div class="">
-              <img src="../imgs/logo.png" style="width: 60px; height: 40px;position: relative;right: 40px;" alt="user-img" />
 
+            <div class="">
+              <img
+                src="../imgs/logo.png"
+                style="
+                  width: 60px;
+                  height: 40px;
+                  position: relative;
+                  right: 40px;
+                "
+                alt="user-img"
+              />
             </div>
           </div>
           <!-- topbar end  -->
@@ -140,18 +148,13 @@
               <canvas id="myChart2"></canvas>
             </div>
           </div>
-          <!-- chat area ends here -->
-
-          <!-- order details list start  -->
-
-          <!-- order details list end  -->
         </div>
       </div>
 
       <!-- main section end here -->
     </div>
     <script type="module" src="./js/main.js"></script>
-    <script type="module" src="testing.js"></script>
+    <script type="module" src="./js/index.js"></script>
     <!-- custom script  -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.8.0/chart.min.js"></script>
     <script
@@ -162,39 +165,5 @@
       nomodule
       src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
     ></script>
-
-    <!-- <script>
-      // Function to load content into main content area
-      function loadContent(page) {
-        // Remove 'active' class from all buttons
-        // const buttons = document.querySelectorAll('.sidenav button');
-        // buttons.forEach(btn => btn.classList.remove('active'));
-        
-        // // Add 'active' class to the clicked button
-        // button.classList.add('active');
-        
-        // Fetch the content of the selected page
-        fetch(page)
-          .then(response => response.text())
-          .then(data => {
-            // Insert the content into the main content area
-            document.getElementById('main-content').innerHTML = data;
-          })
-          .catch(error => console.error('Error loading content:', error));
-      }
-      
-      // Load 'home.html' by default when the dashboard page loads
-      window.onload = function() {
-        loadContent('dashboardfragment.html');
-      };
-    </script> -->
-    <script>
-      document.getElementById("sign-out-btn").addEventListener("click", () => {
-        localStorage.clear();
-
-        // Redirect the user to another page
-        window.location.href = "../index.html";
-      });
-    </script>
   </body>
 </html>

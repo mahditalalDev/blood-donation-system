@@ -17,6 +17,7 @@ const firebaseConfig = {
   measurementId: "G-LGY93EHL4E",
 };
 
+
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const googleProvider = new GoogleAuthProvider();
@@ -55,6 +56,17 @@ buttons.forEach(button => {
         const bloodType = button.id.replace('btn-', '');
         updateValue(bloodType,button);
     });
+});
+document.getElementById("sign-out-btn").addEventListener("click", () => {
+  const confirmation = confirm("Are you sure you want to logout?");
+
+  // If user clicks "OK", redirect to index.html
+  if (confirmation) {
+    localStorage.clear();
+    window.location.href = "../index.html";
+    
+  }
+
 });
 
 // Function to update the value in Firestore
