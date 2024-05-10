@@ -448,3 +448,153 @@ input[type="radio"]:checked {
 .white {
   color: #ffffff;
 }
+
+
+@media (max-width: 1200px) {
+  .home .carousel-caption {
+      padding-top: 2.0rem;
+      padding-bottom: 6.0rem;
+  }
+  .slider-btn {
+      width: 9.0rem;
+      font-size: 1.0rem;
+  }
+  .card-img-current {
+      height: 30vw;
+  }
+  .card-img-complete {
+      height: 15vw;
+  }
+  .gap {
+      margin-top: 6rem;
+  }
+  .gap-bottom {
+      margin-bottom: 6rem;
+  }
+}
+
+@media (max-width: 992px) {
+  .home .carousel-caption {
+      padding-bottom: 4.0rem;
+  }
+  .slide-description {
+      margin-left: 4rem;
+      margin-right: 4rem;
+  }
+  .slider-btn {
+      width: 8rem;
+      font-size: 0.8rem;
+  }
+  #slider .carousel-item {
+      height: 500px;
+  }
+  #slider .carousel-item img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      min-height: 500px;
+  }
+  .card-img-current {
+      height: 40vw;
+  }
+  .card-img-complete {
+      height: 20vw;
+  }
+  .footer-logo {
+      width: 77.5%;
+  }
+  .fs1 {
+      font-size: 2.75rem;
+  }
+  .count {
+      font-size: 2.75rem;
+  }
+  .about-heading {
+      margin-top: 1rem;
+  }
+  .about-description {
+      margin-bottom: 3rem;
+  }
+}
+
+@media (max-width: 768px) {
+  #intro-slide {
+      padding: 10rem 0 7.5rem 0;
+  }
+  .slide-heading,
+  .about-heading {
+      font-size: 3.5rem;
+  }
+  .slide-description,
+  .about-description {
+      font-size: 1rem;
+      margin-left: 0;
+      margin-right: 0;
+  }
+  .card-img-current {
+      height: 45vw;
+  }
+  .card-img-complete {
+      height: 25vw;
+  }
+  #services {
+      transform: none;
+      padding: 2rem;
+  }
+  .gap {
+      margin-top: 5rem;
+  }
+  .gap-bottom {
+      margin-bottom: 5rem;
+  }
+  .section-heading {
+      font-size: 2.95rem;
+  }
+  .footer-logo {
+      width: 80%;
+  }
+  .fs1 {
+      font-size: 2.25rem;
+  }
+  .count {
+      font-size: 2.25rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .card-img-current {
+      height: 50vw;
+  }
+  .card-img-complete {
+      height: 50vw;
+  }
+  .gap {
+      margin-top: 5rem;
+  }
+  .gap-bottom {
+      margin-bottom: 4rem;
+  }
+  .section-heading {
+      font-size: 2.35rem;
+  }
+  .footer-logo {
+      display: none;
+  }
+  .count-left-margin {
+      margin-left: 3rem;
+  }
+  .fs1 {
+      font-size: 2.75rem;
+  }
+  .count {
+      font-size: 2.5rem;
+  }
+  .slide-btn {
+      width: 7.25rem;
+      font-size: 0.8rem;
+  }
+  html {
+      font-size: 14px;
+  }
+}
+
