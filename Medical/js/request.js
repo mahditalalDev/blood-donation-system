@@ -11,13 +11,13 @@ import {
   createUserWithEmailAndPassword,
 } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-auth.js";
 const firebaseConfig = {
-  apiKey: "AIzaSyDfrHufsSDuxH1u2DsKx_3H6pWvgdXDcQk",
-  authDomain: "blooddoanationsystem.firebaseapp.com",
-  projectId: "blooddoanationsystem",
-  storageBucket: "blooddoanationsystem.appspot.com",
-  messagingSenderId: "1062989139800",
-  appId: "1:1062989139800:web:749dc6ad37e88970b45f2d",
-  measurementId: "G-9QXN765YNB"
+  apiKey: "AIzaSyB5piM8HyYATgWqMPi2U6bwAVz94Q189Bs",
+  authDomain: "fir-basics-569a0.firebaseapp.com",
+  projectId: "fir-basics-569a0",
+  storageBucket: "fir-basics-569a0.appspot.com",
+  messagingSenderId: "971203436246",
+  appId: "1:971203436246:web:11d5aa9c6a02ee8dc6f377",
+  measurementId: "G-LGY93EHL4E",
 };
 
 // Initialize Firebase
@@ -48,21 +48,17 @@ document.getElementById("tablebody").innerHTML = "";
 
 getRequests(); // Call getRequests function to populate the table initially
 document.getElementById("sign-out-btn").addEventListener("click", () => {
-  
-  
   const confirmation = confirm("Are you sure you want to logout?");
 
   // If user clicks "OK", redirect to index.html
   if (confirmation) {
     localStorage.clear();
     window.location.href = "../index.html";
-    
   }
-
 });
 async function getRequests() {
   let test = [];
-  let center=localStorage.getItem("centerName")
+  let center = localStorage.getItem("centerName");
   const q = query(
     donationRequestCollectionRef,
     where("centerEmail", "==", localStorage.getItem("email"))
@@ -108,16 +104,16 @@ function filltable(array) {
     // Set background color based on status
     switch (status) {
       case "pending":
-        statusBackground = "background-color: blue;";
+        statusBackground = "color: black;";
         break;
       case "rejected":
-        statusBackground = "background-color: red;";
+        statusBackground = "color: black;";
         break;
       case "accepted":
-        statusBackground = "background-color: green;";
+        statusBackground = "color: black;";
         break;
       default:
-        statusBackground = ""; // Default background color
+        statusBackground = "white"; // Default background color
         break;
     }
 
@@ -134,28 +130,43 @@ function filltable(array) {
             reguestInfo.donorEmail
           }" data-medical-email="${
       donorInfo.email
-    }" style="background-color:blue;padding:10px;border-radius:5px">more</button>
+    }" style="padding:10px;border-radius:5px">more</button>
         </td>
         <td>
           <div id="done-btn" style="display:flex;justify-content:center;gap:5px">
             ${
               status === "pending"
                 ? `
-              <button class="accept-btn" data-donor-bloodType="${donorInfo.bloodType}" data-donor-bloodQuantity="${reguestInfo.data.bloodQuantity}" data-donor-email="${reguestInfo.donorEmail}" data-medical-email="${donorInfo.email}" style="background-color:green;padding:10px;border-radius:5px">accept</button>
-              <button class="reject-btn" data-donor-email="${reguestInfo.donorEmail}" data-medical-email="${donorInfo.email}" style="background-color:red;padding:10px;border-radius:5px">reject</button>
+              <button class="accept-btn" data-donor-bloodType="${donorInfo.bloodType}" data-donor-bloodQuantity="${reguestInfo.data.bloodQuantity}" data-donor-email="${reguestInfo.donorEmail}" data-medical-email="${donorInfo.email}" style="color:black;padding:10px;border-radius:5px">accept</button>
+              <button class="reject-btn" data-donor-email="${reguestInfo.donorEmail}" data-medical-email="${donorInfo.email}" style="color:black;padding:10px;border-radius:5px">reject</button>
             `
                 : ""
             }
             ${
               status === "accepted"
                 ? `
-              <span style="background-color: green; padding: 5px; border-radius: 5px;">Accepted</span>
+              <span style=" padding: 5px; border-radius: 5px;">Accepted</span>
             `
                 : ""
             }
           </div>
           <div id="return-btn"></div>
         </td>
+        <td style:"text-align:center" >
+        <div  class="reminder-btn"  data-donor-email="${
+          reguestInfo.donorEmail
+        }" >
+        <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" 
+        height="1.2em" viewBox="0 0 14 14"><path fill="#4139ac" 
+        fill-rule="evenodd" d="M11.821.098a1.62 1.62 0 0 1 2.077
+         2.076l-3.574 10.712a1.62 1.62 0 0 1-1.168 1.069a1.599 1.599 
+         0 0 1-1.52-.434l-1.918-1.909l-2.014 1.042a.5.5 0 0 1-.73-.457l.083-3.184l7.045-5.117a.625.625 0 1 
+         0-.735-1.012L2.203 8.088l-1.73-1.73a1.6 1.6 0 0 1-.437-1.447a1.62 
+         1.62 0 0 1 1.069-1.238h.003L11.82.097Z" clip-rule="evenodd"/></svg>
+         
+        </div>
+       
+         </td>
       </tr>`;
   });
 
@@ -168,7 +179,7 @@ function filltable(array) {
       // const medicalEmail = this.getAttribute("data-medical-email");
       console.log("Donor Email:", donorEmail);
       // console.log("Medical Email:", medicalEmail);
-      window. open(`../qrreader.html?email=${donorEmail}`, '_blank');
+      window.open(`../qrreader.html?email=${donorEmail}`, "_blank");
     });
   });
 
@@ -182,6 +193,21 @@ function filltable(array) {
       updateBloodBank("email", donorbloodType, donorbloodQuantity);
     });
   });
+  document.querySelectorAll(".reminder-btn").forEach((button) => {
+    button.addEventListener("click", function () {
+      const donorEmail = this.getAttribute("data-donor-email");
+      composeEmail(donorEmail);
+    });
+  });
+  function composeEmail(donorEmail) {
+    const toField = encodeURIComponent(donorEmail);
+    const subject = encodeURIComponent("Reminder Request for Blood Donation");
+    const body = encodeURIComponent("write your body here");
+    const gmailUrl = `https://mail.google.com/mail/?view=cm&to=${toField}&su=${subject}&body=${body}&fs=1&tf=1`;
+
+    // Open Gmail compose window after filling fields
+    window.open(gmailUrl, "_blank");
+  }
 
   document.querySelectorAll(".reject-btn").forEach((button) => {
     button.addEventListener("click", function () {

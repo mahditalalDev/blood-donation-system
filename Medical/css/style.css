@@ -294,10 +294,10 @@ body {
   border-bottom: none;
 }
 
-.details .recentorders table tr:hover {
+/* .details .recentorders table tr:hover {
   background-color: var(--blue);
   color: var(--white);
-}
+} */
 
 .details .recentorders table tr td {
   padding: 10px;

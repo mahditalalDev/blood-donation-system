@@ -2,34 +2,44 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.0/fireba
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-analytics.js";
 import {
   getAuth,
+  GoogleAuthProvider,
+  signInWithPopup,
+  createUserWithEmailAndPassword,
 } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-auth.js";
 const firebaseConfig = {
-  apiKey: "AIzaSyDfrHufsSDuxH1u2DsKx_3H6pWvgdXDcQk",
-  authDomain: "blooddoanationsystem.firebaseapp.com",
-  projectId: "blooddoanationsystem",
-  storageBucket: "blooddoanationsystem.appspot.com",
-  messagingSenderId: "1062989139800",
-  appId: "1:1062989139800:web:749dc6ad37e88970b45f2d",
-  measurementId: "G-9QXN765YNB"
+  apiKey: "AIzaSyB5piM8HyYATgWqMPi2U6bwAVz94Q189Bs",
+  authDomain: "fir-basics-569a0.firebaseapp.com",
+  projectId: "fir-basics-569a0",
+  storageBucket: "fir-basics-569a0.appspot.com",
+  messagingSenderId: "971203436246",
+  appId: "1:971203436246:web:11d5aa9c6a02ee8dc6f377",
+  measurementId: "G-LGY93EHL4E",
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-
+const googleProvider = new GoogleAuthProvider();
 import {
   getFirestore,
   doc,
   getDoc,
   getDocs, //get all documents inside one collection
+  setDoc,
   collection,
+  addDoc,
+  updateDoc,
+  deleteDoc,
+  deleteField,
   query,
   where,
+  orderBy,
 } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore.js";
 const db = getFirestore();
 const auth = getAuth();
 let usersCount = 0;
 let donationCount = 0;
-
+const bloodtypes = ["A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"];
+let test = [];
 // --------------------------------
 // Reference to the "user" collection
 const userCollectionRef = collection(db, "users");
@@ -98,12 +108,15 @@ function setupDashbord() {
 async function countUsersInProvince() {
   // Define an empty object to store the counts
   const provinceCounts = {
-    Beirut: 0,
+    "Beirut": 0,
     "Mount Lebanon": 0,
-    "North Governorate": 0,
-    "South Governorate": 0,
-    "Beqaa Governorate": 0,
-    "Baalbek-Hermel Governorate": 0,
+    "North Lebanon": 0,
+    "South Lebanon": 0,
+    "Bekaa": 0,
+    "Baalbek-Hermel": 0,
+    "Akkar": 0,
+    "Nabatieh": 0,
+    "Baabda": 0,
   };
 
   try {
@@ -143,10 +156,13 @@ function graph(provinceCounts) {
       labels: [
         "Beirut",
         "Mount Lebanon",
-        "North Governorate",
-        "South Governorate",
-        "Beqaa Governorate",
-        "Baalbek-Hermel Governorate",
+        "North Lebanon",
+        "South Lebanon",
+        "Bekaa",
+        "Baalbek-Hermel",
+        "Akkar",
+        "Nabatieh",
+        "Baabda",
       ],
       datasets: [
         {
@@ -154,10 +170,13 @@ function graph(provinceCounts) {
           data: [
             provinceCounts["Beirut"],
             provinceCounts["Mount Lebanon"],
-            provinceCounts["North Governorate"],
-            provinceCounts["South Governorate"],
-            provinceCounts["Beqaa Governorate"],
-            provinceCounts["Baalbek-Hermel Governorate"],
+            provinceCounts["North Lebanon"],
+            provinceCounts["South Lebanon"],
+            provinceCounts["Bekaa"],
+            provinceCounts["Baalbek-Hermel"],
+            provinceCounts["Akkar"],
+            provinceCounts["Nabatieh"],
+            provinceCounts["Baabda"],
           ],
           backgroundColor: [
             "rgba(255, 99, 132, 1)",
@@ -166,6 +185,9 @@ function graph(provinceCounts) {
             "rgba(75, 192, 192, 1)",
             "rgba(153, 102, 255, 1)",
             "rgba(255, 159, 64, 1)",
+            "rgba(255, 15, 20, 1)",
+            "rgba(255, 159, 120, 1)",
+            "rgba(255, 159, 200, 1)",
           ],
           borderColor: [
             "rgba(255, 99, 132, 1)",

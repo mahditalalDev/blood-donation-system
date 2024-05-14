@@ -120,15 +120,6 @@
           <label for="city">City</label>
           <select class="form-control" id="city" required>
             <option value="" disabled selected>Select City</option>
-            <option value="Beirut">Beirut</option>
-            <option value="South Lebanon">South Lebanon</option>
-            <option value="North Lebanon">North Lebanon</option>
-            <option value="Mount Lebanon">Mount Lebanon</option>
-            <option value="Bekaa">Bekaa</option>
-            <option value="Nabatieh">Nabatieh</option>
-            <option value="Akkar">Akkar</option>
-            <option value="Baabda">Baabda</option>
-            <option value="Baalbek-Hermel">Baalbek-Hermel</option>
           </select>
         </div>
         <div class="form-group row ">
@@ -141,24 +132,13 @@
         </div>
         <div class="form-group d-flex gap-4">
             <label for="bloodQuantity" class="text-danger" style="font-size: 1.3rem;font-weight: 300;" >Quantity of Blood Units:</label>
-            <div class="form-check">
-              <input class="form-check-input" type="radio" name="bloodQuantity" id="oneUnit" value="1">
-              <label class="form-check-label" for="oneUnit">
-                1 Unit
-              </label>
-            </div>
-            <div class="form-check">
-              <input class="form-check-input" type="radio" name="bloodQuantity" id="twoUnits" value="2">
-              <label class="form-check-label" for="twoUnits">
-                2 Units
-              </label>
-            </div>
-            <div class="form-check">
-              <input class="form-check-input" type="radio" name="bloodQuantity" id="threeUnits" value="3">
-              <label class="form-check-label" for="threeUnits">
-                3 Units
-              </label>
-            </div>
+            <select class="form-control col-5 mr-1 " id="blood-units" required>
+              <option value="" disabled selected>blood Units</option>
+              <option value="">1</option>
+              <option value="" >2</option>
+              <option value="">3</option>
+              
+            </select>
             <!-- Add more options as needed -->
           </div>      
           </form>
@@ -176,6 +156,8 @@
 </div>
 
 </div>
+
+
     
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js " integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj " crossorigin="anonymous "></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js " integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN " crossorigin="anonymous "></script>

@@ -8,13 +8,13 @@ import {
   createUserWithEmailAndPassword,
 } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-auth.js";
 const firebaseConfig = {
-  apiKey: "AIzaSyDfrHufsSDuxH1u2DsKx_3H6pWvgdXDcQk",
-  authDomain: "blooddoanationsystem.firebaseapp.com",
-  projectId: "blooddoanationsystem",
-  storageBucket: "blooddoanationsystem.appspot.com",
-  messagingSenderId: "1062989139800",
-  appId: "1:1062989139800:web:749dc6ad37e88970b45f2d",
-  measurementId: "G-9QXN765YNB"
+  apiKey: "AIzaSyB5piM8HyYATgWqMPi2U6bwAVz94Q189Bs",
+  authDomain: "fir-basics-569a0.firebaseapp.com",
+  projectId: "fir-basics-569a0",
+  storageBucket: "fir-basics-569a0.appspot.com",
+  messagingSenderId: "971203436246",
+  appId: "1:971203436246:web:11d5aa9c6a02ee8dc6f377",
+  measurementId: "G-LGY93EHL4E",
 };
 
 // Initialize Firebase

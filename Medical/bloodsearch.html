@@ -128,60 +128,21 @@
               </select>
         </div>
 
-            <div>
-              <label
-                for="blood-type"
-                style="color: brown; font-weight: 900; font-size: 20px"
-                >Blood Type</label
-              ><br />
-              <div style="display: flex; gap: 10px">
-                <label for="O+" class="radio-input mr-3"
-                  >O+
-                  <input
-                    style="font-weight: 700; font-size: small"
-                    type="radio"
-                    id="O+"
-                    name="blood-type"
-                    value="O+"
-                  />
-                  <span class="checkmark"></span>
-                </label>
-                <label for="O-" class="radio-input mr-3"
-                  >O-
-                  <input type="radio" id="O-" name="blood-type" value="O-" />
-                  <span class="checkmark"></span>
-                </label>
-                <label for="A+" class="radio-input mr-3"
-                  >A+
-                  <input type="radio" id="A+" name="blood-type" value="A+" />
-                  <span class="checkmark"></span>
-                </label>
-                <label for="A-" class="radio-input mr-3"
-                  >A-
-                  <input type="radio" id="A-" name="blood-type" value="A-" />
-                  <span class="checkmark"></span>
-                </label>
-                <label for="B+" class="radio-input mr-3"
-                  >B+
-                  <input type="radio" id="B+" name="blood-type" value="B+" />
-                  <span class="checkmark"></span>
-                </label>
-                <label for="B-" class="radio-input mr-3"
-                  >B-
-                  <input type="radio" id="B-" name="blood-type" value="B-" />
-                  <span class="checkmark"></span>
-                </label>
-                <label for="AB+" class="radio-input mr-3"
-                  >AB+
-                  <input type="radio" id="AB+" name="blood-type" value="AB+" />
-                  <span class="checkmark"></span>
-                </label>
-                <label for="AB-" class="radio-input mr-3"
-                  >AB-
-                  <input type="radio" id="AB-" name="blood-type" value="AB-" />
-                  <span class="checkmark"></span>
-                </label>
-              </div>
+        <div style="color: brown; font-weight: 900; font-size: 20px">
+          <label for="city">Blood Type</label>
+          <select name="city" id="blood-type-spinner" class="form-control mb-3" style="width: 80px; border-radius: 5px; border-color: brown; font-weight: 600;">
+              <option value="" disabled selected>BloodType</option>
+              <option value="A+">A+</option>
+              <option value="A-">A-</option>
+              <option value="B+">B+</option>
+              <option value="B-">B-</option>
+              <option value="AB+">AB+</option>
+              <option value="AB-"">AB-</option>
+              <option value="O+">O+</option>
+              <option value="O-">O-</option>
+              
+              </select>
+             
             </div>
             <div>
               <button

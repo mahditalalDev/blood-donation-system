@@ -8,13 +8,13 @@ import {
   GoogleAuthProvider,
 } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-auth.js";
 const firebaseConfig = {
-  apiKey: "AIzaSyDfrHufsSDuxH1u2DsKx_3H6pWvgdXDcQk",
-  authDomain: "blooddoanationsystem.firebaseapp.com",
-  projectId: "blooddoanationsystem",
-  storageBucket: "blooddoanationsystem.appspot.com",
-  messagingSenderId: "1062989139800",
-  appId: "1:1062989139800:web:749dc6ad37e88970b45f2d",
-  measurementId: "G-9QXN765YNB"
+  apiKey: "AIzaSyB5piM8HyYATgWqMPi2U6bwAVz94Q189Bs",
+  authDomain: "fir-basics-569a0.firebaseapp.com",
+  projectId: "fir-basics-569a0",
+  storageBucket: "fir-basics-569a0.appspot.com",
+  messagingSenderId: "971203436246",
+  appId: "1:971203436246:web:11d5aa9c6a02ee8dc6f377",
+  measurementId: "G-LGY93EHL4E",
 };
 
 // Initialize Firebase
@@ -38,6 +38,55 @@ import {
 const db = getFirestore();
 const auth = getAuth();
 // -------------------------------------------------------------------------------
+ document.getElementById("province").addEventListener("change",()=>{
+  updateCities()
+ });
+ function updateCities() {
+  var provinceSelect = document.getElementById("province");
+  var citySelect = document.getElementById("city");
+  var province = provinceSelect.value;
+  citySelect.innerHTML = ""; // Clear existing options
+  
+  // Define cities based on selected province
+  var cities = [];
+  switch (province) {
+    case "Beirut":
+      cities = ["Beirut City", "Achrafieh", "Hamra"];
+      break;
+    case "South Lebanon":
+      cities = ["Tyre", "Sidon", "Jezzine"];
+      break;
+    case "North Lebanon":
+      cities = ["Tripoli", "Bsharri", "Batroun"];
+      break;
+    case "Mount Lebanon":
+      cities = ["Jounieh", "Zahle", "Byblos"];
+      break;
+    case "Bekaa":
+      cities = ["Zahle", "Baalbek", "Rashaya"];
+      break;
+    case "Nabatieh":
+      cities = ["Nabatieh", "Hasbaya", "Bint Jbeil"];
+      break;
+    case "Akkar":
+      cities = ["Halba", "Akkar el Atika", "Kobayat"];
+      break;
+    case "Baabda":
+      cities = ["Baabda", "Aley", "Chouf"];
+      break;
+    case "Baalbek-Hermel":
+      cities = ["Baalbek", "Hermel", "Qaa"];
+      break;
+  }
+  
+  // Populate city select with options
+  cities.forEach(function(city) {
+    var option = document.createElement("option");
+    option.text = city;
+    option.value = city;
+    citySelect.add(option);
+  });
+}
 const medicalRegisterBtn = document.getElementById("medical-reg-btn");
 if (medicalRegisterBtn) {
   medicalRegisterBtn.addEventListener("click", () => {

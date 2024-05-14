@@ -16,13 +16,13 @@ import {
   createUserWithEmailAndPassword,
 } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-auth.js";
 const firebaseConfig = {
-  apiKey: "AIzaSyDfrHufsSDuxH1u2DsKx_3H6pWvgdXDcQk",
-  authDomain: "blooddoanationsystem.firebaseapp.com",
-  projectId: "blooddoanationsystem",
-  storageBucket: "blooddoanationsystem.appspot.com",
-  messagingSenderId: "1062989139800",
-  appId: "1:1062989139800:web:749dc6ad37e88970b45f2d",
-  measurementId: "G-9QXN765YNB"
+  apiKey: "AIzaSyB5piM8HyYATgWqMPi2U6bwAVz94Q189Bs",
+  authDomain: "fir-basics-569a0.firebaseapp.com",
+  projectId: "fir-basics-569a0",
+  storageBucket: "fir-basics-569a0.appspot.com",
+  messagingSenderId: "971203436246",
+  appId: "1:971203436246:web:11d5aa9c6a02ee8dc6f377",
+  measurementId: "G-LGY93EHL4E",
 };
 
 // Initialize Firebase
@@ -49,8 +49,6 @@ const auth = getAuth();
 document.getElementById("send-urgent").addEventListener("click", function () {
   getAlldonorEmails()
     .then((donorEmails) => {
-      console.log(donorEmails)
-      
       composeEmail(donorEmails);
     })
     .catch((error) => {
@@ -59,17 +57,13 @@ document.getElementById("send-urgent").addEventListener("click", function () {
     });
 });
 document.getElementById("sign-out-btn").addEventListener("click", () => {
- 
-  
   const confirmation = confirm("Are you sure you want to logout?");
 
   // If user clicks "OK", redirect to index.html
   if (confirmation) {
     localStorage.clear();
     window.location.href = "../index.html";
-    
   }
-
 });
 
 async function getAlldonorEmails() {
@@ -89,7 +83,9 @@ async function getAlldonorEmails() {
 function composeEmail(donorEmails) {
   const toField = encodeURIComponent(donorEmails.join(","));
   const subject = encodeURIComponent("Urgent Request for Blood Donation");
-  const body = encodeURIComponent("Dear Donors,\n\nWe are currently facing an urgent shortage of blood supply. Your donation can save lives. Please consider donating blood at your earliest convenience.\n\nThank you for your generosity.\n\nSincerely,\nThe Blood Donation Team");
+  const body = encodeURIComponent(
+    "Dear Donors,\n\nWe are currently facing an urgent shortage of blood supply. Your donation can save lives. Please consider donating blood at your earliest convenience.\n\nThank you for your generosity.\n\nSincerely,\nThe Blood Donation Team"
+  );
   const gmailUrl = `https://mail.google.com/mail/?view=cm&to=${toField}&su=${subject}&body=${body}&fs=1&tf=1`;
 
   // Open Gmail compose window after filling fields
@@ -99,11 +95,8 @@ function composeEmail(donorEmails) {
 document.getElementById("searchButton").addEventListener("click", function () {
   // Get the selected city
   const selectedCity = document.getElementById("city").value;
+  const selectedBloodType = document.getElementById("blood-type-spinner").value;
 
-  // Get the selected blood type
-  const selectedBloodType = document.querySelector(
-    'input[name="blood-type"]:checked'
-  ).value;
   console.log("clicked");
   getDocuments(selectedCity, selectedBloodType);
 });
