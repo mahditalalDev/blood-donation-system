@@ -72,6 +72,7 @@ async function addUserInfo(userType, email, phone, fname, lname) {
     })
     .catch((err) => {
       console.log(err);
+      alert(err);
     });
 }
 async function addMedicalInfo(email, firstName, lastName, phoneNumber) {
