@@ -107,7 +107,7 @@ function getDocuments(city, bloodType) {
 
   const q = query(
     collection(db, "BloodBanks"),
-    where("city", "==", city, "&&", "bloodType", "==", bloodType)
+    where("province", "==", city, "&&", "bloodType", "==", bloodType)
     // where("bloodType", "==", `O+`)
   );
 
@@ -131,7 +131,7 @@ function fillTable(email, bloodValue, bloodType) {
     <tr>
     <td>${bloodType}</td>
     <td>${bloodValue}</td>
-    <td>${email}</td>
+    <td>${email.toLowerCase()}</td>
     <!-- <td><span class="status return">Return</span></td> -->
   </tr>`;
   document.getElementById("table").innerHTML += content;

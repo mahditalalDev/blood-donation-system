@@ -138,7 +138,7 @@ function filltable(array) {
               status === "pending"
                 ? `
               <button class="accept-btn" data-donor-bloodType="${donorInfo.bloodType}" data-donor-bloodQuantity="${reguestInfo.data.bloodQuantity}" data-donor-email="${reguestInfo.donorEmail}" data-medical-email="${donorInfo.email}" style="color:black;padding:10px;border-radius:5px">accept</button>
-              <button class="reject-btn" data-donor-email="${reguestInfo.donorEmail}" data-medical-email="${donorInfo.email}" style="color:black;padding:10px;border-radius:5px">reject</button>
+              <button class="reject-btn" data-donor-email="${reguestInfo.donorEmail}" data-medical-email="${donorInfo.email}" style="color:black ;padding:10px;border-radius:5px">reject</button>
             `
                 : ""
             }
@@ -146,6 +146,13 @@ function filltable(array) {
               status === "accepted"
                 ? `
               <span style=" padding: 5px; border-radius: 5px;">Accepted</span>
+            `
+                : ""
+            }
+            ${
+              status === "rejected"
+                ? `
+              <span style=" padding: 5px; border-radius: 5px;">rejected</span>
             `
                 : ""
             }
@@ -188,9 +195,24 @@ function filltable(array) {
       const donorEmail = this.getAttribute("data-donor-email");
       const donorbloodType = this.getAttribute("data-donor-bloodType");
       const donorbloodQuantity = this.getAttribute("data-donor-bloodQuantity");
-      console.log(donorbloodType, donorbloodQuantity);
+      console.log("this is", donorbloodType, donorbloodQuantity);
       updateSpecificDocument(donorEmail, "accepted");
       updateBloodBank("email", donorbloodType, donorbloodQuantity);
+      // let spinnerType = document.getElementById("spinner").value;
+      // switch (spinnerType) {
+      //   case "All":
+      //     getRequests();
+      //     return;
+      //   case "pending":
+      //     getRequestsByStatus("pending");
+      //     return;
+      //   case "accepted":
+      //     getRequestsByStatus("accepted");
+      //     return;
+      //   case "rejected":
+      //     getRequestsByStatus("rejected");
+      //     return;
+      // }
     });
   });
   document.querySelectorAll(".reminder-btn").forEach((button) => {
@@ -213,6 +235,21 @@ function filltable(array) {
     button.addEventListener("click", function () {
       const donorEmail = this.getAttribute("data-donor-email");
       updateSpecificDocument(donorEmail, "rejected");
+      // let spinnerType = document.getElementById("spinner").value;
+      // switch (spinnerType) {
+      //   case "All":
+      //     getRequests();
+      //     return;
+      //   case "pending":
+      //     getRequestsByStatus("pending");
+      //     return;
+      //   case "accepted":
+      //     getRequestsByStatus("accepted");
+      //     return;
+      //   case "rejected":
+      //     getRequestsByStatus("rejected");
+      //     return;
+      // }
     });
   });
 }
@@ -242,7 +279,7 @@ async function updateSpecificDocument(donorEmail, action) {
         getRequestsByStatus("pending");
       }
       if (selectedOption === "all") {
-        getRequestsByStatus("all");
+        getRequests()
       }
       if (selectedOption === "accepted") {
         getRequestsByStatus("accepted");

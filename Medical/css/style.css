@@ -301,7 +301,7 @@ body {
 
 .details .recentorders table tr td {
   padding: 10px;
-  text-transform: capitalize;
+  /* text-transform: capitalize; */
 }
 
 .details .recentorders table tr td:last-child {

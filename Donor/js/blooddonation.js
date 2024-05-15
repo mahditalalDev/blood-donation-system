@@ -67,13 +67,18 @@ async function getMedicalCentersName() {
       console.error("Error getting documents:", error);
     });
 }
+document.getElementById("city").addEventListener("change",()=>{
+  document.getElementById("medical-centers").innerHTML=``
+  const province = provinceInput.value;
+  const cityInputt=cityInput.value
+  updateMedicalCentersName(province,cityInputt);
+
+})
 document.getElementById("province").addEventListener("change", () => {
   document.getElementById("medical-centers").innerHTML=``
   updateCities()
-  const province = provinceInput.value;
-  const cityInputt=cityInput.value
-
-  updateMedicalCentersName(province,cityInput);
+  
+  
 });
 async function updateMedicalCentersName(province,city){
   let dataNames=[]
@@ -136,7 +141,7 @@ registerButton.addEventListener("click", function (event) {
   const city = cityInput.value;
 
   // Get the value of the checked radio button
-  let bloodQuantity = document.getElementById("blood-units").value;
+  let bloodQuantity = Number(document.getElementById("blood-units").value);
 
   // Log the values to the console
   console.log("Country:", country);

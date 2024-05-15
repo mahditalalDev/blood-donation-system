@@ -97,7 +97,7 @@ if (medicalRegisterBtn) {
     const medicalPhoneNumber = document.getElementById("phone_number").value;
     const medicalCountry = document.getElementById("country").value;
     // const medicalProvince = document.getElementById("province").value;
-    const city = document.getElementById("cities").value;
+    const city = document.getElementById("city").value;
     const province=document.getElementById("province").value;
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
